@@ -1,0 +1,9 @@
+{
+  "name": "ai-pavel-site-tests",
+  "private": true,
+  "type": "module",
+  "description": "Unit tests for ai-pavel.github.io",
+  "scripts": {
+    "test": "node --test"
+  }
+}
