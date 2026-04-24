@@ -1,6 +1,6 @@
 // Service worker template. scripts/generate.py fills in VERSION and PRECACHE
 // and writes the result to /sw.js. Edit this file, not sw.js.
-const VERSION = '5067f2df08d8';
+const VERSION = '5b8fd5da924e';
 const SITE_CACHE = 'site-' + VERSION;
 // Heavy, version-pinned files that tools download on first use (the ffmpeg core,
 // the OCR engine and its language data). Cached once and kept across site updates.
@@ -77,7 +77,23 @@ const PRECACHE = [
   "/assets/vendor/tesseract.js@5.1.1/dist/tesseract.min.js",
   "/assets/vendor/tesseract.js@5.1.1/dist/worker.min.js",
   "/assets/vendor/ua-parser-js@1.0.41/dist/ua-parser.min.js",
-  "/assets/vendor/zxing-wasm@3.1.6/dist/reader/zxing_reader.wasm"
+  "/assets/vendor/zxing-wasm@3.1.6/dist/reader/zxing_reader.wasm",
+  "/utilities/",
+  "/utilities/alarm/alarm.js",
+  "/utilities/alarm/",
+  "/utilities/vendor/ffmpeg/loader.js",
+  "/utilities/vendor/ffmpeg/ffmpeg/classes.js",
+  "/utilities/vendor/ffmpeg/ffmpeg/const.js",
+  "/utilities/vendor/ffmpeg/ffmpeg/empty.mjs",
+  "/utilities/vendor/ffmpeg/ffmpeg/errors.js",
+  "/utilities/vendor/ffmpeg/ffmpeg/index.js",
+  "/utilities/vendor/ffmpeg/ffmpeg/types.js",
+  "/utilities/vendor/ffmpeg/ffmpeg/utils.js",
+  "/utilities/vendor/ffmpeg/ffmpeg/worker.js",
+  "/utilities/vendor/ffmpeg/util/const.js",
+  "/utilities/vendor/ffmpeg/util/errors.js",
+  "/utilities/vendor/ffmpeg/util/index.js",
+  "/utilities/vendor/ffmpeg/util/types.js"
 ];
 
 self.addEventListener('install', event => {
