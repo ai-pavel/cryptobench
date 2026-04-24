@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alarm</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%8F%B0</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <style>
+    .ringing { text-align: center; border-color: var(--accent); }
+    .ringing .display { margin-bottom: 8px; }
+    .ringing .row { justify-content: center; }
+    .item.off { opacity: 0.55; }
+    .switch { flex-direction: row; align-items: center; gap: 6px; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Utilities</a>
+  <h1>⏰ Alarm</h1>
+  <p class="lead">Set alarms that ring in this tab. Keep the tab open; your alarms are saved in this browser.</p>
+
+  <div class="panel ringing" id="ringing" hidden>
+    <div class="display" id="ringTime"></div>
+    <p class="big" id="ringLabel"></p>
+    <div class="row">
+      <button id="snooze">Snooze 5 min</button>
+      <button class="primary" id="dismiss">Dismiss</button>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="display" id="clock">--:--:--</div>
+    <form class="row" id="add">
+      <label>Time <input id="time" type="time" required></label>
+      <label style="flex:1;min-width:140px">Label <input id="label" placeholder="e.g. Stand-up" maxlength="60"></label>
+      <label class="switch"><input id="daily" type="checkbox"> Repeat daily</label>
+      <button class="primary" style="align-self:flex-end">Add alarm</button>
+    </form>
+    <div class="list" id="list"></div>
+    <p class="muted" id="empty">No alarms yet.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 2.8 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="alarm.js"></script>
+</body>
+</html>
