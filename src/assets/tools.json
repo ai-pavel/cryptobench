@@ -15,6 +15,12 @@
               "emoji": "⏰",
               "name": "Alarm",
               "description": "Set an alarm"
+            },
+            {
+              "slug": "timer",
+              "emoji": "⏲️",
+              "name": "Timer",
+              "description": "Count down a set time"
             }
           ]
         }
