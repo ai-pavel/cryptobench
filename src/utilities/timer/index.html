@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Timer</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%8F%B2%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Utilities</a>
+  <h1>⏲️ Timer</h1>
+  <p class="lead">Count down a set time. Keep this tab open to hear the alert.</p>
+
+  <div class="panel">
+    <div class="display" id="display">05:00</div>
+    <div class="row" id="inputs">
+      <label>Hours <input id="h" type="number" min="0" max="99" value="0" style="width:80px"></label>
+      <label>Minutes <input id="m" type="number" min="0" max="59" value="5" style="width:80px"></label>
+      <label>Seconds <input id="s" type="number" min="0" max="59" value="0" style="width:80px"></label>
+    </div>
+    <div class="row">
+      <button data-preset="60">1 min</button>
+      <button data-preset="300">5 min</button>
+      <button data-preset="600">10 min</button>
+      <button data-preset="1500">25 min</button>
+      <button data-preset="3600">1 hour</button>
+    </div>
+    <div class="row">
+      <button class="primary" id="start">Start</button>
+      <button id="reset">Reset</button>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 2.8 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="timer.js"></script>
+</body>
+</html>
