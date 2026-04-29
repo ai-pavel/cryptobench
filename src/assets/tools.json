@@ -27,6 +27,12 @@
               "emoji": "⏱️",
               "name": "Stopwatch",
               "description": "Measure elapsed time"
+            },
+            {
+              "slug": "date-countdown",
+              "emoji": "📅",
+              "name": "Date Countdown",
+              "description": "Count down to a date"
             }
           ]
         }
