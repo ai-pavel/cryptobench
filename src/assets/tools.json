@@ -33,6 +33,12 @@
               "emoji": "📅",
               "name": "Date Countdown",
               "description": "Count down to a date"
+            },
+            {
+              "slug": "world-time",
+              "emoji": "🌍",
+              "name": "World Time",
+              "description": "See the time around the world"
             }
           ]
         }
