@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>World Time</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%8C%8D</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Utilities</a>
+  <h1>🌍 World Time</h1>
+  <p class="lead">See the current time in cities around the world. Your list is saved in this browser.</p>
+
+  <div class="panel">
+    <form class="row" id="add">
+      <input id="zone" list="zones" placeholder="Add a time zone, e.g. Tokyo" style="flex:1;min-width:200px" autocomplete="off">
+      <datalist id="zones"></datalist>
+      <button class="primary">Add</button>
+    </form>
+    <p class="muted" id="error" hidden>Unknown time zone. Pick one from the suggestions.</p>
+    <div class="list" id="list"></div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 2.8 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="world-time.js"></script>
+</body>
+</html>
