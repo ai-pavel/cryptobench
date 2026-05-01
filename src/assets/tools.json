@@ -39,6 +39,12 @@
               "emoji": "🌍",
               "name": "World Time",
               "description": "See the time around the world"
+            },
+            {
+              "slug": "break-time",
+              "emoji": "☕",
+              "name": "Break Time",
+              "description": "Get reminded to take breaks"
             }
           ]
         }
