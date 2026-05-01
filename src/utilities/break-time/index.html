@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Break Time</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%98%95</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <style>
+    .phase { text-align: center; font-size: 20px; font-weight: 600; margin: 0; }
+    .phase.break { color: var(--accent); }
+    .hint { text-align: center; margin: 0 0 4px; min-height: 1.5em; }
+    .center { justify-content: center; }
+    .presets button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+    .progress { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin-bottom: 20px; }
+    .progress div { height: 100%; width: 0; background: var(--accent); transition: width 0.3s linear; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Utilities</a>
+  <h1>☕ Break Time</h1>
+  <p class="lead">Get reminded to step away from the screen. Keep this tab open to hear the alerts.</p>
+
+  <div class="panel">
+    <div class="row presets" id="presets">
+      <button data-preset="eyes">20-20-20 eyes</button>
+      <button data-preset="pomodoro">Pomodoro 25 / 5</button>
+      <button data-preset="deep">Deep work 50 / 10</button>
+      <button data-preset="custom">Custom</button>
+    </div>
+    <div class="row" id="custom" hidden>
+      <label>Work, minutes <input id="workMin" type="number" min="1" max="240" value="45" style="width:110px"></label>
+      <label>Break, minutes <input id="breakMin" type="number" min="1" max="120" value="5" style="width:110px"></label>
+    </div>
+  </div>
+
+  <div class="panel">
+    <p class="phase" id="phase">Work</p>
+    <div class="display" id="display">20:00</div>
+    <div class="progress"><div id="bar"></div></div>
+    <p class="hint muted" id="hint"></p>
+    <div class="row center">
+      <button class="primary" id="start">Start</button>
+      <button id="skip">Skip</button>
+      <button id="reset">Reset</button>
+    </div>
+    <p class="muted" style="text-align:center" id="count">Breaks taken: 0</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 2.8 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="break-time.js"></script>
+</body>
+</html>
