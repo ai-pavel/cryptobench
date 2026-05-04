@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recognize Text</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%94%8D</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <style>
+    .drop {
+      display: block; padding: 28px 16px; text-align: center; cursor: pointer;
+      border: 2px dashed var(--border); border-radius: 10px; color: var(--muted);
+    }
+    .drop.over { border-color: var(--accent); color: var(--accent); }
+    .drop input { display: none; }
+    .preview { max-width: 100%; max-height: 360px; display: block; margin: 16px auto 0; border-radius: 8px; }
+    .langs { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 8px; }
+    .langs label { flex-direction: row; align-items: center; gap: 6px; color: var(--text); font-size: 15px; }
+    progress { width: 100%; height: 8px; accent-color: var(--accent); }
+    textarea { width: 100%; resize: vertical; margin-top: 16px; }
+    .error { color: #d14343; font-size: 14px; }
+    [hidden] { display: none !important; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Utilities</a>
+  <h1>🔍 Recognize Text</h1>
+  <p class="lead">Extract text from an image (OCR). Recognition runs in your browser; only the language data is downloaded.</p>
+
+  <div class="panel">
+    <label class="drop" id="drop">
+      <input type="file" id="file" accept="image/*">
+      <strong>Choose an image</strong>, drop it here, or paste it with ⌘V / Ctrl+V
+    </label>
+    <img class="preview" id="preview" alt="Selected image" hidden>
+
+    <p class="muted" style="margin:20px 0 0">Languages in the image</p>
+    <div class="langs" id="langs"></div>
+
+    <div class="row" style="margin-top:16px">
+      <button class="primary" id="run" disabled>Recognize text</button>
+      <span class="muted" id="status"></span>
+    </div>
+    <progress id="progress" max="1" value="0" hidden></progress>
+    <p class="error" id="error" hidden></p>
+
+    <div id="out" hidden>
+      <textarea id="text" rows="10" spellcheck="false"></textarea>
+      <div class="row" style="margin-top:12px">
+        <button id="copy">Copy</button>
+        <button id="download">Download .txt</button>
+        <span class="muted" id="msg"></span>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 2.8 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script src="../../assets/vendor/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
+<script type="module" src="recognize-text.js"></script>
+</body>
+</html>
