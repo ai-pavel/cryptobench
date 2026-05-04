@@ -47,6 +47,17 @@
               "description": "Get reminded to take breaks"
             }
           ]
+        },
+        {
+          "name": "Text & Data",
+          "tools": [
+            {
+              "slug": "recognize-text",
+              "emoji": "🔍",
+              "name": "Recognize Text",
+              "description": "Extract text from images (OCR)"
+            }
+          ]
         }
       ]
     }
