@@ -56,6 +56,12 @@
               "emoji": "🔍",
               "name": "Recognize Text",
               "description": "Extract text from images (OCR)"
+            },
+            {
+              "slug": "transform-text",
+              "emoji": "🔤",
+              "name": "Transform Text",
+              "description": "Change case, clean up and reformat text"
             }
           ]
         }
