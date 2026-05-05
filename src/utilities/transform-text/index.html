@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transform Text</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%94%A4</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Utilities</a>
+  <h1>🔤 Transform Text</h1>
+  <p class="lead">Change case, clean up lines and encode text. Each button transforms the text in place.</p>
+
+  <div class="panel">
+    <textarea id="text" rows="10" style="width:100%;resize:vertical" placeholder="Paste or type text here"></textarea>
+    <p class="muted" id="stats"></p>
+
+    <p class="muted">Case</p>
+    <div class="row">
+      <button data-op="upper">UPPERCASE</button>
+      <button data-op="lower">lowercase</button>
+      <button data-op="title">Title Case</button>
+      <button data-op="sentence">Sentence case</button>
+      <button data-op="camel">camelCase</button>
+      <button data-op="snake">snake_case</button>
+      <button data-op="kebab">kebab-case</button>
+    </div>
+    <p class="muted">Clean up</p>
+    <div class="row">
+      <button data-op="trim">Trim lines</button>
+      <button data-op="spaces">Collapse spaces</button>
+      <button data-op="empty">Remove empty lines</button>
+      <button data-op="sort">Sort lines</button>
+      <button data-op="unique">Unique lines</button>
+      <button data-op="reverseLines">Reverse lines</button>
+      <button data-op="reverse">Reverse text</button>
+    </div>
+    <p class="muted">Encode</p>
+    <div class="row">
+      <button data-op="b64e">Base64 encode</button>
+      <button data-op="b64d">Base64 decode</button>
+      <button data-op="urle">URL encode</button>
+      <button data-op="urld">URL decode</button>
+    </div>
+    <div class="row" style="margin-top:20px">
+      <button class="primary" id="copy">Copy</button>
+      <button id="undo" disabled>Undo</button>
+      <button id="clear">Clear</button>
+      <span class="muted" id="msg"></span>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 2.8 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="transform-text.js"></script>
+</body>
+</html>
