@@ -62,6 +62,12 @@
               "emoji": "🔤",
               "name": "Transform Text",
               "description": "Change case, clean up and reformat text"
+            },
+            {
+              "slug": "barcode-generator",
+              "emoji": "🏷️",
+              "name": "Barcode Generator",
+              "description": "Create QR codes and barcodes"
             }
           ]
         }
