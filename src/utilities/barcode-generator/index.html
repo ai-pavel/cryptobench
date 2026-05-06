@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Barcode Generator</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%8F%B7%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <style>
+    .fields { display: grid; gap: 12px; margin-top: 16px; }
+    .fields label { display: flex; }
+    .fields input, .fields select, .fields textarea { width: 100%; }
+    .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+    .check { flex-direction: row !important; align-items: center; gap: 8px !important; color: var(--text) !important; }
+    .check input { width: auto !important; }
+    input[type=color] { padding: 2px; height: 38px; }
+    .preview {
+      display: flex; align-items: center; justify-content: center;
+      min-height: 200px; margin-top: 20px; padding: 16px;
+      border: 1px dashed var(--border); border-radius: 10px; overflow: auto;
+    }
+    .preview svg { max-width: 100%; height: auto; display: block; }
+    .error { color: #d14343; font-size: 14px; margin: 8px 0 0; }
+    [hidden] { display: none !important; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Utilities</a>
+  <h1>🏷️ Barcode Generator</h1>
+  <p class="lead">Create QR codes and barcodes. Everything is generated in your browser.</p>
+
+  <div class="panel">
+    <div class="grid2">
+      <label>Type
+        <select id="type">
+          <option value="QR">QR code</option>
+          <option value="CODE128">Code 128</option>
+          <option value="EAN13">EAN-13</option>
+          <option value="UPC">UPC-A</option>
+          <option value="CODE39">Code 39</option>
+        </select>
+      </label>
+      <label id="tplWrap">Content
+        <select id="tpl">
+          <option value="text">Text or URL</option>
+          <option value="wifi">Wi‑Fi network</option>
+          <option value="email">Email</option>
+          <option value="phone">Phone</option>
+          <option value="sms">SMS</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="fields" data-tpl="text">
+      <label>Text or URL <textarea id="text" rows="3">https://ai-pavel.github.io/</textarea></label>
+    </div>
+    <div class="fields" data-tpl="wifi" hidden>
+      <div class="grid2">
+        <label>Network name (SSID) <input id="ssid" placeholder="MyNetwork"></label>
+        <label>Password <input id="wpass" placeholder="Leave empty for open networks"></label>
+        <label>Security
+          <select id="wsec"><option value="WPA">WPA/WPA2/WPA3</option><option value="WEP">WEP</option><option value="nopass">None</option></select>
+        </label>
+      </div>
+      <label class="check"><input type="checkbox" id="whidden"> Hidden network</label>
+    </div>
+    <div class="fields" data-tpl="email" hidden>
+      <div class="grid2">
+        <label>To <input id="eto" type="email" placeholder="name@example.com"></label>
+        <label>Subject <input id="esub"></label>
+      </div>
+      <label>Message <textarea id="ebody" rows="2"></textarea></label>
+    </div>
+    <div class="fields" data-tpl="phone" hidden>
+      <label>Phone number <input id="tel" type="tel" placeholder="+1 555 123 4567"></label>
+    </div>
+    <div class="fields" data-tpl="sms" hidden>
+      <label>Phone number <input id="smsto" type="tel" placeholder="+1 555 123 4567"></label>
+      <label>Message <textarea id="smsbody" rows="2"></textarea></label>
+    </div>
+    <div class="fields" id="linear" hidden>
+      <label>Value <input id="value" autocomplete="off"></label>
+      <p class="muted" id="hint"></p>
+    </div>
+
+    <div class="grid2" style="margin-top:16px">
+      <label id="eccWrap">Error correction
+        <select id="ecc">
+          <option value="L">Low (7%)</option>
+          <option value="M" selected>Medium (15%)</option>
+          <option value="Q">Quartile (25%)</option>
+          <option value="H">High (30%)</option>
+        </select>
+      </label>
+      <label><span>Size <span class="mono" id="sizeOut"></span></span><input id="size" type="range" min="128" max="1024" step="16" value="320"></label>
+      <label>Foreground <input id="fg" type="color" value="#000000"></label>
+      <label>Background <input id="bg" type="color" value="#ffffff"></label>
+    </div>
+    <label class="check" id="showTextWrap" style="margin-top:12px" hidden><input type="checkbox" id="showText" checked> Show value under the barcode</label>
+
+    <div class="preview" id="preview"></div>
+    <p class="error" id="error" hidden></p>
+
+    <div class="row" style="margin-top:16px">
+      <button class="primary" id="png">Download PNG</button>
+      <button id="svg">Download SVG</button>
+      <button id="copy">Copy image</button>
+      <span class="muted" id="msg"></span>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 2.8 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script src="../../assets/vendor/qrcode-generator@1.4.4/qrcode.js"></script>
+<script src="../../assets/vendor/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+<script type="module" src="barcode-generator.js"></script>
+</body>
+</html>
