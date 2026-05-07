@@ -68,6 +68,12 @@
               "emoji": "🏷️",
               "name": "Barcode Generator",
               "description": "Create QR codes and barcodes"
+            },
+            {
+              "slug": "barcode-reader",
+              "emoji": "📲",
+              "name": "Barcode Reader",
+              "description": "Scan QR codes and barcodes"
             }
           ]
         }
