@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Barcode Reader</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%93%B2</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <style>
+    .video-wrap { position: relative; margin-top: 16px; border-radius: 10px; overflow: hidden; background: #000; }
+    .video-wrap video { display: block; width: 100%; max-height: 60vh; object-fit: contain; }
+    .video-wrap .frame {
+      position: absolute; inset: 15%; border: 3px solid rgba(255,255,255,.8); border-radius: 12px;
+      box-shadow: 0 0 0 9999px rgba(0,0,0,.25); pointer-events: none;
+    }
+    .drop {
+      display: block; margin-top: 16px; padding: 28px 16px; text-align: center; cursor: pointer;
+      border: 2px dashed var(--border); border-radius: 10px; color: var(--muted);
+    }
+    .drop.over { border-color: var(--accent); color: var(--accent); }
+    .drop input { display: none; }
+    .result { display: block; }
+    .result .value { word-break: break-all; white-space: pre-wrap; margin: 4px 0 8px; }
+    .result .format { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+    .thumb { max-width: 100%; max-height: 240px; display: block; margin: 16px auto 0; border-radius: 8px; }
+    .error { color: #d14343; font-size: 14px; }
+    a.btn { padding: 8px 14px; border: 1px solid var(--border); border-radius: 8px; text-decoration: none; font-size: 15px; }
+    a.btn:hover { border-color: var(--accent); }
+    [hidden] { display: none !important; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Utilities</a>
+  <h1>📲 Barcode Reader</h1>
+  <p class="lead">Scan QR codes and barcodes with your camera or from an image. Nothing is uploaded.</p>
+
+  <div class="panel">
+    <div class="row">
+      <button class="primary" id="cam">Start camera</button>
+      <select id="cams" hidden aria-label="Camera"></select>
+    </div>
+    <div class="video-wrap" id="videoWrap" hidden>
+      <video id="video" playsinline muted></video>
+      <div class="frame"></div>
+    </div>
+
+    <label class="drop" id="drop">
+      <input type="file" id="file" accept="image/*">
+      <strong>Choose an image</strong>, drop it here, or paste it with ⌘V / Ctrl+V
+    </label>
+    <img class="thumb" id="thumb" alt="" hidden>
+    <p class="error" id="error" hidden></p>
+    <p class="muted" id="engine"></p>
+
+    <div class="list" id="results"></div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 2.9 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="barcode-reader.js"></script>
+</body>
+</html>
