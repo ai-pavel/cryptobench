@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unit Converter</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%93%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <style>
+    .pair { display: flex; gap: 8px; flex: 1 1 260px; }
+    .pair input { flex: 1; width: 0; }
+    .pair select { flex: 0 1 auto; max-width: 60%; }
+    @media (max-width: 600px) { #swap { margin: 0 auto; } }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Utilities</a>
+  <h1>📏 Unit Converter</h1>
+  <p class="lead">Convert between units of length, weight, temperature and more.</p>
+
+  <div class="panel">
+    <div class="row">
+      <label>Category <select id="cat"></select></label>
+    </div>
+    <div class="row" style="margin-top:16px">
+      <div class="pair"><input id="a" type="number" step="any" value="1"><select id="ua"></select></div>
+      <button id="swap" title="Swap units">⇄</button>
+      <div class="pair"><input id="b" type="number" step="any"><select id="ub"></select></div>
+    </div>
+    <table id="all"><tbody></tbody></table>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 2.9 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="unit-converter.js"></script>
+</body>
+</html>
