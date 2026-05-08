@@ -74,6 +74,12 @@
               "emoji": "📲",
               "name": "Barcode Reader",
               "description": "Scan QR codes and barcodes"
+            },
+            {
+              "slug": "unit-converter",
+              "emoji": "📏",
+              "name": "Unit Converter",
+              "description": "Convert between units"
             }
           ]
         }
