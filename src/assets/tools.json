@@ -82,6 +82,18 @@
               "description": "Convert between units"
             }
           ]
+        },
+        {
+          "name": "Files",
+          "tools": [
+            {
+              "slug": "archive",
+              "emoji": "🗜️",
+              "name": "Archive",
+              "description": "Create ZIP archives and extract ZIP, TAR and GZ files",
+              "keywords": "zip unzip tar gz extract compress unarchive"
+            }
+          ]
         }
       ]
     }
