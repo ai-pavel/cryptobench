@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Archive</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%97%9C%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <style>
+    .drop { border: 2px dashed var(--border); border-radius: 12px; padding: 28px 16px; text-align: center; color: var(--muted); }
+    .drop.over { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+    .drop .row { justify-content: center; margin-top: 12px; }
+    .files td:first-child { word-break: break-all; }
+    .files td:nth-child(2) { white-space: nowrap; text-align: right; }
+    .files td:last-child { width: 1%; }
+    progress { width: 100%; }
+  
+    .drop { border: 2px dashed var(--border); border-radius: 12px; padding: 28px 16px; text-align: center; color: var(--muted); }
+    .drop.over { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+    .drop .row { justify-content: center; margin-top: 12px; }
+    .files td:first-child { word-break: break-all; }
+    .files td:nth-child(2) { white-space: nowrap; text-align: right; }
+    .files td:last-child { width: 1%; }
+    .error { color: #c0392b; }
+  
+    .mode-tabs { display: inline-flex; gap: 0; margin: 18px 0 4px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .mode-tabs button { border: 0; border-radius: 0; padding: 8px 18px; background: var(--surface); }
+    .mode-tabs button + button { border-left: 1px solid var(--border); }
+    .mode-tabs button[aria-selected="true"] { background: var(--accent); color: var(--on-accent); }
+    [hidden] { display: none !important; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Utilities</a>
+  <h1>🗜️ Archive</h1>
+  <p class="lead">Create ZIP archives and extract ZIP, TAR and GZ files.</p>
+  <div class="mode-tabs" role="tablist"><button type="button" role="tab" data-tab="create">Create</button><button type="button" role="tab" data-tab="extract">Extract</button></div>
+  <section id="tab-create" class="mode-panel" data-tab-panel="create">
+
+  <div class="panel">
+    <div class="drop" id="c-drop">
+      Drop files or folders here
+      <div class="row">
+        <button id="c-pick-files">Add files</button>
+        <button id="c-pick-folder">Add folder</button>
+      </div>
+      <input type="file" id="c-files" multiple hidden>
+      <input type="file" id="c-folder" webkitdirectory multiple hidden>
+    </div>
+
+    <table class="files" id="c-table" hidden>
+      <thead><tr><th>File</th><th style="text-align:right">Size</th><th></th></tr></thead>
+      <tbody></tbody>
+      <tfoot><tr><th id="c-count"></th><th id="c-total" style="text-align:right"></th><th></th></tr></tfoot>
+    </table>
+
+    <div class="row" style="margin-top:20px">
+      <label style="flex:1;min-width:160px">Archive name <input id="c-name" value="archive"></label>
+      <label>Compression
+        <select id="c-level">
+          <option value="0">None (store)</option>
+          <option value="1">Fast</option>
+          <option value="6" selected>Normal</option>
+          <option value="9">Maximum</option>
+        </select>
+      </label>
+    </div>
+    <div class="row">
+      <button class="primary" id="c-create" disabled>Create ZIP</button>
+      <button id="c-clear" disabled>Clear</button>
+      <span class="muted" id="c-msg"></span>
+    </div>
+    <progress id="c-progress" max="1" value="0" hidden></progress>
+  </div>
+  </section>
+  <section id="tab-extract" class="mode-panel" data-tab-panel="extract">
+
+  <div class="panel">
+    <div class="drop" id="x-drop">
+      Drop an archive here
+      <div class="row"><button id="x-pick">Choose archive</button></div>
+      <input type="file" id="x-file" accept=".zip,.tar,.gz,.tgz,application/zip,application/gzip,application/x-tar" hidden>
+    </div>
+    <p class="muted" id="x-msg"></p>
+
+    <div id="x-result" hidden>
+      <div class="row">
+        <input id="x-filter" placeholder="Filter files" style="flex:1;min-width:160px">
+        <button class="primary" id="x-all">Download all as ZIP</button>
+      </div>
+      <table class="files" id="x-table">
+        <thead><tr><th>File</th><th style="text-align:right">Size</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 2.9 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script src="../../assets/vendor/fflate@0.8.3/umd/index.js"></script>
+<script type="module" src="archive.js"></script>
+</body>
+</html>
