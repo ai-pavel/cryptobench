@@ -7,7 +7,7 @@ Local-first browser tools — everyday, dev & crypto. Nothing leaves your device
 <!-- toolboxes:start -->
 | Toolbox | What's inside | Tools | Folder |
 |---|---|---|---|
-| [🪄 Utilities](https://ai-pavel.github.io/utilities/) | Everyday utilities: time, text, files and media | 12 | [`src/utilities/`](src/utilities/) |
+| [🪄 Utilities](https://ai-pavel.github.io/utilities/) | Everyday utilities: time, text, files and media | 13 | [`src/utilities/`](src/utilities/) |
 <!-- toolboxes:end -->
 
 Everything runs client-side in the browser: files and keys never leave the device.
