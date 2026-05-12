@@ -92,6 +92,12 @@
               "name": "Archive",
               "description": "Create ZIP archives and extract ZIP, TAR and GZ files",
               "keywords": "zip unzip tar gz extract compress unarchive"
+            },
+            {
+              "slug": "encrypt-files",
+              "emoji": "🔐",
+              "name": "Encrypt Files",
+              "description": "Password-protect files with AES-GCM"
             }
           ]
         }
