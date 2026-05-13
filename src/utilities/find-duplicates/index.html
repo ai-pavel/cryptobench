@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Find Duplicates</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%91%AF</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <style>
+    .drop { border: 2px dashed var(--border); border-radius: 12px; padding: 28px 16px; text-align: center; color: var(--muted); }
+    .drop.over { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+    .drop .row { justify-content: center; margin-top: 12px; }
+    progress { width: 100%; margin-top: 12px; }
+    .group { padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; }
+    .group header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; margin-bottom: 6px; }
+    .group ul { margin: 0; padding-left: 18px; }
+    .group li { word-break: break-all; font-size: 14px; }
+    .summary { font-weight: 600; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Utilities</a>
+  <h1>👯 Find Duplicates</h1>
+  <p class="lead">Find identical files in a folder by comparing their contents. Nothing is uploaded.</p>
+
+  <div class="panel">
+    <div class="drop" id="drop">
+      Drop a folder or files here
+      <div class="row">
+        <button id="pick-folder">Choose folder</button>
+        <button id="pick-files">Choose files</button>
+      </div>
+      <input type="file" id="folder" webkitdirectory multiple hidden>
+      <input type="file" id="files" multiple hidden>
+    </div>
+    <p class="muted" id="status"></p>
+    <progress id="progress" max="1" value="0" hidden></progress>
+
+    <div id="result" hidden>
+      <div class="row" style="justify-content:space-between">
+        <span class="summary" id="summary"></span>
+        <button id="csv">Export list as CSV</button>
+      </div>
+      <div class="list" id="groups"></div>
+      <p class="muted">Browsers can't delete files on your disk. Use the list or the CSV to clean up in your file manager.</p>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 2.9 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script src="../../assets/vendor/hash-wasm@4.12.0/dist/index.umd.min.js"></script>
+<script type="module" src="find-duplicates.js"></script>
+</body>
+</html>
