@@ -98,6 +98,12 @@
               "emoji": "🔐",
               "name": "Encrypt Files",
               "description": "Password-protect files with AES-GCM"
+            },
+            {
+              "slug": "find-duplicates",
+              "emoji": "👯",
+              "name": "Find Duplicates",
+              "description": "Find duplicate files in a folder"
             }
           ]
         }
