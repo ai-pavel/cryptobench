@@ -106,6 +106,17 @@
               "description": "Find duplicate files in a folder"
             }
           ]
+        },
+        {
+          "name": "Media",
+          "tools": [
+            {
+              "slug": "resize-images",
+              "emoji": "📐",
+              "name": "Resize Images",
+              "description": "Scale and compress images"
+            }
+          ]
         }
       ]
     }
