@@ -115,6 +115,12 @@
               "emoji": "📐",
               "name": "Resize Images",
               "description": "Scale and compress images"
+            },
+            {
+              "slug": "make-gif",
+              "emoji": "🎞️",
+              "name": "Make GIF",
+              "description": "Turn a video or images into a GIF"
             }
           ]
         }
