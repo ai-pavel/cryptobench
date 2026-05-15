@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Make GIF</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%8E%9E%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <style>
+    .tabs { display: flex; gap: 4px; padding: 4px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; width: fit-content; max-width: 100%; }
+    .tabs button { border: 0; background: transparent; }
+    .tabs button[aria-selected="true"] { background: var(--surface); box-shadow: 0 1px 2px rgba(0,0,0,.12); font-weight: 600; }
+    .drop {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+      margin-top: 16px; padding: 28px 16px; border: 2px dashed var(--border); border-radius: 12px;
+      text-align: center; cursor: pointer; color: var(--muted);
+    }
+    .drop.over, .drop:hover { border-color: var(--accent); color: var(--text); }
+    .drop strong { color: var(--text); }
+    .drop input { display: none; }
+    .settings { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-top: 16px; }
+    .settings input, .settings select { width: 100%; }
+    video, .result img { display: block; max-width: 100%; max-height: 360px; margin: 16px auto 0; border-radius: 8px; background: #000; }
+    .result img { background: repeating-conic-gradient(var(--border) 0 25%, transparent 0 50%) 0 0 / 16px 16px; }
+    .frame .thumb { display: flex; gap: 12px; align-items: center; flex: 1; min-width: 0; }
+    .frame img { width: 56px; height: 56px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
+    .frame .info { flex: 1; min-width: 0; }
+    .frame .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
+    .frame input { width: 84px; }
+    .frame .row { gap: 4px; }
+    progress { width: 100%; height: 10px; margin-top: 16px; accent-color: var(--accent); }
+    a.btn { padding: 8px 14px; border-radius: 8px; background: var(--accent); color: var(--on-accent); text-decoration: none; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Utilities</a>
+  <h1>🎞️ Make GIF</h1>
+  <p class="lead">Turn a video clip or a set of images into an animated GIF, right in your browser.</p>
+
+  <div class="panel">
+    <div class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-tab="video">From video</button>
+      <button role="tab" aria-selected="false" data-tab="images">From images</button>
+    </div>
+
+    <section id="tab-video">
+      <label class="drop" data-drop="video">
+        <input type="file" id="videoFile" accept="video/*">
+        <span style="font-size:32px">🎬</span>
+        <strong>Drop a video here or click to choose</strong>
+        <span>MP4, WebM or MOV that your browser can play</span>
+      </label>
+      <div id="videoOpts" hidden>
+        <video id="video" controls muted playsinline></video>
+        <div class="settings">
+          <label>Start (s) <input id="start" type="number" min="0" step="0.1" value="0"></label>
+          <label>End (s) <input id="end" type="number" min="0" step="0.1" value="3"></label>
+          <label>Frames per second <select id="fps"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option></select></label>
+          <label>Width (px) <input id="vwidth" type="number" min="16" max="1920" value="480"></label>
+        </div>
+        <div class="row" style="margin-top:12px">
+          <button id="useCurrentStart">Start = current frame</button>
+          <button id="useCurrentEnd">End = current frame</button>
+        </div>
+        <p class="muted" id="videoHint"></p>
+      </div>
+    </section>
+
+    <section id="tab-images" hidden>
+      <label class="drop" data-drop="images">
+        <input type="file" id="imageFiles" accept="image/*" multiple>
+        <span style="font-size:32px">🖼️</span>
+        <strong>Drop images here or click to choose</strong>
+        <span>Each image becomes one frame. Reorder with the arrows.</span>
+      </label>
+      <div id="imageOpts" hidden>
+        <div class="settings">
+          <label>Width (px) <input id="iwidth" type="number" min="16" max="1920" value="480"></label>
+          <label>Delay for all (ms) <input id="allDelay" type="number" min="20" step="10" value="500"></label>
+          <label>Background <input id="bg" type="color" value="#ffffff" style="height:40px;padding:4px"></label>
+        </div>
+        <div class="list" id="frames"></div>
+      </div>
+    </section>
+
+    <div class="row" style="margin-top:20px">
+      <label style="flex-direction:row;align-items:center;gap:8px;color:inherit"><input type="checkbox" id="loop" checked> Loop forever</label>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <button class="primary" id="make" disabled>Make GIF</button>
+      <button id="cancel" hidden>Cancel</button>
+      <span class="muted" id="status"></span>
+    </div>
+    <progress id="progress" max="1" value="0" hidden></progress>
+
+    <div class="result" id="result" hidden>
+      <img id="gif" alt="Generated GIF">
+      <div class="row" style="justify-content:center;margin-top:12px">
+        <a class="btn" id="download" download="animation.gif">Download GIF</a>
+        <span class="muted" id="resultInfo"></span>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 2.9 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="make-gif.js"></script>
+</body>
+</html>
