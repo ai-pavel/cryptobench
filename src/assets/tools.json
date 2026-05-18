@@ -121,6 +121,13 @@
               "emoji": "🎞️",
               "name": "Make GIF",
               "description": "Turn a video or images into a GIF"
+            },
+            {
+              "slug": "convert-media",
+              "emoji": "🎬",
+              "name": "Convert Media",
+              "description": "Convert audio and video between formats, or extract the audio",
+              "keywords": "mp3 mp4 webm wav m4a flac ogg ffmpeg video audio"
             }
           ]
         }
