@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Convert Media</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%8E%AC</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <style>
+    .drop {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+      padding: 28px 16px; border: 2px dashed var(--border); border-radius: 12px;
+      text-align: center; cursor: pointer; color: var(--muted);
+    }
+    .drop.over, .drop:hover { border-color: var(--accent); color: var(--text); }
+    .drop strong { color: var(--text); overflow-wrap: anywhere; }
+    .drop input { display: none; }
+    .settings { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 16px; }
+    .settings input, .settings select { width: 100%; }
+    .settings label[hidden] { display: none; }
+    progress { width: 100%; height: 10px; accent-color: var(--accent); }
+    video, audio { display: block; width: 100%; max-height: 360px; margin-top: 12px; border-radius: 8px; }
+    video { background: #000; }
+    video[hidden], audio[hidden] { display: none; }
+    a.btn { padding: 8px 14px; border-radius: 8px; background: var(--accent); color: var(--on-accent); text-decoration: none; }
+    .warn { padding: 10px 12px; border-radius: 8px; background: var(--bg); border: 1px solid var(--border); font-size: 14px; color: var(--muted); }
+  
+    .drop {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+      padding: 28px 16px; border: 2px dashed var(--border); border-radius: 12px;
+      text-align: center; cursor: pointer; color: var(--muted);
+    }
+    .drop.over, .drop:hover { border-color: var(--accent); color: var(--text); }
+    .drop strong { color: var(--text); overflow-wrap: anywhere; }
+    .drop input { display: none; }
+    .settings { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 16px; }
+    .settings input, .settings select { width: 100%; }
+    progress { width: 100%; height: 10px; accent-color: var(--accent); }
+    audio { width: 100%; margin-top: 12px; }
+    a.btn { padding: 8px 14px; border-radius: 8px; background: var(--accent); color: var(--on-accent); text-decoration: none; }
+  
+    .mode-tabs { display: inline-flex; gap: 0; margin: 18px 0 4px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .mode-tabs button { border: 0; border-radius: 0; padding: 8px 18px; background: var(--surface); }
+    .mode-tabs button + button { border-left: 1px solid var(--border); }
+    .mode-tabs button[aria-selected="true"] { background: var(--accent); color: var(--on-accent); }
+    [hidden] { display: none !important; }
+    #tab-video #v-drop, #tab-audio #a-drop { display: none !important; }
+    #tab-video .panel, #tab-audio .panel { margin-top: 12px; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Utilities</a>
+  <h1>🎬 Convert Media</h1>
+  <p class="lead">Convert audio and video between formats, or extract the audio track.</p>
+  <div class="panel" style="margin-top:16px">
+    <label class="drop" id="media-drop">
+      <input type="file" id="media-file" accept="audio/*,video/*,.mkv,.avi,.flv,.wmv,.m4v,.3gp,.ts,.flac,.opus,.ogg,.m4a,.aac,.wma,.aiff">
+      <span style="font-size:32px">🎬</span>
+      <strong id="media-title">Drop an audio or video file here or click to choose</strong>
+      <span id="media-info">MP4, MOV, WebM, MKV, MP3, WAV, FLAC, OGG and more</span>
+    </label>
+  </div>
+  <div class="mode-tabs" role="tablist"><button type="button" role="tab" data-tab="video">Video</button><button type="button" role="tab" data-tab="audio">Audio</button></div>
+  <section id="tab-video" class="mode-panel" data-tab-panel="video">
+
+  <div class="panel">
+    <p class="warn">⚠️ Conversion runs on your device in a single thread, so it is several times slower than a desktop app. It works best for short clips — roughly under 200 MB.</p>
+    <label class="drop" id="v-drop" style="margin-top:16px">
+      <input type="file" id="v-file" accept="video/*,.mkv,.avi,.flv,.wmv,.m4v,.3gp,.ts">
+      <span style="font-size:32px">🎬</span>
+      <strong id="v-dropTitle">Drop a video here or click to choose</strong>
+      <span id="v-dropInfo">MP4, MOV, WebM, MKV, AVI and more</span>
+    </label>
+    <p class="muted" id="v-sizeWarn" hidden>This file is large. Conversion may take a long time or run out of memory — trimming or lowering the resolution helps.</p>
+
+    <div class="settings">
+      <label>Format <select id="v-format">
+        <option value="mp4">MP4 (H.264)</option>
+        <option value="webm">WebM (VP8)</option>
+        <option value="mov">MOV (H.264)</option>
+        <option value="mp3">Audio only (MP3)</option>
+      </select></label>
+      <label data-video>Resolution <select id="v-res">
+        <option value="0">Original</option>
+        <option value="1080">1080p</option>
+        <option value="720" selected>720p</option>
+        <option value="480">480p</option>
+        <option value="360">360p</option>
+      </select></label>
+      <label data-video>Quality <select id="v-quality">
+        <option value="high">High</option>
+        <option value="medium" selected>Medium</option>
+        <option value="low">Small file</option>
+      </select></label>
+      <label>Trim start <input id="v-start" placeholder="0:00" inputmode="decimal"></label>
+      <label>Trim end <input id="v-end" placeholder="end" inputmode="decimal"></label>
+    </div>
+    <p class="muted">Resolution only scales down. Times can be seconds (<code>75</code>) or minutes:seconds (<code>1:15</code>).</p>
+
+    <div class="row" style="margin-top:8px">
+      <button class="primary" id="v-convert" disabled>Convert</button>
+      <button id="v-cancel" hidden>Cancel</button>
+      <span class="muted" id="v-status"></span>
+    </div>
+    <progress id="v-progress" max="1" value="0" hidden style="margin-top:12px"></progress>
+
+    <div id="v-result" hidden style="margin-top:16px">
+      <video id="v-player" controls playsinline hidden></video>
+      <audio id="v-audioPlayer" controls hidden></audio>
+      <div class="row" style="margin-top:12px">
+        <a class="btn" id="v-download">Download</a>
+        <span class="muted" id="v-resultInfo"></span>
+      </div>
+    </div>
+  </div>
+  </section>
+  <section id="tab-audio" class="mode-panel" data-tab-panel="audio">
+
+  <div class="panel">
+    <label class="drop" id="a-drop">
+      <input type="file" id="a-file" accept="audio/*,video/*,.mkv,.flac,.opus,.ogg,.m4a,.aac,.wma,.aiff">
+      <span style="font-size:32px">🎧</span>
+      <strong id="a-dropTitle">Drop an audio or video file here or click to choose</strong>
+      <span id="a-dropInfo">MP3, WAV, FLAC, OGG, M4A, AAC, MP4, MOV, MKV and more</span>
+    </label>
+
+    <div class="settings">
+      <label>Format <select id="a-format">
+        <option value="mp3">MP3</option>
+        <option value="m4a">M4A (AAC)</option>
+        <option value="ogg">OGG (Vorbis)</option>
+        <option value="opus">Opus</option>
+        <option value="flac">FLAC (lossless)</option>
+        <option value="wav">WAV (uncompressed)</option>
+      </select></label>
+      <label id="a-bitrateLabel">Bitrate <select id="a-bitrate">
+        <option value="96">96 kbps</option>
+        <option value="128">128 kbps</option>
+        <option value="192" selected>192 kbps</option>
+        <option value="256">256 kbps</option>
+        <option value="320">320 kbps</option>
+      </select></label>
+      <label>Trim start <input id="a-start" placeholder="0:00" inputmode="decimal"></label>
+      <label>Trim end <input id="a-end" placeholder="end" inputmode="decimal"></label>
+    </div>
+    <p class="muted">Times can be seconds (<code>75</code>) or minutes:seconds (<code>1:15</code>). Leave empty to keep the whole file.</p>
+
+    <div class="row" style="margin-top:8px">
+      <button class="primary" id="a-convert" disabled>Convert</button>
+      <button id="a-cancel" hidden>Cancel</button>
+      <span class="muted" id="a-status"></span>
+    </div>
+    <progress id="a-progress" max="1" value="0" hidden style="margin-top:12px"></progress>
+
+    <div id="a-result" hidden style="margin-top:16px">
+      <audio id="a-player" controls></audio>
+      <div class="row" style="margin-top:12px">
+        <a class="btn" id="a-download">Download</a>
+        <span class="muted" id="a-resultInfo"></span>
+      </div>
+    </div>
+  </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.0 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="convert-media.js"></script>
+</body>
+</html>
