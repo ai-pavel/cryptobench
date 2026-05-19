@@ -132,6 +132,26 @@
           ]
         }
       ]
+    },
+    {
+      "id": "dev",
+      "emoji": "🧑‍💻",
+      "name": "Developer",
+      "summary": "Developer utilities: JSON, encoding, tokens, regex, diffs, bits and bytes.",
+      "lead": "Developer utilities that run entirely in your browser. Nothing you paste leaves your device.",
+      "categories": [
+        {
+          "name": "Bits & Bytes",
+          "tools": [
+            {
+              "slug": "little-endian",
+              "emoji": "🔄",
+              "name": "Little Endian",
+              "description": "Convert a number between big-endian and little-endian bytes"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
