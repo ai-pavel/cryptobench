@@ -1,6 +1,6 @@
 // Service worker template. scripts/generate.py fills in VERSION and PRECACHE
 // and writes the result to /sw.js. Edit this file, not sw.js.
-const VERSION = '30f108b85c5e';
+const VERSION = '610473db357d';
 const SITE_CACHE = 'site-' + VERSION;
 // Heavy, version-pinned files that tools download on first use (the ffmpeg core,
 // the OCR engine and its language data). Cached once and kept across site updates.
@@ -78,6 +78,19 @@ const PRECACHE = [
   "/assets/vendor/tesseract.js@5.1.1/dist/worker.min.js",
   "/assets/vendor/ua-parser-js@1.0.41/dist/ua-parser.min.js",
   "/assets/vendor/zxing-wasm@3.1.6/dist/reader/zxing_reader.wasm",
+  "/dev/",
+  "/dev/lib/bytes.js",
+  "/dev/lib/cbor.js",
+  "/dev/lib/cron.js",
+  "/dev/lib/dev.css",
+  "/dev/lib/diff.js",
+  "/dev/lib/json.js",
+  "/dev/lib/num.js",
+  "/dev/lib/protobuf.js",
+  "/dev/lib/time.js",
+  "/dev/lib/ui.js",
+  "/dev/little-endian/",
+  "/dev/little-endian/little-endian.js",
   "/utilities/",
   "/utilities/alarm/alarm.js",
   "/utilities/alarm/",
