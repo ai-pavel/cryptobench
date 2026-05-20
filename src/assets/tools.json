@@ -148,6 +148,12 @@
               "emoji": "🔄",
               "name": "Little Endian",
               "description": "Convert a number between big-endian and little-endian bytes"
+            },
+            {
+              "slug": "number-converter",
+              "emoji": "🔢",
+              "name": "Number Converter",
+              "description": "Convert numbers between binary, decimal and hex"
             }
           ]
         }
