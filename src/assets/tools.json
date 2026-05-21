@@ -154,6 +154,13 @@
               "emoji": "🔢",
               "name": "Number Converter",
               "description": "Convert numbers between binary, decimal and hex"
+            },
+            {
+              "slug": "byte",
+              "emoji": "💾",
+              "name": "Byte",
+              "description": "Every representation of a byte: bits, hex, integer and ASCII",
+              "keywords": "ascii table signed unsigned"
             }
           ]
         }
