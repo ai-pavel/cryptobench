@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Byte</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%92%BE</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+  <!-- dev:head -->
+  <link rel="stylesheet" href="../lib/dev.css">
+  <style>
+    .bits8 { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 4px; margin: 4px 0 16px; text-align: center; }
+    .bits8 button { padding: 8px 0; font: 600 20px ui-monospace, Menlo, monospace; display: flex; flex-direction: column; align-items: center; }
+    .bits8 button.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+    .bits8 small { display: block; font-size: 11px; font-weight: 400; color: var(--muted); }
+    .bits8 button.on small { color: inherit; opacity: .8; }
+    .forms { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 12px; }
+    @media (max-width: 640px) { .forms { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .nav { display: flex; gap: 8px; margin-bottom: 14px; }
+    .ascii { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 4px; margin-top: 8px; }
+    .ascii button { padding: 6px 2px; font: 13px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; display: flex; flex-direction: column; align-items: center; }
+    .ascii button small { color: var(--muted); font-size: 11px; }
+    .ascii button.sel { border-color: var(--accent); outline: 1px solid var(--accent); }
+    @media (max-width: 480px) { .ascii { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    h2 { margin-top: 20px; }
+  </style>
+  <!-- /dev:head -->
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Developer</a>
+  <h1>💾 Byte</h1>
+  <p class="lead">Show every representation of a byte.</p>
+  <!-- dev:body -->
+  <div class="panel">
+    <p class="muted">Edit any field; the others follow. Click a bit to flip it.</p>
+    <div class="forms">
+      <div class="field"><span>Binary</span><input id="bin" class="mono" autocomplete="off" inputmode="numeric"></div>
+      <div class="field"><span>Hex</span><input id="hex" class="mono" autocomplete="off"></div>
+      <div class="field"><span>Octal</span><input id="oct" class="mono" autocomplete="off" inputmode="numeric"></div>
+      <div class="field"><span>Unsigned (0 … 255)</span><input id="dec" class="mono" autocomplete="off" inputmode="numeric"></div>
+      <div class="field"><span>Signed (−128 … 127)</span><input id="sdec" class="mono" autocomplete="off"></div>
+      <div class="field"><span>Character</span><input id="ch" class="mono" autocomplete="off" maxlength="2"></div>
+    </div>
+    <div class="nav"><button id="prev" title="Previous byte">− 1</button><button id="next" title="Next byte">+ 1</button></div>
+    <p class="error" id="err" hidden></p>
+    <div class="bits8" id="bits"></div>
+    <div class="out" id="out"></div>
+    <h2>ASCII table</h2>
+    <div class="ascii" id="table"></div>
+  </div>
+  <script type="module" src="byte.js"></script>
+  <!-- /dev:body -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.0 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+</body>
+</html>
