@@ -161,6 +161,12 @@
               "name": "Byte",
               "description": "Every representation of a byte: bits, hex, integer and ASCII",
               "keywords": "ascii table signed unsigned"
+            },
+            {
+              "slug": "bit",
+              "emoji": "💡",
+              "name": "Bit",
+              "description": "Flip bits in an interactive editor"
             }
           ]
         }
