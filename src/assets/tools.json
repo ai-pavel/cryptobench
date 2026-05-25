@@ -169,6 +169,18 @@
               "description": "Flip bits in an interactive editor"
             }
           ]
+        },
+        {
+          "name": "Time",
+          "tools": [
+            {
+              "slug": "timestamp",
+              "emoji": "⌛",
+              "name": "Timestamp Converter",
+              "description": "Convert Unix timestamps and dates",
+              "keywords": "epoch unix time date iso"
+            }
+          ]
         }
       ]
     }
