@@ -8,7 +8,7 @@ Local-first browser tools — everyday, dev & crypto. Nothing leaves your device
 | Toolbox | What's inside | Tools | Folder |
 |---|---|---|---|
 | [🪄 Utilities](https://ai-pavel.github.io/utilities/) | Everyday utilities: time, text, files and media | 17 | [`src/utilities/`](src/utilities/) |
-| [🧑‍💻 Developer](https://ai-pavel.github.io/dev/) | Developer utilities: JSON, encoding, tokens, regex, diffs, bits and bytes | 4 | [`src/dev/`](src/dev/) |
+| [🧑‍💻 Developer](https://ai-pavel.github.io/dev/) | Developer utilities: JSON, encoding, tokens, regex, diffs, bits and bytes | 5 | [`src/dev/`](src/dev/) |
 <!-- toolboxes:end -->
 
 Everything runs client-side in the browser: files and keys never leave the device.
