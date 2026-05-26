@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cron Explainer</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%95%B0%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+  <!-- dev:head -->
+  <link rel="stylesheet" href="../lib/dev.css">
+  <style>
+    .presets { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+    .presets button { font: 13px ui-monospace, Menlo, monospace; padding: 4px 10px; }
+    .fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 6px; margin: 8px 0 12px; }
+    .fields div { border: 1px solid var(--border); border-radius: 8px; padding: 6px 8px; font-size: 13px; min-width: 0; }
+    .fields b { display: block; font: 600 14px ui-monospace, Menlo, monospace; word-break: break-all; }
+    .fields span { color: var(--muted); }
+    .desc { font-size: 18px; font-weight: 600; margin: 4px 0 8px; }
+    ol.runs { margin: 0; padding-left: 24px; font: 14px/1.8 ui-monospace, Menlo, monospace; }
+    ol.runs span { color: var(--muted); font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; }
+  </style>
+  <!-- /dev:head -->
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Developer</a>
+  <h1>🕰️ Cron Explainer</h1>
+  <p class="lead">Explain a cron expression and its next runs.</p>
+  <!-- dev:body -->
+  <div class="panel">
+    <div class="field"><span>Cron expression (5 fields, 6 with seconds, or @daily, @hourly…)</span>
+      <input id="in" class="mono" value="*/15 9-17 * * MON-FRI" autocomplete="off" spellcheck="false"></div>
+    <div class="presets" id="presets">
+      <button>* * * * *</button><button>*/5 * * * *</button><button>0 * * * *</button><button>0 9 * * MON-FRI</button>
+      <button>30 2 * * 0</button><button>0 0 1 * *</button><button>0 0 1 1 *</button><button>0 */6 * * *</button><button>@daily</button>
+    </div>
+    <div class="toolbar"><label>Time zone <select id="tz" style="max-width:240px"></select></label></div>
+    <p class="error" id="err" hidden></p>
+    <div id="out">
+      <p class="desc" id="desc"></p>
+      <div class="fields" id="fields"></div>
+      <h2>Next 10 runs</h2>
+      <ol class="runs" id="runs"></ol>
+    </div>
+  </div>
+  <script type="module" src="cron.js"></script>
+  <!-- /dev:body -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.1 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+</body>
+</html>
