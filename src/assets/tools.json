@@ -179,6 +179,13 @@
               "name": "Timestamp Converter",
               "description": "Convert Unix timestamps and dates",
               "keywords": "epoch unix time date iso"
+            },
+            {
+              "slug": "cron",
+              "emoji": "🕰️",
+              "name": "Cron Explainer",
+              "description": "Explain a cron expression and its next runs",
+              "keywords": "crontab schedule"
             }
           ]
         }
