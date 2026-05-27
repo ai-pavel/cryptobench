@@ -188,6 +188,18 @@
               "keywords": "crontab schedule"
             }
           ]
+        },
+        {
+          "name": "Encoding",
+          "tools": [
+            {
+              "slug": "jwt-decoder",
+              "emoji": "🎫",
+              "name": "JWT Decoder",
+              "description": "Decode and inspect JSON Web Tokens",
+              "keywords": "token jws auth"
+            }
+          ]
         }
       ]
     }
