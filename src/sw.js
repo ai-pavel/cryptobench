@@ -1,6 +1,6 @@
 // Service worker template. scripts/generate.py fills in VERSION and PRECACHE
 // and writes the result to /sw.js. Edit this file, not sw.js.
-const VERSION = 'e994dff8144a';
+const VERSION = '3e129671c899';
 const SITE_CACHE = 'site-' + VERSION;
 // Heavy, version-pinned files that tools download on first use (the ffmpeg core,
 // the OCR engine and its language data). Cached once and kept across site updates.
@@ -85,6 +85,8 @@ const PRECACHE = [
   "/dev/byte/",
   "/dev/cron/cron.js",
   "/dev/cron/",
+  "/dev/jwt-decoder/",
+  "/dev/jwt-decoder/jwt-decoder.js",
   "/dev/lib/bytes.js",
   "/dev/lib/cbor.js",
   "/dev/lib/cron.js",
