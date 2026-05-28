@@ -198,6 +198,13 @@
               "name": "JWT Decoder",
               "description": "Decode and inspect JSON Web Tokens",
               "keywords": "token jws auth"
+            },
+            {
+              "slug": "base64",
+              "emoji": "📦",
+              "name": "Base64",
+              "description": "Encode and decode Base64 text and files",
+              "keywords": "data uri"
             }
           ]
         }
