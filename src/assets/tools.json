@@ -205,6 +205,13 @@
               "name": "Base64",
               "description": "Encode and decode Base64 text and files",
               "keywords": "data uri"
+            },
+            {
+              "slug": "url-parser",
+              "emoji": "🔗",
+              "name": "URL Parser",
+              "description": "Split a URL and edit its query parameters",
+              "keywords": "query string encode"
             }
           ]
         }
