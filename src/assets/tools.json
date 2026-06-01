@@ -212,6 +212,13 @@
               "name": "URL Parser",
               "description": "Split a URL and edit its query parameters",
               "keywords": "query string encode"
+            },
+            {
+              "slug": "html-entities",
+              "emoji": "🏷️",
+              "name": "HTML Entities",
+              "description": "Escape and unescape HTML entities",
+              "keywords": "escape"
             }
           ]
         }
