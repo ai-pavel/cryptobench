@@ -219,6 +219,13 @@
               "name": "HTML Entities",
               "description": "Escape and unescape HTML entities",
               "keywords": "escape"
+            },
+            {
+              "slug": "cbor-decoder",
+              "emoji": "🧱",
+              "name": "CBOR Decoder",
+              "description": "Decode CBOR into readable diagnostic notation and JSON",
+              "keywords": "cbor rfc8949 cose webauthn cardano"
             }
           ]
         }
