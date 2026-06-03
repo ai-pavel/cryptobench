@@ -226,6 +226,13 @@
               "name": "CBOR Decoder",
               "description": "Decode CBOR into readable diagnostic notation and JSON",
               "keywords": "cbor rfc8949 cose webauthn cardano"
+            },
+            {
+              "slug": "protobuf-decoder",
+              "emoji": "🧬",
+              "name": "Protobuf Decoder",
+              "description": "Decode Protocol Buffers messages without a schema",
+              "keywords": "protobuf protocol buffers grpc wire format cosmos"
             }
           ]
         }
