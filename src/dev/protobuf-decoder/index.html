@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Protobuf Decoder</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%A7%AC</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+  <!-- dev:head -->
+  <link rel="stylesheet" href="../lib/dev.css">
+  <style>
+    .pf { border-left: 2px solid var(--border); padding-left: 10px; margin: 4px 0; }
+    .pf .hd { font: 600 14px ui-monospace, Menlo, monospace; }
+    .pf .hd .w { font-weight: 400; color: var(--muted); font-size: 12px; }
+    .pf .v { font: 13px/1.5 ui-monospace, Menlo, monospace; word-break: break-all; }
+    .pf .alt { color: var(--muted); font-size: 12px; }
+    .pf details > summary { cursor: pointer; font: 600 14px ui-monospace, Menlo, monospace; }
+    h2 { margin-top: 20px; }
+  </style>
+  <!-- /dev:head -->
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Developer</a>
+  <h1>🧬 Protobuf Decoder</h1>
+  <p class="lead">Decode Protocol Buffers messages without a schema.</p>
+  <!-- dev:body -->
+  <div class="panel">
+    <div class="field"><span>Protobuf message as hex or base64</span>
+      <textarea id="in" class="mono" rows="5" spellcheck="false">0a05416c696365101e1a0d0a0b4578616d706c6520496e632204010203042d0000c03f</textarea></div>
+    <div class="toolbar"><label>Input format <select id="fmt"><option value="auto">Auto-detect</option><option value="hex">Hex</option><option value="base64">Base64</option></select></label></div>
+    <p class="error" id="err" hidden></p>
+    <p class="muted">Without the .proto schema, field names and exact types are unknown. Each value is shown in its most likely form, with alternatives.</p>
+    <div id="tree"></div>
+    <div id="jsonBox" hidden>
+      <h2>Best-guess JSON</h2><pre class="json" id="json"></pre>
+      <div class="row" style="margin-top:6px"><button data-copy-from="json">Copy</button></div>
+    </div>
+  </div>
+  <script type="module" src="protobuf-decoder.js"></script>
+  <!-- /dev:body -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.1 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+</body>
+</html>
