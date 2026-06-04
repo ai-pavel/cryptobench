@@ -235,6 +235,18 @@
               "keywords": "protobuf protocol buffers grpc wire format cosmos"
             }
           ]
+        },
+        {
+          "name": "Generators",
+          "tools": [
+            {
+              "slug": "uuid",
+              "emoji": "🆔",
+              "name": "UUID / ULID",
+              "description": "Generate and inspect UUIDs and ULIDs",
+              "keywords": "guid id random"
+            }
+          ]
         }
       ]
     }
