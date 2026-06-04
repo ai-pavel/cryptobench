@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UUID / ULID</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%86%94</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+  <!-- dev:head -->
+  <link rel="stylesheet" href="../lib/dev.css">
+  <style>h2 { margin-top: 20px; }</style>
+  <!-- /dev:head -->
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Developer</a>
+  <h1>🆔 UUID / ULID</h1>
+  <p class="lead">Generate and inspect UUIDs and ULIDs.</p>
+  <!-- dev:body -->
+  <div class="panel">
+    <h2 style="margin-top:0">Generate</h2>
+    <div class="toolbar">
+      <label>Type <select id="type"><option value="v4">UUID v4 (random)</option><option value="v7">UUID v7 (time-ordered)</option><option value="ulid">ULID</option></select></label>
+      <label>How many <input type="number" id="count" min="1" max="1000" value="5" style="width:80px"></label>
+      <label><input type="checkbox" id="upper"> Uppercase</label>
+      <label><input type="checkbox" id="nodash"> No dashes</label>
+      <button class="primary" id="gen">Generate</button>
+    </div>
+    <textarea id="list" class="mono" rows="6" readonly></textarea>
+    <div class="row" style="margin-top:6px"><button data-copy-from="list">Copy all</button></div>
+    <h2>Inspect</h2>
+    <div class="field"><span>UUID or ULID</span><input id="inspect" class="mono" autocomplete="off" spellcheck="false" value="018f3e1c-7b2a-7c3d-9e4f-1a2b3c4d5e6f"></div>
+    <div class="row" style="margin-bottom:8px"><button id="nil">Nil UUID</button><button id="max">Max UUID</button></div>
+    <p class="error" id="err" hidden></p>
+    <div class="out" id="out"></div>
+  </div>
+  <script type="module" src="uuid.js"></script>
+  <!-- /dev:body -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.1 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+</body>
+</html>
