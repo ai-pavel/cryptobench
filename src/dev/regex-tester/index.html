@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Regex Tester</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%A7%AA</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+  <!-- dev:head -->
+  <link rel="stylesheet" href="../lib/dev.css">
+  <style>
+    .re-row { display: flex; align-items: center; gap: 4px; font: 15px ui-monospace, Menlo, monospace; }
+    .re-row input#pattern { flex: 1; min-width: 0; }
+    .re-row input#flags { width: 70px; }
+    .hl { white-space: pre-wrap; word-break: break-word; font: 14px/1.6 ui-monospace, Menlo, monospace; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); min-height: 3em; }
+    .hl mark { background: color-mix(in srgb, var(--accent) 30%, transparent); color: inherit; border-radius: 2px; }
+    .hl mark:nth-of-type(even) { background: color-mix(in srgb, var(--warn) 35%, transparent); }
+    .presets { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 14px; }
+    .presets button { font-size: 13px; padding: 4px 10px; }
+    h2 { margin-top: 20px; }
+  </style>
+  <!-- /dev:head -->
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Developer</a>
+  <h1>🧪 Regex Tester</h1>
+  <p class="lead">Test regular expressions with live matches.</p>
+  <!-- dev:body -->
+  <div class="panel">
+    <div class="field"><span>Pattern and flags</span>
+      <div class="re-row">/<input id="pattern" class="mono" value="(?&lt;user&gt;[\w.+-]+)@(?&lt;domain&gt;[\w-]+\.[\w.-]+)" spellcheck="false" autocomplete="off">/<input id="flags" class="mono" value="g" spellcheck="false" autocomplete="off" title="g i m s u v y d"></div>
+    </div>
+    <div class="presets" id="presets">
+      <button data-p="[\w.+-]+@[\w-]+\.[\w.-]+">Email</button>
+      <button data-p="https?:\/\/[^\s/$.?#].[^\s]*">URL</button>
+      <button data-p="\b(?:\d{1,3}\.){3}\d{1,3}\b">IPv4</button>
+      <button data-p="\d{4}-\d{2}-\d{2}">Date (YYYY-MM-DD)</button>
+      <button data-p="#(?:[0-9a-fA-F]{3}){1,2}\b">Hex color</button>
+      <button data-p="\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b" data-f="gi">UUID</button>
+      <button data-p="0x[0-9a-fA-F]{40}\b">EVM address</button>
+    </div>
+    <div class="field"><span>Test text</span><textarea id="text" class="mono" rows="6" spellcheck="false">Contact alice@example.com or bob.smith+news@mail.example.org.
+Not an email: carol@localhost</textarea></div>
+    <p class="error" id="err" hidden></p>
+    <p class="status" id="status"></p>
+    <div class="hl" id="hl"></div>
+    <div id="groupsBox"><h2>Matches</h2><div class="scroll"><table class="data" id="groups"></table></div></div>
+    <h2>Replace</h2>
+    <div class="field"><span>Replacement ($1, $&lt;name&gt;, $&amp; supported)</span><input id="repl" class="mono" value="$&lt;user&gt; at $&lt;domain&gt;" spellcheck="false"></div>
+    <div class="hl" id="replOut"></div>
+  </div>
+  <script type="module" src="regex-tester.js"></script>
+  <!-- /dev:body -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.1 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+</body>
+</html>
