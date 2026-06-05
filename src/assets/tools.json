@@ -247,6 +247,18 @@
               "keywords": "guid id random"
             }
           ]
+        },
+        {
+          "name": "Testing",
+          "tools": [
+            {
+              "slug": "regex-tester",
+              "emoji": "🧪",
+              "name": "Regex Tester",
+              "description": "Test regular expressions with live matches",
+              "keywords": "regexp pattern"
+            }
+          ]
         }
       ]
     }
