@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Text Diff</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%93%91</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+  <!-- dev:head -->
+  <link rel="stylesheet" href="../lib/dev.css">
+  <style>
+    .diff { font: 13px/1.55 ui-monospace, Menlo, monospace; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .diff .ln { display: grid; grid-template-columns: 3.2em minmax(0, 1fr); }
+    .diff.split .ln { grid-template-columns: 3.2em minmax(0, 1fr) 3.2em minmax(0, 1fr); }
+    .diff .no { color: var(--muted); text-align: right; padding: 0 6px; user-select: none; border-right: 1px solid var(--border); }
+    .diff .tx { white-space: pre-wrap; word-break: break-word; padding: 0 8px; min-width: 0; }
+    .diff .del { background: color-mix(in srgb, var(--bad) 13%, transparent); }
+    .diff .ins { background: color-mix(in srgb, var(--ok) 13%, transparent); }
+    .diff del { background: color-mix(in srgb, var(--bad) 35%, transparent); text-decoration: none; border-radius: 2px; }
+    .diff ins { background: color-mix(in srgb, var(--ok) 35%, transparent); text-decoration: none; border-radius: 2px; }
+    .diff .empty { background: color-mix(in srgb, var(--border) 40%, transparent); }
+    .diff .gap { color: var(--muted); padding: 2px 8px; background: var(--bg); grid-column: 1 / -1; font-size: 12px; }
+    @media (max-width: 640px) { .diff.split .ln { grid-template-columns: 2.4em minmax(0, 1fr) 2.4em minmax(0, 1fr); } .diff .no { padding: 0 3px; } }
+  </style>
+  <!-- /dev:head -->
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Developer</a>
+  <h1>📑 Text Diff</h1>
+  <p class="lead">Compare two texts line by line.</p>
+  <!-- dev:body -->
+  <div class="panel">
+    <div class="grid2">
+      <div class="field"><span>Original</span><textarea id="a" class="mono" rows="9" spellcheck="false">The quick brown fox
+jumps over the lazy dog.
+Line three stays.
+This line will be removed.
+Pack my box with five dozen liquor jugs.</textarea></div>
+      <div class="field"><span>Changed</span><textarea id="b" class="mono" rows="9" spellcheck="false">The quick brown fox
+leaps over the lazy cat.
+Line three stays.
+Pack my box with five dozen liquor jugs.
+A new last line.</textarea></div>
+    </div>
+    <div class="toolbar">
+      <div class="seg" id="view" style="margin:0"><button data-mode="split" aria-pressed="true">Side by side</button><button data-mode="inline" aria-pressed="false">Inline</button></div>
+      <label><input type="checkbox" id="ws"> Ignore whitespace</label>
+      <label><input type="checkbox" id="case"> Ignore case</label>
+      <label><input type="checkbox" id="ctx" checked> Collapse unchanged lines</label>
+    </div>
+    <p class="status" id="stats"></p>
+    <div class="diff" id="out"></div>
+  </div>
+  <script type="module" src="text-diff.js"></script>
+  <!-- /dev:body -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.1 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+</body>
+</html>
