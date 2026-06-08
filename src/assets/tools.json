@@ -257,6 +257,13 @@
               "name": "Regex Tester",
               "description": "Test regular expressions with live matches",
               "keywords": "regexp pattern"
+            },
+            {
+              "slug": "text-diff",
+              "emoji": "📑",
+              "name": "Text Diff",
+              "description": "Compare two texts line by line",
+              "keywords": "compare diff"
             }
           ]
         }
