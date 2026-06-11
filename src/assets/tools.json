@@ -283,6 +283,13 @@
               "name": "JSON Diff",
               "description": "Compare two JSON documents",
               "keywords": "compare"
+            },
+            {
+              "slug": "yaml-json",
+              "emoji": "🔀",
+              "name": "YAML ↔ JSON",
+              "description": "Convert between YAML and JSON",
+              "keywords": "yml convert"
             }
           ]
         }
