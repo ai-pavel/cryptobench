@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YAML ↔ JSON</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%94%80</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+  <!-- dev:head -->
+  <link rel="stylesheet" href="../lib/dev.css">
+  <style>.error { font-family: ui-monospace, Menlo, monospace; font-size: 13px; }</style>
+  <!-- /dev:head -->
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Developer</a>
+  <h1>🔀 YAML ↔ JSON</h1>
+  <p class="lead">Convert between YAML and JSON.</p>
+  <!-- dev:body -->
+  <div class="panel">
+    <div class="seg" id="mode">
+      <button data-mode="y2j" aria-pressed="true">YAML → JSON</button>
+      <button data-mode="j2y" aria-pressed="false">JSON → YAML</button>
+    </div>
+    <div class="field"><span id="inLabel">YAML</span><textarea id="in" class="mono" rows="12" spellcheck="false">service: api
+replicas: 3
+env:
+  - name: LOG_LEVEL
+    value: debug
+  - name: PORT
+    value: "8080"
+resources:
+  limits: { cpu: 500m, memory: 256Mi }
+</textarea></div>
+    <div class="toolbar"><label>Indent <select id="indent"><option value="2">2</option><option value="4">4</option></select></label></div>
+    <p class="error" id="err" hidden></p>
+    <p class="muted" id="note"></p>
+    <div class="field"><span id="outLabel">JSON</span><textarea id="out" class="mono" rows="12" readonly></textarea></div>
+    <div class="row"><button data-copy-from="out">Copy</button><button id="swap">Use output as input</button></div>
+  </div>
+  <script type="module" src="yaml-json.js"></script>
+  <!-- /dev:body -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.1 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+</body>
+</html>
