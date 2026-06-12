@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSV ↔ JSON</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%93%8A</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+  <!-- dev:head -->
+  <link rel="stylesheet" href="../lib/dev.css">
+  <style>.preview { max-height: 320px; overflow: auto; margin-top: 12px; } .preview table.data td { white-space: nowrap; }</style>
+  <!-- /dev:head -->
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Developer</a>
+  <h1>📊 CSV ↔ JSON</h1>
+  <p class="lead">Convert between CSV and JSON.</p>
+  <!-- dev:body -->
+  <div class="panel">
+    <div class="seg" id="mode">
+      <button data-mode="c2j" aria-pressed="true">CSV → JSON</button>
+      <button data-mode="j2c" aria-pressed="false">JSON → CSV</button>
+    </div>
+    <div class="field"><span id="inLabel">CSV</span><textarea id="in" class="mono" rows="9" spellcheck="false">name,age,city,notes
+Alice,30,Lisbon,"Likes ""quotes"", commas"
+Bob,25,Porto,
+"Carol Ann",41,"New
+York",multi-line cell</textarea></div>
+    <div class="toolbar">
+      <label>Delimiter <select id="delim"><option value="auto">Auto-detect</option><option value=",">Comma</option><option value=";">Semicolon</option><option value="&#9;">Tab</option><option value="|">Pipe</option></select></label>
+      <label id="hdrWrap"><input type="checkbox" id="header" checked> First row is a header</label>
+      <label id="typesWrap"><input type="checkbox" id="types" checked> Convert numbers, true/false, empty → null</label>
+    </div>
+    <p class="error" id="err" hidden></p>
+    <p class="muted" id="note"></p>
+    <div class="field"><span id="outLabel">JSON</span><textarea id="out" class="mono" rows="10" readonly></textarea></div>
+    <div class="row"><button data-copy-from="out">Copy</button><button id="dl">Download</button></div>
+    <div class="preview scroll" id="preview"></div>
+  </div>
+  <script type="module" src="csv-json.js"></script>
+  <!-- /dev:body -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.2 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+</body>
+</html>
