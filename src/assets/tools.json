@@ -290,6 +290,13 @@
               "name": "YAML ↔ JSON",
               "description": "Convert between YAML and JSON",
               "keywords": "yml convert"
+            },
+            {
+              "slug": "csv-json",
+              "emoji": "📊",
+              "name": "CSV ↔ JSON",
+              "description": "Convert between CSV and JSON",
+              "keywords": "spreadsheet table convert"
             }
           ]
         }
