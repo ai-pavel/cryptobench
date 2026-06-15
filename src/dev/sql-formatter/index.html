@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SQL Formatter</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%97%84%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+  <!-- dev:head -->
+  <link rel="stylesheet" href="../lib/dev.css">
+  <script src="../../assets/vendor/sql-formatter@15.9.0/dist/sql-formatter.min.js" defer></script>
+  <!-- /dev:head -->
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Developer</a>
+  <h1>🗄️ SQL Formatter</h1>
+  <p class="lead">Format and beautify SQL queries.</p>
+  <!-- dev:body -->
+  <div class="panel">
+    <div class="field"><span>SQL</span><textarea id="in" class="mono" rows="8" spellcheck="false">select u.id, u.name, count(o.id) as orders from users u left join orders o on o.user_id = u.id where u.created_at > '2024-01-01' and u.status in ('active','trial') group by u.id, u.name having count(o.id) > 2 order by orders desc limit 10;</textarea></div>
+    <div class="toolbar">
+      <label>Dialect <select id="dialect">
+        <option value="sql">Standard SQL</option><option value="postgresql">PostgreSQL</option><option value="mysql">MySQL</option><option value="mariadb">MariaDB</option>
+        <option value="sqlite">SQLite</option><option value="transactsql">SQL Server (T-SQL)</option><option value="plsql">Oracle PL/SQL</option>
+        <option value="bigquery">BigQuery</option><option value="snowflake">Snowflake</option><option value="redshift">Redshift</option><option value="spark">Spark</option>
+        <option value="hive">Hive</option><option value="trino">Trino / Presto</option><option value="db2">DB2</option><option value="clickhouse">ClickHouse</option><option value="duckdb">DuckDB</option>
+      </select></label>
+      <label>Keywords <select id="kw"><option value="upper">UPPERCASE</option><option value="lower">lowercase</option><option value="preserve">As written</option></select></label>
+      <label>Indent <select id="indent"><option value="2">2 spaces</option><option value="4">4 spaces</option><option value="tab">Tab</option></select></label>
+    </div>
+    <p class="error" id="err" hidden></p>
+    <textarea id="out" class="mono" rows="14" readonly></textarea>
+    <div class="row" style="margin-top:6px"><button data-copy-from="out">Copy</button></div>
+  </div>
+  <script type="module" src="sql-formatter.js"></script>
+  <!-- /dev:body -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.2 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+</body>
+</html>
