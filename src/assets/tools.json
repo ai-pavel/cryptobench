@@ -297,6 +297,13 @@
               "name": "CSV ↔ JSON",
               "description": "Convert between CSV and JSON",
               "keywords": "spreadsheet table convert"
+            },
+            {
+              "slug": "sql-formatter",
+              "emoji": "🗄️",
+              "name": "SQL Formatter",
+              "description": "Format and beautify SQL queries",
+              "keywords": "query pretty"
             }
           ]
         }
