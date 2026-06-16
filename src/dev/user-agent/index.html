@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User-Agent Parser</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%95%B5%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+  <!-- dev:head -->
+  <link rel="stylesheet" href="../lib/dev.css">
+  <script src="../../assets/vendor/ua-parser-js@1.0.41/dist/ua-parser.min.js" defer></script>
+  <style>h2 { margin-top: 20px; }</style>
+  <!-- /dev:head -->
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Developer</a>
+  <h1>🕵️ User-Agent Parser</h1>
+  <p class="lead">Identify browser, OS and device from a User-Agent.</p>
+  <!-- dev:body -->
+  <div class="panel">
+    <div class="field"><span>User-Agent string</span><textarea id="in" class="mono" rows="3" spellcheck="false"></textarea></div>
+    <div class="row" style="margin-bottom:8px"><button id="mine">Use my browser's</button>
+      <button data-ua="Mozilla/5.0 (iPhone; CPU iPhone OS 17_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Mobile/15E148 Safari/604.1">iPhone Safari</button>
+      <button data-ua="Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36">Android Chrome</button>
+      <button data-ua="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0">Windows Firefox</button>
+      <button data-ua="Googlebot/2.1 (+http://www.google.com/bot.html)">Googlebot</button>
+    </div>
+    <div class="out" id="out"></div>
+    <div id="hintsBox" hidden><h2>Client hints from this browser</h2><div class="out" id="hints"></div></div>
+  </div>
+  <script type="module" src="user-agent.js"></script>
+  <!-- /dev:body -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.2 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+</body>
+</html>
