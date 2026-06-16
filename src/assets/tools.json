@@ -306,6 +306,18 @@
               "keywords": "query pretty"
             }
           ]
+        },
+        {
+          "name": "Web",
+          "tools": [
+            {
+              "slug": "user-agent",
+              "emoji": "🕵️",
+              "name": "User-Agent Parser",
+              "description": "Identify browser, OS and device from a User-Agent",
+              "keywords": "ua browser"
+            }
+          ]
         }
       ]
     }
