@@ -1,0 +1,53 @@
+/* Shared styles for the Cryptography tools (on top of assets/style.css). */
+[hidden] { display: none !important; }
+.wide { width: 100%; }
+textarea.wide { resize: vertical; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; }
+.field { display: flex; flex-direction: column; gap: 4px; margin-top: 12px; font-size: 14px; color: var(--muted); }
+.field input, .field select, .field textarea { color: var(--text); font-size: 15px; }
+.field input.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; }
+.error { color: #c0392b; margin: 12px 0 0; }
+.ok { color: #1e8e3e; font-weight: 600; }
+.bad { color: #c0392b; font-weight: 600; }
+.note { margin-top: 16px; padding: 10px 12px; border-radius: 8px; background: color-mix(in srgb, #e5a50a 14%, transparent); font-size: 14px; }
+table.kv { table-layout: fixed; }
+table.kv th { width: 30%; vertical-align: top; color: var(--muted); font-weight: 500; font-size: 14px; }
+table.kv td.mono { overflow-wrap: anywhere; font-size: 14px; }
+table.kv td:last-child { width: 72px; text-align: right; vertical-align: top; }
+.badge { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; border: 1px solid var(--border); color: var(--muted); margin-right: 4px; }
+.badge.on { border-color: var(--accent); color: var(--accent); }
+.section-title { margin: 20px 0 6px; font-weight: 600; }
+@media (max-width: 480px) {
+  table.kv th { width: 34%; }
+  table.kv td:last-child { width: 62px; }
+  table.kv th, table.kv td { padding: 6px 4px; }
+}
+.tree { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; overflow-wrap: anywhere; }
+.tree .node { margin: 6px 0; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; }
+.tree .node .muted { font-family: inherit; }
+.tree .k { color: var(--muted); }
+pre.json { margin: 12px 0 0; padding: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow-x: auto; font-size: 13px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.seg button { border: 0; border-radius: 0; }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+.out { margin-top: 12px; }
+.big-result { font-size: 18px; font-weight: 600; margin: 12px 0 0; }
+.inline { display: inline-flex; align-items: center; gap: 6px; flex-direction: row; color: var(--text); font-size: 15px; }
+.inline input[type=checkbox], .inline input[type=radio] { width: auto; }
+.spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin .8s linear infinite; vertical-align: -2px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.hl-match { background: color-mix(in srgb, #1e8e3e 18%, transparent); }
+.hl-miss { background: color-mix(in srgb, #c0392b 15%, transparent); }
+label.drop { display: block; margin-top: 12px; padding: 18px; border: 2px dashed var(--border); border-radius: 10px; text-align: center; cursor: pointer; color: var(--text); font-size: 15px; }
+label.drop:hover { border-color: var(--accent); }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 640px) { .grid2 { grid-template-columns: 1fr; } }
+.field-row { display: flex; gap: 8px; align-items: flex-end; flex-wrap: wrap; }
+.field-row > .field { flex: 1; min-width: 140px; }
+.tree details { margin: 2px 0; }
+.tree summary { cursor: pointer; overflow-wrap: anywhere; }
+.tree .kids { padding-left: 14px; border-left: 1px solid var(--border); margin-left: 5px; }
+.tree .leaf { margin: 2px 0 2px 14px; overflow-wrap: anywhere; }
+.pw-list { display: grid; gap: 8px; margin-top: 12px; }
+.pw-item { display: flex; gap: 8px; align-items: center; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; }
+.pw-item .mono { flex: 1; overflow-wrap: anywhere; font-size: 15px; }
+.otp { font: 600 clamp(36px, 11vw, 56px)/1.1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.06em; }
