@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hash</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%23%EF%B8%8F%E2%83%A3</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cryptography</a>
+  <h1>#️⃣ Hash</h1>
+  <p class="lead">Hash text or files, and verify a download’s checksum. MD5, SHA-1/2/3, Keccak, BLAKE2/3 and RIPEMD-160.</p>
+  <!-- tool:start -->
+  <div class="panel">
+    <div class="row example-row"><button type="button" id="example">Example</button></div>
+    <div class="row">
+      <div class="seg" id="mode" role="group" aria-label="Input">
+        <button data-v="utf8" aria-pressed="true">Text</button>
+        <button data-v="hex" aria-pressed="false">Hex</button>
+        <button data-v="base64" aria-pressed="false">Base64</button>
+        <button data-v="file" aria-pressed="false">File</button>
+      </div>
+    </div>
+    <label class="field" id="textField">Input
+      <textarea id="input" class="wide" rows="4" spellcheck="false" placeholder="Type or paste text">abc</textarea>
+    </label>
+    <div id="fileField" hidden>
+      <label class="drop" id="drop">
+        <input type="file" id="file" hidden>
+        <strong>Drop a file here</strong> <span class="muted">or click to choose. It is read locally, in chunks.</span>
+        <div class="muted" id="fileInfo"></div>
+      </label>
+      <progress id="progress" max="1" value="0" hidden style="width:100%;margin-top:8px"></progress>
+    </div>
+    <label class="field">Expected checksum (optional)
+      <input id="expected" class="mono" spellcheck="false" autocomplete="off" placeholder="Paste the published checksum, or a line from sha256sum / shasum">
+    </label>
+    <p id="match" class="big-result" hidden></p>
+    <div class="row" style="margin-top:12px">
+      <div class="seg" id="outEnc" role="group" aria-label="Output encoding">
+        <button data-v="hex" aria-pressed="true">Hex</button>
+        <button data-v="base64" aria-pressed="false">Base64</button>
+      </div>
+      <button id="toggleAll" style="margin-left:auto">Choose algorithms</button>
+    </div>
+    <div id="algos" class="row" hidden style="margin-top:8px"></div>
+    <p class="error" id="err" hidden></p>
+    <div id="out" class="out"></div>
+  </div>
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">Notes</p>
+    <p class="muted"><b>Keccak-256</b> is the original Keccak used by Ethereum; <b>SHA3-256</b> is the NIST standard with different padding, so their outputs differ. MD5 and SHA-1 are broken for collision resistance; use them only to check old checksums. Files are hashed in 4 MB chunks, so large files work without loading them into memory.</p>
+  </div>
+  <!-- tool:end -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.2 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<!-- script:start -->
+<script type="module" src="hash.js"></script>
+<!-- script:end -->
+</body>
+</html>
