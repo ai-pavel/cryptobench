@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HMAC</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%94%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cryptography</a>
+  <h1>🔏 HMAC</h1>
+  <p class="lead">Compute an HMAC with any hash.</p>
+  <!-- tool:start -->
+  <div class="panel">
+    <p class="note" id="keynote"></p>
+    <div class="row example-row"><button type="button" id="example">Example</button></div>
+    <div class="field-row">
+      <label class="field">Hash
+        <select id="algo"></select>
+      </label>
+      <label class="field">Output
+        <select id="outEnc"><option value="hex">Hex</option><option value="base64">Base64</option></select>
+      </label>
+    </div>
+    <div class="field-row">
+      <label class="field" style="flex:3">Key
+        <input id="key" class="mono" spellcheck="false" autocomplete="off" value="key">
+      </label>
+      <label class="field">Key encoding
+        <select id="keyEnc"></select>
+      </label>
+    </div>
+    <div class="field-row">
+      <label class="field" style="flex:3">Message
+        <textarea id="msg" class="wide" rows="3" spellcheck="false">The quick brown fox jumps over the lazy dog</textarea>
+      </label>
+      <label class="field">Message encoding
+        <select id="msgEnc"></select>
+      </label>
+    </div>
+    <label class="field">Expected MAC (optional)
+      <input id="expected" class="mono" spellcheck="false" autocomplete="off" placeholder="Paste a MAC to verify it">
+    </label>
+    <p id="match" class="big-result" hidden></p>
+    <p class="error" id="err" hidden></p>
+    <div id="out" class="out"></div>
+  </div>
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">How it works</p>
+    <p class="muted">HMAC(K, m) = H((K′ ⊕ opad) ‖ H((K′ ⊕ ipad) ‖ m)), where K′ is the key padded to the hash’s block size (or hashed first if longer). Anyone with the key can create or check the MAC, so it proves integrity and authenticity between parties who share the key — not who signed it.</p>
+  </div>
+  <!-- tool:end -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.2 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<!-- script:start -->
+<script type="module" src="hmac.js"></script>
+<!-- script:end -->
+</body>
+</html>
