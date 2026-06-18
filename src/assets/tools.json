@@ -337,6 +337,13 @@
               "name": "Hash",
               "description": "Hash text, hex or files with MD5, SHA-1/2/3, Keccak, BLAKE2/3 and RIPEMD-160",
               "keywords": "sha256 sha512 sha3 keccak blake2 blake3 ripemd160 md5 sha1 checksum"
+            },
+            {
+              "slug": "hmac",
+              "emoji": "🔏",
+              "name": "HMAC",
+              "description": "Compute an HMAC with any hash",
+              "keywords": "mac sha256 authentication"
             }
           ]
         }
