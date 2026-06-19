@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Password Hash</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%A7%82</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cryptography</a>
+  <h1>🧂 Password Hash</h1>
+  <p class="lead">Hash and verify passwords with bcrypt, scrypt and Argon2.</p>
+  <!-- tool:start -->
+  <div class="panel">
+    <p class="note" id="keynote"></p>
+    <div class="row example-row"><button type="button" id="example">Example</button></div>
+    <div class="row">
+      <div class="seg" id="mode" role="group" aria-label="Mode">
+        <button data-v="hash" aria-pressed="true">Hash a password</button>
+        <button data-v="verify" aria-pressed="false">Verify a hash</button>
+      </div>
+    </div>
+    <label class="field">Password
+      <input id="password" type="text" spellcheck="false" autocomplete="off" value="correct horse battery staple">
+    </label>
+    <div id="hashUi">
+      <div class="field-row">
+        <label class="field">Algorithm
+          <select id="algo">
+            <option value="argon2id">Argon2id (recommended)</option>
+            <option value="argon2i">Argon2i</option>
+            <option value="argon2d">Argon2d</option>
+            <option value="bcrypt">bcrypt</option>
+            <option value="scrypt">scrypt</option>
+          </select>
+        </label>
+      </div>
+      <div class="field-row" id="argonParams">
+        <label class="field">Memory (KiB)<input id="m" type="number" min="8" value="19456"></label>
+        <label class="field">Iterations (t)<input id="t" type="number" min="1" value="2"></label>
+        <label class="field">Parallelism (p)<input id="p" type="number" min="1" max="16" value="1"></label>
+        <label class="field">Hash length<input id="len" type="number" min="4" max="128" value="32"></label>
+      </div>
+      <div class="field-row" id="bcryptParams" hidden>
+        <label class="field">Cost (4–31)<input id="cost" type="number" min="4" max="31" value="10"></label>
+      </div>
+      <div class="field-row" id="scryptParams" hidden>
+        <label class="field">log₂ N<input id="ln" type="number" min="1" max="24" value="15"></label>
+        <label class="field">Block size (r)<input id="r" type="number" min="1" max="64" value="8"></label>
+        <label class="field">Parallelism (p)<input id="sp" type="number" min="1" max="16" value="1"></label>
+        <label class="field">Hash length<input id="slen" type="number" min="16" max="128" value="32"></label>
+      </div>
+      <label class="field">Salt (hex, optional — random if empty)
+        <input id="salt" class="mono" spellcheck="false" autocomplete="off" placeholder="Random 16 bytes">
+      </label>
+      <div class="row" style="margin-top:12px"><button class="primary" id="go">Hash password</button><span class="muted" id="status"></span></div>
+    </div>
+    <div id="verifyUi" hidden>
+      <label class="field">Hash string
+        <textarea id="hash" class="wide" rows="3" spellcheck="false" placeholder="$argon2id$v=19$m=…  /  $2b$10$…  /  $scrypt$ln=…"></textarea>
+      </label>
+      <div class="row" style="margin-top:12px"><button class="primary" id="verify">Verify</button><span class="muted" id="vstatus"></span></div>
+      <p id="verdict" class="big-result" hidden></p>
+    </div>
+    <p class="error" id="err" hidden></p>
+    <div id="out" class="out"></div>
+  </div>
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">Choosing parameters</p>
+    <p class="muted">Password hashes are deliberately slow and (except bcrypt) memory-hard, so guessing is expensive. OWASP suggests Argon2id with 19 MiB memory, 2 iterations and parallelism 1, or scrypt with N = 2¹⁷, r = 8, p = 1, or bcrypt with cost 10 or more. bcrypt only uses the first 72 bytes of a password. Argon2 and bcrypt produce standard strings that include the parameters and salt; scrypt uses the PHC-style <span class="mono">$scrypt$ln=…,r=…,p=…$salt$hash</span> format (base64 without padding).</p>
+  </div>
+  <!-- tool:end -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.2 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<!-- script:start -->
+<script type="module" src="password-hash.js"></script>
+<!-- script:end -->
+</body>
+</html>
