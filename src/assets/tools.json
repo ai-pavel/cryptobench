@@ -344,6 +344,13 @@
               "name": "HMAC",
               "description": "Compute an HMAC with any hash",
               "keywords": "mac sha256 authentication"
+            },
+            {
+              "slug": "password-hash",
+              "emoji": "🧂",
+              "name": "Password Hash",
+              "description": "Hash and verify passwords with bcrypt, scrypt and Argon2",
+              "keywords": "bcrypt scrypt argon2 argon2id"
             }
           ]
         }
