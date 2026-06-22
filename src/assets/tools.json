@@ -353,6 +353,18 @@
               "keywords": "bcrypt scrypt argon2 argon2id"
             }
           ]
+        },
+        {
+          "name": "Key Derivation",
+          "tools": [
+            {
+              "slug": "kdf",
+              "emoji": "🧬",
+              "name": "Key Derivation",
+              "description": "Derive keys with PBKDF2 and HKDF",
+              "keywords": "pbkdf2 hkdf bip39 seed"
+            }
+          ]
         }
       ]
     }
