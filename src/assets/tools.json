@@ -365,6 +365,18 @@
               "keywords": "pbkdf2 hkdf bip39 seed"
             }
           ]
+        },
+        {
+          "name": "Encryption",
+          "tools": [
+            {
+              "slug": "encryption",
+              "emoji": "🛡️",
+              "name": "Encryption",
+              "description": "Encrypt and decrypt with AES (GCM, CBC, CTR) and ChaCha20-Poly1305",
+              "keywords": "aes gcm cbc ctr chacha20 poly1305 cipher"
+            }
+          ]
         }
       ]
     }
