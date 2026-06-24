@@ -377,6 +377,18 @@
               "keywords": "aes gcm cbc ctr chacha20 poly1305 cipher"
             }
           ]
+        },
+        {
+          "name": "Keys",
+          "tools": [
+            {
+              "slug": "key-generator",
+              "emoji": "🗝️",
+              "name": "Key Generator",
+              "description": "Generate Ed25519, X25519, P-256/384, secp256k1 and RSA keys",
+              "keywords": "keypair rsa ecdsa ed25519 pem jwk"
+            }
+          ]
         }
       ]
     }
