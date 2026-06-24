@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Key Generator</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%97%9D%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cryptography</a>
+  <h1>🗝️ Key Generator</h1>
+  <p class="lead">Generate Ed25519, X25519, P-256/384, secp256k1 and RSA keys.</p>
+  <!-- tool:start -->
+  <div class="panel">
+    <p class="note" id="keynote"></p>
+    <div class="row example-row"><button type="button" id="example">Example</button></div>
+    <div class="field-row">
+      <label class="field">Key type
+        <select id="type">
+          <option value="Ed25519">Ed25519 (signing)</option>
+          <option value="X25519">X25519 (key agreement)</option>
+          <option value="P-256">ECDSA P-256</option>
+          <option value="P-384">ECDSA P-384</option>
+          <option value="secp256k1">secp256k1</option>
+          <option value="RSA-2048">RSA 2048</option>
+          <option value="RSA-3072">RSA 3072</option>
+          <option value="RSA-4096">RSA 4096</option>
+        </select>
+      </label>
+      <button class="primary" id="go">Generate</button>
+      <span class="muted" id="status"></span>
+    </div>
+    <p class="error" id="err" hidden></p>
+    <div id="out" class="out"></div>
+    <p class="muted" id="convert" hidden><a id="convertLink" href="../key-converter/">Open this key in Key Converter →</a></p>
+  </div>
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">Formats</p>
+    <p class="muted"><b>PKCS#8</b> (“PRIVATE KEY”) and <b>SPKI</b> (“PUBLIC KEY”) are the standard containers OpenSSL, Java, Go and WebCrypto read. <b>JWK</b> is the JSON form used by JOSE/JWT libraries. The fingerprint is the SHA-256 of the SPKI bytes. Keys come from the browser’s cryptographic random generator (RSA via WebCrypto, curves via the audited noble-curves library).</p>
+  </div>
+  <!-- tool:end -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.3 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<!-- script:start -->
+<script type="module" src="key-generator.js"></script>
+<!-- script:end -->
+</body>
+</html>
