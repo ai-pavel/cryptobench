@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Key Converter</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%94%84</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cryptography</a>
+  <h1>🔄 Key Converter</h1>
+  <p class="lead">Convert keys between PEM, DER, JWK and raw bytes.</p>
+  <!-- tool:start -->
+  <div class="panel">
+    <p class="note" id="keynote"></p>
+    <div class="row example-row"><button type="button" id="example">Example</button></div>
+    <label class="field">Key
+      <textarea id="key" class="wide" rows="7" spellcheck="false" autocomplete="off" placeholder="-----BEGIN PRIVATE KEY----- …, a JWK, an OpenSSH public key, DER as hex/base64, or raw key bytes"></textarea>
+    </label>
+    <div class="field-row">
+      <label class="field">Raw key type
+        <select id="hint">
+          <option>Ed25519</option><option>X25519</option><option>P-256</option><option>P-384</option><option>secp256k1</option>
+        </select>
+      </label>
+      <label class="field">Raw bytes are
+        <select id="rawKind"><option value="private">a private key</option><option value="public">a public key</option></select>
+      </label>
+    </div>
+    <label class="inline" style="margin-top:12px"><input type="checkbox" id="pubOnly"> Show public key formats only</label>
+    <p class="error" id="err" hidden></p>
+    <p class="muted" id="detected"></p>
+    <div id="out" class="out"></div>
+  </div>
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">What it reads</p>
+    <p class="muted">PEM: PKCS#8 “PRIVATE KEY”, SPKI “PUBLIC KEY”, SEC1 “EC PRIVATE KEY”, PKCS#1 “RSA PRIVATE KEY” / “RSA PUBLIC KEY”. Also JWK (or a JWKS — the first key is used), OpenSSH public keys (ssh-ed25519, ssh-rsa, ecdsa-sha2-nistp256/384), the same structures as DER in hex or base64, and raw key bytes for Ed25519, X25519 and the EC curves (choose the type above). The public key is derived from a private key. Encrypted keys and OpenSSH private keys aren’t supported; decrypt or convert them first.</p>
+  </div>
+  <!-- tool:end -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.3 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<!-- script:start -->
+<script type="module" src="key-converter.js"></script>
+<!-- script:end -->
+</body>
+</html>
