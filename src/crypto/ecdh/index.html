@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ECDH</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%A4%9D</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cryptography</a>
+  <h1>🤝 ECDH</h1>
+  <p class="lead">Compute a shared secret with X25519, P-256 or secp256k1.</p>
+  <!-- tool:start -->
+  <div class="panel">
+    <p class="note" id="keynote"></p>
+    <div class="row example-row"><button type="button" id="example">Example</button></div>
+    <div class="field-row">
+      <label class="field">Curve
+        <select id="curve"><option>X25519</option><option>P-256</option><option>P-384</option><option>secp256k1</option></select>
+      </label>
+      <button id="demo">Example: random key pairs</button>
+    </div>
+    <label class="field">Your private key (hex, PEM or JWK)
+      <textarea id="priv" class="wide" rows="2" spellcheck="false" autocomplete="off"></textarea>
+    </label>
+    <label class="field">Peer’s public key (hex, PEM or JWK)
+      <textarea id="pub" class="wide" rows="2" spellcheck="false" autocomplete="off"></textarea>
+    </label>
+    <label class="inline" style="margin-top:12px"><input type="checkbox" id="useHkdf" checked> Derive a key with HKDF-SHA256</label>
+    <div class="field-row" id="hkdfRow">
+      <label class="field">Salt (hex, optional)<input id="salt" class="mono" spellcheck="false" autocomplete="off"></label>
+      <label class="field">Info (text)<input id="info" spellcheck="false" autocomplete="off" value="example key v1"></label>
+      <label class="field">Length (bytes)<input id="len" type="number" min="1" max="255" value="32"></label>
+    </div>
+    <p class="error" id="err" hidden></p>
+    <div id="out" class="out"></div>
+    <div id="demoOut" class="out"></div>
+  </div>
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">How it works</p>
+    <p class="muted">Each side multiplies its own private key by the other side’s public key; both land on the same point, and its x-coordinate is the shared secret. Use the raw secret only as input to a KDF such as HKDF, never directly as a key. For the NIST curves and secp256k1 the secret is the 32/48-byte x-coordinate (what WebCrypto and OpenSSL return).</p>
+  </div>
+  <!-- tool:end -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.3 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<!-- script:start -->
+<script type="module" src="ecdh.js"></script>
+<!-- script:end -->
+</body>
+</html>
