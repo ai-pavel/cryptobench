@@ -394,6 +394,13 @@
               "name": "Key Converter",
               "description": "Convert keys between PEM, DER, JWK and raw bytes",
               "keywords": "pem der jwk pkcs8 spki"
+            },
+            {
+              "slug": "ecdh",
+              "emoji": "🤝",
+              "name": "ECDH",
+              "description": "Compute a shared secret with X25519, P-256 or secp256k1",
+              "keywords": "key agreement diffie hellman x25519"
             }
           ]
         }
