@@ -403,6 +403,18 @@
               "keywords": "key agreement diffie hellman x25519"
             }
           ]
+        },
+        {
+          "name": "Signatures",
+          "tools": [
+            {
+              "slug": "sign-verify",
+              "emoji": "✍️",
+              "name": "Sign & Verify",
+              "description": "Sign and verify with ECDSA, EdDSA, Schnorr (BIP340) and RSA-PSS",
+              "keywords": "ecdsa eddsa ed25519 schnorr bip340 rsa signature secp256k1"
+            }
+          ]
         }
       ]
     }
