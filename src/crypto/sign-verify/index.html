@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign &amp; Verify</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9C%8D%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cryptography</a>
+  <h1>✍️ Sign &amp; Verify</h1>
+  <p class="lead">Sign and verify with ECDSA, EdDSA, Schnorr (BIP340) and RSA-PSS.</p>
+  <!-- tool:start -->
+  <div class="panel">
+    <p class="note" id="keynote"></p>
+    <div class="row example-row"><button type="button" id="example">Example</button></div>
+    <div class="row">
+      <div class="seg" id="mode" role="group" aria-label="Mode">
+        <button data-v="sign" aria-pressed="true">Sign</button>
+        <button data-v="verify" aria-pressed="false">Verify</button>
+      </div>
+    </div>
+    <div class="field-row">
+      <label class="field">Algorithm
+        <select id="algo">
+          <option value="ecdsa-p256">ECDSA P-256 (SHA-256)</option>
+          <option value="ecdsa-p384">ECDSA P-384 (SHA-384)</option>
+          <option value="ecdsa-k1">ECDSA secp256k1 (SHA-256)</option>
+          <option value="ed25519">Ed25519</option>
+          <option value="schnorr">Schnorr BIP340 (secp256k1)</option>
+          <option value="rsa-pss">RSA-PSS (SHA-256)</option>
+          <option value="rsa-pkcs1">RSASSA-PKCS1-v1_5 (SHA-256)</option>
+        </select>
+      </label>
+      <button id="gen">New random key</button>
+    </div>
+    <label class="field"><span id="keyLabel">Private key (hex, PEM or JWK)</span>
+      <textarea id="key" class="wide" rows="3" spellcheck="false" autocomplete="off"></textarea>
+    </label>
+    <div class="field-row">
+      <label class="field" style="flex:3">Message
+        <textarea id="msg" class="wide" rows="2" spellcheck="false">hello</textarea>
+      </label>
+      <label class="field">Encoding<select id="msgEnc"></select></label>
+    </div>
+    <div class="row" id="ecdsaOpts" style="margin-top:8px">
+      <label class="inline"><input type="checkbox" id="prehashed"> Message is already a hash (sign the digest as-is)</label>
+      <label class="inline"><input type="checkbox" id="lowS" checked> <span id="lowSLabel">Low-S</span></label>
+    </div>
+    <label class="field" id="sigField" hidden>Signature (hex or base64; raw r‖s or DER)
+      <textarea id="sig" class="wide" rows="2" spellcheck="false"></textarea>
+    </label>
+    <p id="verdict" class="big-result" hidden></p>
+    <p class="error" id="err" hidden></p>
+    <div id="out" class="out"></div>
+  </div>
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">Notes</p>
+    <p class="muted">ECDSA hashes the message with the listed hash first (tick “already a hash” to sign a 32/48-byte digest directly, as Bitcoin and Ethereum do). Signatures are deterministic (RFC 6979) except Schnorr, which mixes in fresh randomness, and RSA-PSS, which uses a random salt (32 bytes here). <b>Low-S</b>: for every ECDSA signature (r, s) the pair (r, n − s) is also valid; Bitcoin and Ethereum only accept the low one. Schnorr BIP340 uses 32-byte x-only public keys. RSA keys must be PEM or JWK; use Key Generator to make one.</p>
+  </div>
+  <!-- tool:end -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.3 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<!-- script:start -->
+<script type="module" src="sign-verify.js"></script>
+<!-- script:end -->
+</body>
+</html>
