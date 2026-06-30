@@ -413,6 +413,13 @@
               "name": "Sign & Verify",
               "description": "Sign and verify with ECDSA, EdDSA, Schnorr (BIP340) and RSA-PSS",
               "keywords": "ecdsa eddsa ed25519 schnorr bip340 rsa signature secp256k1"
+            },
+            {
+              "slug": "der-signature",
+              "emoji": "🖋️",
+              "name": "DER Signature",
+              "description": "Convert a signature between raw (r, s) and DER",
+              "keywords": "der asn1 low-s"
             }
           ]
         }
