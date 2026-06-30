@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DER Signature</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%96%8B%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cryptography</a>
+  <h1>🖋️ DER Signature</h1>
+  <p class="lead">Convert a signature between raw (r, s) and DER.</p>
+  <!-- tool:start -->
+  <div class="panel">
+    <div class="row example-row"><button type="button" id="example">Example</button></div>
+    <div class="row">
+      <div class="seg" id="dir" role="group" aria-label="Direction">
+        <button data-v="toRaw" aria-pressed="true">DER → r, s</button>
+        <button data-v="toDer" aria-pressed="false">r, s → DER</button>
+      </div>
+    </div>
+    <div class="field-row">
+      <label class="field">Curve
+        <select id="curve"><option value="secp256k1">secp256k1</option><option value="P-256">P-256</option><option value="P-384">P-384</option></select>
+      </label>
+    </div>
+    <div id="derIn">
+      <label class="field">DER signature (hex or base64)
+        <textarea id="der" class="wide" rows="3" spellcheck="false">3045022100c12a7d54972f26d14cb311339b5122f8c187417dde1e8efb6841f55c34220ae0022066632c5cd4161efa3a2837764eee9eb84975dd54c2de2865e9752585c53e7cce01</textarea>
+      </label>
+      <label class="inline" style="margin-top:8px"><input type="checkbox" id="sighash" checked> May end with a sighash byte (Bitcoin)</label>
+    </div>
+    <div id="rsIn" hidden>
+      <label class="field">r‖s (hex), or fill r and s below
+        <input id="rs" class="mono" spellcheck="false" autocomplete="off">
+      </label>
+      <div class="field-row">
+        <label class="field">r (hex)<input id="r" class="mono" spellcheck="false" autocomplete="off"></label>
+        <label class="field">s (hex)<input id="s" class="mono" spellcheck="false" autocomplete="off"></label>
+      </div>
+      <label class="field">Append sighash byte
+        <select id="appendHash"><option value="">None</option><option value="01">SIGHASH_ALL (01)</option><option value="02">SIGHASH_NONE (02)</option><option value="03">SIGHASH_SINGLE (03)</option><option value="81">ALL|ANYONECANPAY (81)</option><option value="82">NONE|ANYONECANPAY (82)</option><option value="83">SINGLE|ANYONECANPAY (83)</option></select>
+      </label>
+    </div>
+    <p id="verdict" class="big-result" hidden></p>
+    <p class="error" id="err" hidden></p>
+    <ul id="issues" class="muted"></ul>
+    <div id="out" class="out"></div>
+  </div>
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">Strict DER</p>
+    <p class="muted">An ECDSA signature in DER is <span class="mono">30 len 02 lenR R 02 lenS S</span>. Strict DER (Bitcoin’s BIP66) also requires that r and s are positive, have no unnecessary leading zero bytes, and that every length matches exactly. <b>Low-S</b> (BIP62/BIP146): s must be at most n/2; otherwise use n − s, which is equally valid. Bitcoin appends one sighash byte after the DER; Ethereum and most other systems use raw 64-byte r‖s instead of DER.</p>
+  </div>
+  <!-- tool:end -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.3 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<!-- script:start -->
+<script type="module" src="der-signature.js"></script>
+<!-- script:end -->
+</body>
+</html>
