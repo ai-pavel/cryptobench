@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>X.509 / CSR Decoder</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%93%9C</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cryptography</a>
+  <h1>📜 X.509 / CSR Decoder</h1>
+  <p class="lead">Decode a certificate or signing request.</p>
+  <!-- tool:start -->
+  <div class="panel">
+    <label class="field">Certificate or CSR (PEM, or DER as hex/base64). Paste a whole chain to check each signature against the next certificate.
+      <textarea id="input" class="wide" rows="8" spellcheck="false" placeholder="-----BEGIN CERTIFICATE-----"></textarea>
+    </label>
+    <label class="field">Issuer certificate (optional, to verify the signature)
+      <textarea id="issuer" class="wide" rows="3" spellcheck="false" placeholder="-----BEGIN CERTIFICATE-----"></textarea>
+    </label>
+    <div class="row" style="margin-top:8px"><button id="example">Example: certificate chain</button></div>
+    <p class="error" id="err" hidden></p>
+    <div id="out" class="out"></div>
+  </div>
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">Notes</p>
+    <p class="muted">Everything is decoded locally; nothing is fetched (no revocation or CT checks). Fingerprints are over the whole DER encoding, the same values browsers and <span class="mono">openssl x509 -fingerprint</span> show. Signatures are verified with WebCrypto (RSA PKCS#1 v1.5, ECDSA P-256/P-384) or noble (Ed25519, secp256k1). RSA-PSS signatures are shown but not verified.</p>
+  </div>
+  <!-- tool:end -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.3 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<!-- script:start -->
+<script type="module" src="x509-decoder.js"></script>
+<!-- script:end -->
+</body>
+</html>
