@@ -422,6 +422,18 @@
               "keywords": "der asn1 low-s"
             }
           ]
+        },
+        {
+          "name": "Certificates",
+          "tools": [
+            {
+              "slug": "x509-decoder",
+              "emoji": "📜",
+              "name": "X.509 / CSR Decoder",
+              "description": "Decode a certificate or signing request",
+              "keywords": "certificate csr pem tls ssl fingerprint"
+            }
+          ]
         }
       ]
     }
