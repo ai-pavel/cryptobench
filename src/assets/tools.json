@@ -432,6 +432,13 @@
               "name": "X.509 / CSR Decoder",
               "description": "Decode a certificate or signing request",
               "keywords": "certificate csr pem tls ssl fingerprint"
+            },
+            {
+              "slug": "asn1-decoder",
+              "emoji": "🌳",
+              "name": "ASN.1 Decoder",
+              "description": "Decode ASN.1 DER or PEM into a tree",
+              "keywords": "asn1 der ber"
             }
           ]
         }
