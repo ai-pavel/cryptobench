@@ -441,6 +441,18 @@
               "keywords": "asn1 der ber"
             }
           ]
+        },
+        {
+          "name": "Secrets",
+          "tools": [
+            {
+              "slug": "random-generator",
+              "emoji": "🎲",
+              "name": "Random Generator",
+              "description": "Generate random bytes, passwords and passphrases",
+              "keywords": "password passphrase entropy random bytes"
+            }
+          ]
         }
       ]
     }
