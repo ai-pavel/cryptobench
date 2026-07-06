@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secret Sharing</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%A7%A9</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cryptography</a>
+  <h1>🧩 Secret Sharing</h1>
+  <p class="lead">Split a secret into shares and recover it (Shamir).</p>
+  <!-- tool:start -->
+  <div class="panel">
+    <p class="note" id="keynote"></p>
+    <div class="row example-row"><button type="button" id="example">Example</button></div>
+    <div class="row">
+      <div class="seg" id="mode" role="group" aria-label="Mode">
+        <button data-v="split" aria-pressed="true">Split</button>
+        <button data-v="combine" aria-pressed="false">Combine</button>
+      </div>
+    </div>
+    <div id="splitUi">
+      <div class="field-row">
+        <label class="field" style="flex:3">Secret
+          <textarea id="secret" class="wide" rows="3" spellcheck="false" autocomplete="off">my secret recovery phrase</textarea>
+        </label>
+        <label class="field">Encoding<select id="secretEnc"></select></label>
+      </div>
+      <div class="field-row">
+        <label class="field">Shares (N)<input id="n" type="number" min="2" max="255" value="5"></label>
+        <label class="field">Threshold (K)<input id="k" type="number" min="2" max="255" value="3"></label>
+      </div>
+      <div class="row" style="margin-top:12px"><button class="primary" id="split">Split secret</button></div>
+    </div>
+    <div id="combineUi" hidden>
+      <label class="field">Shares (hex, one per line)
+        <textarea id="shares" class="wide" rows="6" spellcheck="false" autocomplete="off"></textarea>
+      </label>
+      <div class="row" style="margin-top:12px"><button class="primary" id="combine">Recover secret</button></div>
+    </div>
+    <p class="error" id="err" hidden></p>
+    <div id="out" class="out"></div>
+  </div>
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">How it works</p>
+    <p class="muted">Each byte of the secret becomes the constant term of a random polynomial of degree K − 1 over GF(2⁸); each share is that polynomial evaluated at a different nonzero x. Any K shares recover the secret by Lagrange interpolation; <b>K − 1 or fewer shares reveal nothing at all about it</b>, not even a single bit. Shares are hex of the y-bytes followed by one byte for x — the same format as the audited <span class="mono">shamir-secret-sharing</span> library (Privy) and HashiCorp Vault, so shares are interchangeable with them. There is no integrity check: combining wrong or too few shares gives garbage, not an error.</p>
+  </div>
+  <!-- tool:end -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.4 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<!-- script:start -->
+<script type="module" src="secret-sharing.js"></script>
+<!-- script:end -->
+</body>
+</html>
