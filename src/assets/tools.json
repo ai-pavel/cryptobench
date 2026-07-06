@@ -451,6 +451,13 @@
               "name": "Random Generator",
               "description": "Generate random bytes, passwords and passphrases",
               "keywords": "password passphrase entropy random bytes"
+            },
+            {
+              "slug": "secret-sharing",
+              "emoji": "🧩",
+              "name": "Secret Sharing",
+              "description": "Split a secret into shares and recover it (Shamir)",
+              "keywords": "shamir sss shares threshold"
             }
           ]
         }
