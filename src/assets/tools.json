@@ -458,6 +458,13 @@
               "name": "Secret Sharing",
               "description": "Split a secret into shares and recover it (Shamir)",
               "keywords": "shamir sss shares threshold"
+            },
+            {
+              "slug": "totp",
+              "emoji": "⏱️",
+              "name": "TOTP / HOTP",
+              "description": "Generate one-time codes from a secret",
+              "keywords": "2fa otp authenticator otpauth"
             }
           ]
         }
