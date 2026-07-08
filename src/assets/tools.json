@@ -467,6 +467,18 @@
               "keywords": "2fa otp authenticator otpauth"
             }
           ]
+        },
+        {
+          "name": "Math",
+          "tools": [
+            {
+              "slug": "modular-arithmetic",
+              "emoji": "➗",
+              "name": "Modular Arithmetic",
+              "description": "Modular inverse, power and GCD with big integers",
+              "keywords": "mod inverse pow gcd bigint secp256k1"
+            }
+          ]
         }
       ]
     }
