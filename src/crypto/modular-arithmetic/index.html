@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modular Arithmetic</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9E%97</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cryptography</a>
+  <h1>➗ Modular Arithmetic</h1>
+  <p class="lead">Modular inverse, power and GCD with big integers.</p>
+  <!-- tool:start -->
+  <div class="panel">
+    <div class="row example-row"><button type="button" id="example">Example</button></div>
+    <div class="field-row">
+      <label class="field">Operation
+        <select id="op">
+          <option value="inv">Modular inverse a⁻¹ mod n</option>
+          <option value="pow">Power aᵇ mod n</option>
+          <option value="mod">Reduce a mod n</option>
+          <option value="gcd">GCD and LCM of a and n</option>
+          <option value="sqrt">Square root of a mod p (prime)</option>
+        </select>
+      </label>
+      <label class="field">Modulus preset
+        <select id="preset">
+          <option value="">Custom</option>
+          <option value="0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f">secp256k1 p (field)</option>
+          <option value="0xfffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141">secp256k1 n (order)</option>
+          <option value="0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffed">Ed25519 p = 2²⁵⁵ − 19</option>
+          <option value="0x1000000000000000000000000000000014def9dea2f79cd65812631a5cf5d3ed">Ed25519 L (order)</option>
+          <option value="0xffffffff00000001000000000000000000000000ffffffffffffffffffffffff">P-256 p</option>
+          <option value="0xffffffff00000000ffffffffffffffffbce6faada7179e84f3b9cac2fc632551">P-256 n</option>
+        </select>
+      </label>
+    </div>
+    <label class="field">a (decimal, or hex with 0x)
+      <input id="a" class="mono" spellcheck="false" autocomplete="off" value="3">
+    </label>
+    <label class="field" id="bField" hidden>b — exponent
+      <input id="b" class="mono" spellcheck="false" autocomplete="off" value="5">
+    </label>
+    <label class="field"><span id="nLabel">n — modulus</span>
+      <input id="n" class="mono" spellcheck="false" autocomplete="off" value="11">
+    </label>
+    <p class="error" id="err" hidden></p>
+    <div id="out" class="out"></div>
+    <div id="steps" class="out"></div>
+  </div>
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">Notes</p>
+    <p class="muted">The inverse exists only when gcd(a, n) = 1; it is found with the extended Euclidean algorithm, whose steps are listed. Powers use square-and-multiply. Square roots modulo a prime use Tonelli–Shanks (fast path when p ≡ 3 mod 4, as for secp256k1); only half of the nonzero values have one. All arithmetic uses exact big integers.</p>
+  </div>
+  <!-- tool:end -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.4 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<!-- script:start -->
+<script type="module" src="modular-arithmetic.js"></script>
+<!-- script:end -->
+</body>
+</html>
