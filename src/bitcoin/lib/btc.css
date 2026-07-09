@@ -1,0 +1,93 @@
+/* Shared styles for the Bitcoin tool pages (on top of assets/style.css). */
+[hidden] { display: none !important; }
+
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.field > span { font-size: 14px; color: var(--muted); }
+/* The site-wide label style is a flex column, which would split inline <code> onto its own line. */
+.field > label, .field > .row > label { display: block; }
+.field input, .field textarea, .field select { width: 100%; }
+.field textarea { resize: vertical; min-height: 64px; }
+.mono, .field input.mono, .field textarea.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; }
+
+.seg { display: inline-flex; gap: 4px; margin-bottom: 14px; flex-wrap: wrap; }
+.seg button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+
+.out { margin-top: 8px; }
+.kv {
+  display: grid; grid-template-columns: minmax(110px, 180px) minmax(0, 1fr) auto;
+  gap: 4px 12px; align-items: start;
+  padding: 10px 0; border-top: 1px solid var(--border);
+}
+.kv:first-child { border-top: 0; }
+.kv .k { color: var(--muted); font-size: 14px; padding-top: 2px; }
+.kv .v { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; word-break: break-all; white-space: pre-wrap; min-width: 0; }
+.kv .copy { font-size: 13px; padding: 2px 10px; }
+.kv.ok .v { color: var(--ok); font-weight: 600; }
+.kv.bad .v { color: var(--bad); font-weight: 600; }
+.note-inline { display: block; margin-top: 2px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--muted); font-size: 13px; }
+
+@media (max-width: 560px) {
+  .kv { grid-template-columns: minmax(0, 1fr) auto; }
+  .kv .k { grid-column: 1 / -1; }
+}
+
+.error { color: var(--bad); margin: 8px 0 0; white-space: pre-wrap; }
+.status { font-weight: 600; margin: 4px 0 8px; }
+.status.ok { color: var(--ok); }
+.status.bad { color: var(--bad); }
+.status.warn { color: var(--warn); }
+
+.warning {
+  margin: 0 0 16px; padding: 10px 12px; font-size: 14px;
+  border: 1px solid color-mix(in srgb, var(--warn) 45%, var(--border));
+  background: color-mix(in srgb, var(--warn) 10%, transparent); border-radius: 8px;
+}
+
+pre.json {
+  margin: 0; padding: 12px; overflow-x: auto; max-width: 100%;
+  background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+  font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre-wrap; word-break: break-all;
+}
+
+.words { display: grid; gap: 2px; font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; word-break: break-all; }
+.words span:nth-child(odd) { color: var(--muted); }
+
+.mark { background: color-mix(in srgb, var(--bad) 25%, transparent); color: var(--bad); border-radius: 2px; }
+
+.params { display: grid; gap: 0; }
+.params .field { margin-bottom: 10px; }
+.params .field > span code { color: var(--text); }
+
+.inline-check { flex-direction: row; align-items: center; gap: 8px; color: var(--text); font-size: 15px; }
+.inline-check input { width: auto; }
+
+:root { --ok: #1e8e3e; --bad: #c0392b; --warn: #b7791f; }
+@media (prefers-color-scheme: dark) {
+  :root { --ok: #4cc26b; --bad: #ff6b5e; --warn: #e0a83a; }
+}
+
+/* Bitcoin-specific */
+.fields { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; }
+.fields th, .fields td { padding: 6px 8px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+.fields td.hexcell { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; word-break: break-all; }
+.fields td.range { white-space: nowrap; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+.fields tr.group td { background: var(--bg); font-weight: 600; color: var(--muted); }
+.table-wrap { overflow-x: auto; max-width: 100%; }
+.hexview { font: 13px/1.7 ui-monospace, SFMono-Regular, Menlo, monospace; word-break: break-all; padding: 10px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; }
+.hexview span { border-radius: 2px; padding: 0 1px; }
+.c0 { background: color-mix(in srgb, #3a5bd9 22%, transparent); }
+.c1 { background: color-mix(in srgb, #1e8e3e 22%, transparent); }
+.c2 { background: color-mix(in srgb, #b7791f 24%, transparent); }
+.c3 { background: color-mix(in srgb, #c0392b 20%, transparent); }
+.c4 { background: color-mix(in srgb, #8e44ad 22%, transparent); }
+.c5 { background: color-mix(in srgb, #16a085 22%, transparent); }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0 14px; }
+.steps { width: 100%; border-collapse: collapse; font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; }
+.steps th, .steps td { padding: 4px 8px; border-bottom: 1px solid var(--border); text-align: right; word-break: break-all; }
+.steps th { color: var(--muted); font-weight: 500; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+.list-rows { display: grid; gap: 8px; }
+.list-rows .rowbox { border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
+.rowbox .grid2 .field { margin-bottom: 8px; }
+.small { font-size: 13px; }
+.tag { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; border: 1px solid var(--border); color: var(--muted); margin-left: 6px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+.panel h2 { overflow-wrap: anywhere; }
