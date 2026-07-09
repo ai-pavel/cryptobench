@@ -481,6 +481,27 @@
           ]
         }
       ]
+    },
+    {
+      "id": "bitcoin",
+      "emoji": "🪙",
+      "name": "Bitcoin",
+      "summary": "Bitcoin: blocks, transactions, PSBTs, keys, addresses and HD wallets.",
+      "lead": "Bitcoin tools that run entirely in your browser. Keys you enter never leave your device.",
+      "categories": [
+        {
+          "name": "Blocks",
+          "tools": [
+            {
+              "slug": "block-header",
+              "emoji": "📋",
+              "name": "Block Header",
+              "description": "Decode a block header and compute its hash",
+              "keywords": "block hash proof of work pow"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
