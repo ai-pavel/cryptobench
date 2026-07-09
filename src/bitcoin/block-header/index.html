@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Block Header</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%93%8B</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/btc.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Bitcoin</a>
+  <h1>📋 Block Header</h1>
+  <p class="lead">Get a block's hash from its 80-byte header and check the proof of work, decode the six header fields, or edit the fields to build a header. All numbers are stored little-endian; hashes are shown reversed.</p>
+
+  <div class="panel">
+    <div class="field"><span>Header (80 bytes hex)</span><textarea id="header" class="mono" rows="4" spellcheck="false"></textarea></div>
+    <div class="row small"><button type="button" id="genesis">Example: genesis block</button><button type="button" id="b100k">Example: block 100,000</button></div>
+    <p class="error" id="err" hidden></p>
+    <p class="status" id="status" hidden></p>
+    <div class="out" id="hash-out"></div>
+    <h2>Fields</h2>
+    <div class="grid2">
+      <div class="field"><span>Version (decimal or 0x-hex)</span><input id="version" class="mono"></div>
+      <div class="field"><span>Time (Unix seconds)</span><input id="time" class="mono" inputmode="numeric"></div>
+      <div class="field"><span>Bits (0x-hex)</span><input id="bits" class="mono"></div>
+      <div class="field"><span>Nonce</span><input id="nonce" class="mono" inputmode="numeric"></div>
+    </div>
+    <div class="field"><span>Previous block hash</span><input id="prev" class="mono" spellcheck="false"></div>
+    <div class="field"><span>Merkle root</span><input id="merkle" class="mono" spellcheck="false"></div>
+    <div class="out" id="out"></div>
+    <div class="table-wrap"><table class="fields" id="bytes"></table></div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.5 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="block-header.js"></script>
+</body>
+</html>
