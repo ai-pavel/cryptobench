@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Merkle Root</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%8C%B3</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/btc.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Bitcoin</a>
+  <h1>🌳 Merkle Root</h1>
+  <p class="lead">Compute a block's merkle root from its transaction IDs, level by level. An odd item at the end of a level is paired with itself.</p>
+
+  <div class="panel">
+    <div class="field"><span>TXIDs, one per line (as shown by explorers)</span><textarea id="ids" class="mono" rows="6" spellcheck="false"></textarea></div>
+    <div class="row small">
+      <label class="inline-check"><input type="checkbox" id="internal"> IDs are in internal byte order</label>
+      <button type="button" id="sample">Example: block 100,000 (4 transactions)</button>
+    </div>
+    <p class="error" id="err" hidden></p>
+    <div class="out" id="out"></div>
+    <div id="levels"></div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.5 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="merkle-root.js"></script>
+</body>
+</html>
