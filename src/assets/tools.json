@@ -498,6 +498,12 @@
               "name": "Block Header",
               "description": "Decode a block header and compute its hash",
               "keywords": "block hash proof of work pow"
+            },
+            {
+              "slug": "merkle-root",
+              "emoji": "🌳",
+              "name": "Merkle Root",
+              "description": "Compute the merkle root of a list of TXIDs"
             }
           ]
         }
