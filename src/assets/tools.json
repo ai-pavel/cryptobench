@@ -504,6 +504,12 @@
               "emoji": "🌳",
               "name": "Merkle Root",
               "description": "Compute the merkle root of a list of TXIDs"
+            },
+            {
+              "slug": "target-bits",
+              "emoji": "🎯",
+              "name": "Target Bits",
+              "description": "Convert between a target and its compact bits"
             }
           ]
         }
