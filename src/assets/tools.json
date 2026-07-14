@@ -510,6 +510,12 @@
               "emoji": "🎯",
               "name": "Target Bits",
               "description": "Convert between a target and its compact bits"
+            },
+            {
+              "slug": "target-adjustment",
+              "emoji": "⚖️",
+              "name": "Target Adjustment",
+              "description": "Calculate the next difficulty target"
             }
           ]
         }
