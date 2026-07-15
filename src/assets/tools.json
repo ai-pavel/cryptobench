@@ -518,6 +518,17 @@
               "description": "Calculate the next difficulty target"
             }
           ]
+        },
+        {
+          "name": "Transactions",
+          "tools": [
+            {
+              "slug": "transaction-builder",
+              "emoji": "🏗️",
+              "name": "Transaction Builder",
+              "description": "Build raw transaction data"
+            }
+          ]
         }
       ]
     }
