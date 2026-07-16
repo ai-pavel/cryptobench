@@ -527,6 +527,12 @@
               "emoji": "🏗️",
               "name": "Transaction Builder",
               "description": "Build raw transaction data"
+            },
+            {
+              "slug": "transaction-splitter",
+              "emoji": "✂️",
+              "name": "Transaction Splitter",
+              "description": "Split a raw transaction into its fields"
             }
           ]
         }
