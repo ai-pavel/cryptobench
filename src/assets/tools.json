@@ -533,6 +533,13 @@
               "emoji": "✂️",
               "name": "Transaction Splitter",
               "description": "Split a raw transaction into its fields"
+            },
+            {
+              "slug": "txid",
+              "emoji": "🆔",
+              "name": "TXID / wTXID",
+              "description": "Compute the TXID and wTXID of a raw transaction",
+              "keywords": "wtxid witness"
             }
           ]
         }
