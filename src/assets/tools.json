@@ -540,6 +540,12 @@
               "name": "TXID / wTXID",
               "description": "Compute the TXID and wTXID of a raw transaction",
               "keywords": "wtxid witness"
+            },
+            {
+              "slug": "script",
+              "emoji": "📜",
+              "name": "Script",
+              "description": "Decode and encode a script"
             }
           ]
         }
