@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sequence</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%94%81</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/btc.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Bitcoin</a>
+  <h1>🔁 Sequence</h1>
+  <p class="lead">Decode an input's nSequence (finality, replace-by-fee per BIP125, relative locktime per BIP68), or build one from a number of blocks or a time in 512-second units.</p>
+
+  <div class="panel">
+    <div class="row example-row"><button type="button" id="example">Example</button></div>
+    <div class="seg" id="mode">
+      <button data-mode="decode" aria-pressed="true">Decode</button>
+      <button data-mode="blocks" aria-pressed="false">Build: blocks</button>
+      <button data-mode="time" aria-pressed="false">Build: time</button>
+    </div>
+    <div id="decodeFields">
+      <div class="field"><span>Sequence (decimal, 0x-hex, or raw little-endian bytes)</span><input id="seq" class="mono" spellcheck="false" value="0xfffffffd"></div>
+      <label class="field inline-check"><input type="checkbox" id="le"> Input is raw little-endian bytes (e.g. fdffffff)</label>
+    </div>
+    <div class="field" id="blocksFields" hidden><span>Blocks (0–65535)</span><input id="blocks" class="mono" value="144" inputmode="numeric"></div>
+    <div id="timeFields" hidden>
+      <div class="grid2">
+        <div class="field"><span>Days</span><input id="days" class="mono" value="1" inputmode="numeric"></div>
+        <div class="field"><span>Hours</span><input id="hours" class="mono" value="0" inputmode="numeric"></div>
+        <div class="field"><span>Minutes</span><input id="minutes" class="mono" value="0" inputmode="numeric"></div>
+        <div class="field"><span>Seconds</span><input id="seconds" class="mono" value="0" inputmode="numeric"></div>
+      </div>
+    </div>
+    <p class="error" id="err" hidden></p>
+    <div class="out" id="out"></div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.5 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="sequence.js"></script>
+</body>
+</html>
