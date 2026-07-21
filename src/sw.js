@@ -1,6 +1,6 @@
 // Service worker template. scripts/generate.py fills in VERSION and PRECACHE
 // and writes the result to /sw.js. Edit this file, not sw.js.
-const VERSION = '973f22ad6806';
+const VERSION = 'd02a6c933967';
 const SITE_CACHE = 'site-' + VERSION;
 // Heavy, version-pinned files that tools download on first use (the ffmpeg core,
 // the OCR engine and its language data). Cached once and kept across site updates.
@@ -91,6 +91,8 @@ const PRECACHE = [
   "/bitcoin/merkle-root/merkle-root.js",
   "/bitcoin/script/",
   "/bitcoin/script/script.js",
+  "/bitcoin/sequence/",
+  "/bitcoin/sequence/sequence.js",
   "/bitcoin/target-adjustment/",
   "/bitcoin/target-adjustment/target-adjustment.js",
   "/bitcoin/target-bits/",
