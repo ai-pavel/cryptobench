@@ -546,6 +546,13 @@
               "emoji": "📜",
               "name": "Script",
               "description": "Decode and encode a script"
+            },
+            {
+              "slug": "sequence",
+              "emoji": "🔁",
+              "name": "Sequence",
+              "description": "Decode or build an input's sequence: RBF and relative locktime",
+              "keywords": "nsequence csv relative locktime bip68"
             }
           ]
         }
