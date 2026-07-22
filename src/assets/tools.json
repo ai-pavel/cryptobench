@@ -553,6 +553,12 @@
               "name": "Sequence",
               "description": "Decode or build an input's sequence: RBF and relative locktime",
               "keywords": "nsequence csv relative locktime bip68"
+            },
+            {
+              "slug": "psbt-decoder",
+              "emoji": "📦",
+              "name": "PSBT Decoder",
+              "description": "Decode a partially signed transaction"
             }
           ]
         }
