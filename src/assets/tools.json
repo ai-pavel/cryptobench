@@ -561,6 +561,18 @@
               "description": "Decode a partially signed transaction"
             }
           ]
+        },
+        {
+          "name": "Keys & Addresses",
+          "tools": [
+            {
+              "slug": "address",
+              "emoji": "📬",
+              "name": "Address",
+              "description": "Encode and decode P2PKH, P2SH, P2WPKH, P2WSH and P2TR addresses",
+              "keywords": "bech32 bech32m base58 scriptpubkey"
+            }
+          ]
         }
       ]
     }
