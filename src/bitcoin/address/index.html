@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Address</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%93%AC</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/btc.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Bitcoin</a>
+  <h1>📬 Address</h1>
+  <p class="lead">Encode and decode Bitcoin addresses of every standard type: P2PKH, P2SH, P2WPKH, P2WSH and P2TR. Shows the scriptPubKey, the Bech32/Bech32m details (prefix, witness version, program) and points at a typo when it can.</p>
+
+  <div class="panel">
+    <div class="row example-row"><button type="button" id="example">Example</button></div>
+    <div class="seg" id="mode">
+      <button data-mode="address" aria-pressed="true">Decode address</button>
+      <button data-mode="script" aria-pressed="false">scriptPubKey → address</button>
+      <button data-mode="parts" aria-pressed="false">Build from hash / program</button>
+    </div>
+    <div id="addressFields">
+      <div class="field"><span>Address</span><input id="address" class="mono" spellcheck="false" placeholder="bc1q… / bc1p… / 1… / 3…"></div>
+    </div>
+    <div id="scriptFields" hidden>
+      <div class="field"><span>scriptPubKey (hex)</span><textarea id="script" class="mono" rows="2" spellcheck="false" placeholder="0014… / 5120… / 76a914…88ac / a914…87"></textarea></div>
+    </div>
+    <div id="partsFields" hidden>
+      <div class="grid2">
+        <div class="field"><span>Type</span><select id="ptype">
+          <option value="p2wpkh">P2WPKH (v0, 20-byte key hash)</option><option value="p2wsh">P2WSH (v0, 32-byte script hash)</option>
+          <option value="p2tr">P2TR (v1, 32-byte output key)</option><option value="p2pkh">P2PKH (20-byte key hash)</option>
+          <option value="p2sh">P2SH (20-byte script hash)</option><option value="witness">Other witness version</option></select></div>
+        <div class="field" id="wverField" hidden><span>Witness version (0–16)</span><input id="wver" class="mono" value="2" inputmode="numeric"></div>
+      </div>
+      <div class="field"><span>Hash or witness program (hex)</span><input id="program" class="mono" spellcheck="false" placeholder="751e76e8199196d454941c45d1b3a323f1433bd6"></div>
+    </div>
+    <div class="field" id="netField" hidden><span>Network</span><select id="net"></select></div>
+    <p class="error" id="err" hidden></p>
+    <p class="status" id="status" hidden></p>
+    <div class="out" id="out"></div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.5 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="address.js"></script>
+</body>
+</html>
