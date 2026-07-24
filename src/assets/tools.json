@@ -571,6 +571,12 @@
               "name": "Address",
               "description": "Encode and decode P2PKH, P2SH, P2WPKH, P2WSH and P2TR addresses",
               "keywords": "bech32 bech32m base58 scriptpubkey"
+            },
+            {
+              "slug": "wif-private-key",
+              "emoji": "🗝️",
+              "name": "WIF Private Key",
+              "description": "Convert a private key to and from WIF"
             }
           ]
         }
