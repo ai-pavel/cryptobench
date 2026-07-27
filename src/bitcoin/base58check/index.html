@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Base58Check</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%98%91%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/btc.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Bitcoin</a>
+  <h1>☑️ Base58Check</h1>
+  <p class="lead">Convert between hex and Base58, with or without the Base58Check checksum (the first 4 bytes of HASH256). Decoding verifies the checksum.</p>
+
+  <div class="panel">
+    <div class="row example-row"><button type="button" id="example">Example</button></div>
+    <div class="seg" id="mode">
+      <button data-mode="encode" aria-pressed="true">Hex → Base58</button>
+      <button data-mode="decode" aria-pressed="false">Base58 → hex</button>
+    </div>
+    <div class="seg" id="cs">
+      <button data-mode="check" aria-pressed="true">With checksum (Base58Check)</button>
+      <button data-mode="plain" aria-pressed="false">Without checksum (plain Base58)</button>
+    </div>
+    <div id="encodeFields">
+      <div class="grid2" id="versionRow">
+        <div class="field"><span>Version byte preset</span>
+          <select id="preset">
+            <option value="">Custom / none</option><option value="00">00: P2PKH mainnet</option><option value="05">05: P2SH mainnet</option>
+            <option value="6f">6f: P2PKH testnet</option><option value="c4">c4: P2SH testnet</option><option value="80">80: WIF mainnet</option><option value="ef">ef: WIF testnet</option>
+          </select>
+        </div>
+        <div class="field"><span>Version (hex, optional)</span><input id="version" class="mono" spellcheck="false" value="00"></div>
+      </div>
+      <div class="field"><span>Payload (hex)</span><textarea id="payload" class="mono" rows="2" spellcheck="false" placeholder="010966776006953d5567439e5e39f86a0d273bee"></textarea></div>
+    </div>
+    <div id="decodeFields" hidden>
+      <div class="field"><span>Base58 string</span><input id="encoded" class="mono" spellcheck="false" placeholder="16UwLL9Risc3QfPqBUvKofHmBQ7wMtjvM"></div>
+    </div>
+    <p class="error" id="err" hidden></p>
+    <p class="status" id="status" hidden></p>
+    <div class="out" id="out"></div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.5 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="base58check.js"></script>
+</body>
+</html>
