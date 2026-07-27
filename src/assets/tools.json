@@ -577,6 +577,13 @@
               "emoji": "🗝️",
               "name": "WIF Private Key",
               "description": "Convert a private key to and from WIF"
+            },
+            {
+              "slug": "base58check",
+              "emoji": "☑️",
+              "name": "Base58Check",
+              "description": "Convert between hex and Base58, with or without a checksum",
+              "keywords": "base58"
             }
           ]
         }
