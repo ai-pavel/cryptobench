@@ -586,6 +586,17 @@
               "keywords": "base58"
             }
           ]
+        },
+        {
+          "name": "HD Wallets",
+          "tools": [
+            {
+              "slug": "mnemonic-seed",
+              "emoji": "🌱",
+              "name": "Mnemonic Seed",
+              "description": "Generate a BIP 39 mnemonic and seed"
+            }
+          ]
         }
       ]
     }
