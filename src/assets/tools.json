@@ -595,6 +595,12 @@
               "emoji": "🌱",
               "name": "Mnemonic Seed",
               "description": "Generate a BIP 39 mnemonic and seed"
+            },
+            {
+              "slug": "extended-keys",
+              "emoji": "🧬",
+              "name": "Extended Keys",
+              "description": "Derive a child extended key from a parent"
             }
           ]
         }
