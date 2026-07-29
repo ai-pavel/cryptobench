@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Extended Keys</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%A7%AC</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/btc.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Bitcoin</a>
+  <h1>🧬 Extended Keys</h1>
+  <p class="lead">Inspect an extended key (xprv, xpub, ypub, zpub, tpub…), derive child keys by path, and convert between SLIP-132 version prefixes.</p>
+
+  <div class="panel">
+    <p class="warning">Runs locally in your browser. Don't paste keys that hold real funds.</p>
+    <div class="row example-row"><button type="button" id="example">Example</button></div>
+    <div class="field"><span>Extended key</span><textarea id="key" class="mono" rows="3" spellcheck="false" placeholder="xpub6… / zpub… / xprv9…"></textarea></div>
+    <div class="grid2">
+      <div class="field"><span>Derive child (path from this key)</span><input id="path" class="mono" spellcheck="false" placeholder="m/0/1 or m/0'/5"></div>
+      <div class="field"><span>Show as</span><select id="as"></select></div>
+    </div>
+    <p class="error" id="err" hidden></p>
+    <div class="out" id="out"></div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.6 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="extended-keys.js"></script>
+</body>
+</html>
