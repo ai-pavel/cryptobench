@@ -601,6 +601,12 @@
               "emoji": "🧬",
               "name": "Extended Keys",
               "description": "Derive a child extended key from a parent"
+            },
+            {
+              "slug": "derivation-paths",
+              "emoji": "🛤️",
+              "name": "Derivation Paths",
+              "description": "Derive keys and addresses along a path"
             }
           ]
         }
