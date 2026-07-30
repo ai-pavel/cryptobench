@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Derivation Paths</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%9B%A4%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/btc.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Bitcoin</a>
+  <h1>🛤️ Derivation Paths</h1>
+  <p class="lead">Derive keys and addresses from a mnemonic or seed along a BIP44, BIP49, BIP84 or BIP86 path, or your own.</p>
+
+  <div class="panel">
+    <p class="warning">Runs locally in your browser. Don't paste keys that hold real funds.</p>
+    <div class="row example-row"><button type="button" id="example">Example</button></div>
+    <div class="field"><span>Mnemonic or seed (hex)</span><textarea id="secret" class="mono" rows="3" spellcheck="false" placeholder="abandon abandon … about"></textarea></div>
+    <div class="grid2">
+      <div class="field"><span>Passphrase (mnemonic only)</span><input id="passphrase" class="mono" spellcheck="false" autocomplete="off"></div>
+      <div class="field"><span>Network</span><select id="net"><option value="mainnet">Mainnet (coin 0)</option><option value="testnet">Testnet / signet (coin 1)</option><option value="regtest">Regtest (coin 1)</option></select></div>
+      <div class="field"><span>Standard</span><select id="preset">
+        <option value="84">BIP84: native segwit (bc1q…)</option><option value="86">BIP86: taproot (bc1p…)</option>
+        <option value="49">BIP49: nested segwit (3…)</option><option value="44">BIP44: legacy (1…)</option><option value="custom">Custom path</option></select></div>
+      <div class="field"><span>Account</span><input id="account" class="mono" value="0" inputmode="numeric"></div>
+      <div class="field"><span>Chain</span><select id="change"><option value="0">0: receive</option><option value="1">1: change</option></select></div>
+      <div class="field"><span>Start index / count</span><div class="row"><input id="start" class="mono" value="0" inputmode="numeric" style="width:80px"><input id="count" class="mono" value="10" inputmode="numeric" style="width:80px"></div></div>
+    </div>
+    <div class="field" id="customField" hidden><span>Custom path, with {i} for the index</span><input id="custom" class="mono" value="m/84'/0'/0'/0/{i}" spellcheck="false"></div>
+    <div class="field" id="typeField" hidden><span>Address type for custom paths</span><select id="type"><option value="p2wpkh">P2WPKH</option><option value="p2tr">P2TR</option><option value="p2sh-p2wpkh">P2SH-P2WPKH</option><option value="p2pkh">P2PKH</option></select></div>
+    <label class="field inline-check"><input type="checkbox" id="showPriv"> Show private keys (WIF)</label>
+    <p class="error" id="err" hidden></p>
+    <div class="out" id="out"></div>
+    <div class="table-wrap"><table class="fields" id="table"></table></div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.6 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="derivation-paths.js"></script>
+</body>
+</html>
