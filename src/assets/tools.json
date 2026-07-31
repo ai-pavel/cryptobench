@@ -609,6 +609,17 @@
               "description": "Derive keys and addresses along a path"
             }
           ]
+        },
+        {
+          "name": "Hash Functions",
+          "tools": [
+            {
+              "slug": "hash256",
+              "emoji": "#️⃣",
+              "name": "HASH256",
+              "description": "Double SHA-256"
+            }
+          ]
         }
       ]
     }
