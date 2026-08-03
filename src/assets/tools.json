@@ -618,6 +618,13 @@
               "emoji": "#️⃣",
               "name": "HASH256",
               "description": "Double SHA-256"
+            },
+            {
+              "slug": "hash160",
+              "emoji": "🔗",
+              "name": "HASH160",
+              "description": "SHA-256 then RIPEMD-160, with each step shown",
+              "keywords": "ripemd160"
             }
           ]
         }
