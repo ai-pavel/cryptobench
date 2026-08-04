@@ -629,6 +629,27 @@
           ]
         }
       ]
+    },
+    {
+      "id": "evm",
+      "emoji": "💠",
+      "name": "EVM",
+      "summary": "Ethereum and EVM: units, addresses, ABI, transactions and signatures.",
+      "lead": "Ethereum and EVM tools that run entirely in your browser. Keys you enter never leave your device.",
+      "categories": [
+        {
+          "name": "Units",
+          "tools": [
+            {
+              "slug": "unit-converter",
+              "emoji": "⛽",
+              "name": "Unit Converter",
+              "description": "Convert between wei, gwei and ether",
+              "keywords": "eth gas"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
