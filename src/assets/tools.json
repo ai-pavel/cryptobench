@@ -648,6 +648,18 @@
               "keywords": "eth gas"
             }
           ]
+        },
+        {
+          "name": "Addresses",
+          "tools": [
+            {
+              "slug": "keccak256",
+              "emoji": "#️⃣",
+              "name": "Keccak-256",
+              "description": "Hash text or hex with Keccak-256",
+              "keywords": "sha3 hash"
+            }
+          ]
         }
       ]
     }
