@@ -658,6 +658,13 @@
               "name": "Keccak-256",
               "description": "Hash text or hex with Keccak-256",
               "keywords": "sha3 hash"
+            },
+            {
+              "slug": "checksum-address",
+              "emoji": "✅",
+              "name": "Checksum Address",
+              "description": "Validate and checksum an address (EIP-55)",
+              "keywords": "eip55 mixed case"
             }
           ]
         }
