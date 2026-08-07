@@ -665,6 +665,13 @@
               "name": "Checksum Address",
               "description": "Validate and checksum an address (EIP-55)",
               "keywords": "eip55 mixed case"
+            },
+            {
+              "slug": "address-from-key",
+              "emoji": "🗝️",
+              "name": "Address from Key",
+              "description": "Derive the address of a private or public key",
+              "keywords": "private key public key"
             }
           ]
         }
