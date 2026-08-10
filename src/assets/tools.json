@@ -672,6 +672,13 @@
               "name": "Address from Key",
               "description": "Derive the address of a private or public key",
               "keywords": "private key public key"
+            },
+            {
+              "slug": "contract-address",
+              "emoji": "🏭",
+              "name": "Contract Address",
+              "description": "Predict CREATE and CREATE2 addresses",
+              "keywords": "create2 deploy salt nonce"
             }
           ]
         }
