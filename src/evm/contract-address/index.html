@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contract Address</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%8F%AD</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/evm.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← EVM</a>
+  <h1>🏭 Contract Address</h1>
+  <p class="lead">Predict the address of a contract deployed with CREATE (from the deployer and its nonce) or CREATE2 (from the deployer, a salt and the init code).</p>
+
+  <div class="panel">
+    <div class="seg" id="mode">
+      <button data-mode="create" aria-pressed="true">CREATE</button>
+      <button data-mode="create2" aria-pressed="false">CREATE2</button>
+    </div>
+    <div class="row" style="margin-bottom:14px">
+      <button type="button" id="example-create">Example: CREATE</button>
+      <button type="button" id="example-create2">Example: CREATE2</button>
+    </div>
+    <div class="field">
+      <label for="deployer" class="muted">Deployer address</label>
+      <input id="deployer" class="mono" spellcheck="false" autocomplete="off" placeholder="0x…" value="0x6ac7ea33f8831ea9dcc53393aaa88b25a785dbf0">
+    </div>
+    <div id="create-fields">
+      <div class="field">
+        <label for="nonce" class="muted">Nonce</label>
+        <input id="nonce" class="mono" inputmode="numeric" autocomplete="off" value="0">
+      </div>
+    </div>
+    <div id="create2-fields" hidden>
+      <div class="field">
+        <label for="salt" class="muted">Salt (bytes32, or a number)</label>
+        <input id="salt" class="mono" spellcheck="false" autocomplete="off" value="0x0000000000000000000000000000000000000000000000000000000000000000">
+      </div>
+      <div class="seg" id="code-mode">
+        <button data-mode="code" aria-pressed="true">Init code</button>
+        <button data-mode="hash" aria-pressed="false">Init code hash</button>
+      </div>
+      <div class="field">
+        <textarea id="code" class="mono" rows="3" spellcheck="false" placeholder="0x…">0x00</textarea>
+      </div>
+    </div>
+    <p class="error" id="err" hidden></p>
+    <div class="out" id="out"></div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.6 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="contract-address.js"></script>
+</body>
+</html>
