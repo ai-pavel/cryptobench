@@ -681,6 +681,18 @@
               "keywords": "create2 deploy salt nonce"
             }
           ]
+        },
+        {
+          "name": "ABI",
+          "tools": [
+            {
+              "slug": "selectors",
+              "emoji": "🎯",
+              "name": "Selectors & Topics",
+              "description": "Get function selectors and event topics",
+              "keywords": "4byte function selector event topic signature"
+            }
+          ]
         }
       ]
     }
