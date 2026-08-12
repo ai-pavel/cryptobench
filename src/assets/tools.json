@@ -691,6 +691,13 @@
               "name": "Selectors & Topics",
               "description": "Get function selectors and event topics",
               "keywords": "4byte function selector event topic signature"
+            },
+            {
+              "slug": "abi",
+              "emoji": "🧩",
+              "name": "ABI Encoder / Decoder",
+              "description": "Encode function calls and decode calldata",
+              "keywords": "abi calldata encode decode input data"
             }
           ]
         }
