@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ABI Encoder / Decoder</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%A7%A9</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/evm.css">
+  <style>
+    .mode-tabs { display: inline-flex; gap: 0; margin: 18px 0 4px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .mode-tabs button { border: 0; border-radius: 0; padding: 8px 18px; background: var(--surface); }
+    .mode-tabs button + button { border-left: 1px solid var(--border); }
+    .mode-tabs button[aria-selected="true"] { background: var(--accent); color: var(--on-accent); }
+    [hidden] { display: none !important; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← EVM</a>
+  <h1>🧩 ABI Encoder / Decoder</h1>
+  <p class="lead">Encode function calls and parameters to calldata, or decode calldata with a signature or JSON ABI.</p>
+  <div class="mode-tabs" role="tablist"><button type="button" role="tab" data-tab="encode">Encode</button><button type="button" role="tab" data-tab="decode">Decode</button></div>
+  <section id="tab-encode" class="mode-panel" data-tab-panel="encode">
+
+  <div class="panel">
+    <div class="row" style="margin-bottom:14px"><button type="button" id="n-example">Example: ERC-20 transfer</button></div>
+    <div class="field">
+      <label for="n-sig" class="muted">Function signature, or a parameter list like <code>(address,uint256[])</code></label>
+      <input id="n-sig" class="mono" spellcheck="false" autocomplete="off" value="transfer(address to, uint256 amount)">
+    </div>
+    <div class="params" id="n-params"></div>
+    <p class="muted" id="n-hint">Numbers: decimal or 0x hex. Bytes: 0x hex. Arrays and tuples: JSON, e.g. <code>["0x…", "5"]</code>.</p>
+    <p class="error" id="n-err" hidden></p>
+    <div class="out" id="n-out"></div>
+    <div id="n-words-box" hidden>
+      <p class="muted" style="margin:16px 0 6px">Parameters as 32-byte words</p>
+      <div class="words" id="n-words"></div>
+    </div>
+  </div>
+  </section>
+  <section id="tab-decode" class="mode-panel" data-tab-panel="decode">
+
+  <div class="panel">
+    <div class="row" style="margin-bottom:14px"><button type="button" id="d-example">Example: ERC-20 transfer</button></div>
+    <div class="field">
+      <label for="d-data" class="muted">Calldata</label>
+      <textarea id="d-data" class="mono" rows="4" spellcheck="false" placeholder="0x…"></textarea>
+    </div>
+    <div class="field">
+      <label for="d-abi" class="muted">Function signature(s) or JSON ABI (optional)</label>
+      <textarea id="d-abi" class="mono" rows="3" spellcheck="false" placeholder="transfer(address to, uint256 amount)  or  [{&quot;type&quot;:&quot;function&quot;, …}]"></textarea>
+    </div>
+    <label class="field inline-check"><input type="checkbox" id="d-no-selector"> Data has no selector (only encoded parameters)</label>
+    <p class="error" id="d-err" hidden></p>
+    <div class="out" id="d-out"></div>
+    <div id="d-json-box" hidden>
+      <div class="row" style="justify-content:space-between;margin:16px 0 6px"><span class="muted">Arguments as JSON</span><button class="icon-btn" data-copy-from="d-json">Copy</button></div>
+      <pre class="json" id="d-json"></pre>
+    </div>
+  </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.7 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="abi.js"></script>
+</body>
+</html>
