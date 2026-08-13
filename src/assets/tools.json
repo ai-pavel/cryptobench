@@ -700,6 +700,18 @@
               "keywords": "abi calldata encode decode input data"
             }
           ]
+        },
+        {
+          "name": "Transactions",
+          "tools": [
+            {
+              "slug": "rlp",
+              "emoji": "🪆",
+              "name": "RLP",
+              "description": "Encode and decode RLP",
+              "keywords": "recursive length prefix"
+            }
+          ]
         }
       ]
     }
