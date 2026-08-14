@@ -11,7 +11,7 @@ Local-first browser tools — everyday, dev & crypto. Nothing leaves your device
 | [🧑‍💻 Developer](https://ai-pavel.github.io/dev/) | Developer utilities: JSON, encoding, tokens, regex, diffs, bits and bytes | 21 | [`src/dev/`](src/dev/) |
 | [🔐 Cryptography](https://ai-pavel.github.io/crypto/) | Hashes, HMAC, key derivation, encryption, keys, signatures, certificates and secrets | 16 | [`src/crypto/`](src/crypto/) |
 | [🪙 Bitcoin](https://ai-pavel.github.io/bitcoin/) | Bitcoin: blocks, transactions, PSBTs, keys, addresses and HD wallets | 18 | [`src/bitcoin/`](src/bitcoin/) |
-| [💠 EVM](https://ai-pavel.github.io/evm/) | Ethereum and EVM: units, addresses, ABI, transactions and signatures | 8 | [`src/evm/`](src/evm/) |
+| [💠 EVM](https://ai-pavel.github.io/evm/) | Ethereum and EVM: units, addresses, ABI, transactions and signatures | 9 | [`src/evm/`](src/evm/) |
 <!-- toolboxes:end -->
 
 Everything runs client-side in the browser: files and keys never leave the device.
