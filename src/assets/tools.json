@@ -710,6 +710,13 @@
               "name": "RLP",
               "description": "Encode and decode RLP",
               "keywords": "recursive length prefix"
+            },
+            {
+              "slug": "tx-decoder",
+              "emoji": "📦",
+              "name": "Transaction Decoder",
+              "description": "Decode a raw signed transaction and recover its sender",
+              "keywords": "raw tx eip1559 legacy"
             }
           ]
         }
