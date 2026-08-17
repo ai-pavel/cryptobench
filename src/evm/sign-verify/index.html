@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign &amp; Verify</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9C%8D%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/evm.css">
+  <style>
+    .mode-tabs { display: inline-flex; gap: 0; margin: 18px 0 4px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .mode-tabs button { border: 0; border-radius: 0; padding: 8px 18px; background: var(--surface); }
+    .mode-tabs button + button { border-left: 1px solid var(--border); }
+    .mode-tabs button[aria-selected="true"] { background: var(--accent); color: var(--on-accent); }
+    [hidden] { display: none !important; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← EVM</a>
+  <h1>✍️ Sign &amp; Verify</h1>
+  <p class="lead">Sign a message with a private key the way wallets do for <code>personal_sign</code> (EIP-191), or recover and check the signer of a signed message.</p>
+  <div class="mode-tabs" role="tablist"><button type="button" role="tab" data-tab="sign">Sign</button><button type="button" role="tab" data-tab="verify">Verify</button></div>
+  <section id="tab-sign" class="mode-panel" data-tab-panel="sign">
+
+  <div class="panel">
+    <p class="warning">Runs locally in your browser. Don't paste keys that hold real funds.</p>
+    <div class="field">
+      <label for="s-key" class="muted">Private key</label>
+      <input id="s-key" class="mono" spellcheck="false" autocomplete="off" placeholder="0x…">
+    </div>
+    <div class="row" style="margin-bottom:14px"><button type="button" id="s-example">Example</button><button id="s-random">Random key</button></div>
+    <div class="field">
+      <label for="s-msg" class="muted">Message</label>
+      <textarea id="s-msg" rows="3" spellcheck="false">Hello, Ethereum!</textarea>
+    </div>
+    <label class="field inline-check"><input type="checkbox" id="s-is-hex"> Message is hex bytes</label>
+    <p class="error" id="s-err" hidden></p>
+    <div class="out" id="s-out"></div>
+  </div>
+  </section>
+  <section id="tab-verify" class="mode-panel" data-tab-panel="verify">
+
+  <div class="panel">
+    <div class="row" style="margin-bottom:14px"><button type="button" id="v-example">Example</button></div>
+    <div class="field">
+      <label for="v-msg" class="muted">Message</label>
+      <textarea id="v-msg" rows="3" spellcheck="false"></textarea>
+    </div>
+    <label class="field inline-check"><input type="checkbox" id="v-is-hex"> Message is hex bytes</label>
+    <div class="field">
+      <label for="v-sig" class="muted">Signature (65 bytes, or 64-byte EIP-2098 compact)</label>
+      <textarea id="v-sig" class="mono" rows="2" spellcheck="false" placeholder="0x…"></textarea>
+    </div>
+    <div class="field">
+      <label for="v-addr" class="muted">Expected signer (optional)</label>
+      <input id="v-addr" class="mono" spellcheck="false" autocomplete="off" placeholder="0x…">
+    </div>
+    <p class="error" id="v-err" hidden></p>
+    <p class="status" id="v-status" hidden></p>
+    <div class="out" id="v-out"></div>
+  </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.7 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="sign-verify.js"></script>
+</body>
+</html>
