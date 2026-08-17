@@ -719,6 +719,18 @@
               "keywords": "raw tx eip1559 legacy"
             }
           ]
+        },
+        {
+          "name": "Signatures",
+          "tools": [
+            {
+              "slug": "sign-verify",
+              "emoji": "✍️",
+              "name": "Sign & Verify",
+              "description": "Sign a message (EIP-191) and recover its signer",
+              "keywords": "personal_sign eip191 ecrecover verify"
+            }
+          ]
         }
       ]
     }
