@@ -729,6 +729,13 @@
               "name": "Sign & Verify",
               "description": "Sign a message (EIP-191) and recover its signer",
               "keywords": "personal_sign eip191 ecrecover verify"
+            },
+            {
+              "slug": "typed-data",
+              "emoji": "🧾",
+              "name": "Typed Data",
+              "description": "Hash and sign EIP-712 typed data",
+              "keywords": "eip712 permit"
             }
           ]
         }
