@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Typed Data</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%A7%BE</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/evm.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← EVM</a>
+  <h1>🧾 Typed Data</h1>
+  <p class="lead">Hash EIP-712 typed data (the JSON wallets receive in <code>eth_signTypedData_v4</code>), and optionally sign it or recover a signer.</p>
+
+  <div class="panel">
+    <div class="field">
+      <div class="row" style="justify-content:space-between">
+        <label for="json" class="muted">Typed data JSON</label>
+        <button type="button" id="example" class="icon-btn">Example: EIP-712 Mail</button>
+      </div>
+      <textarea id="json" class="mono" rows="14" spellcheck="false"></textarea>
+    </div>
+    <p class="error" id="err" hidden></p>
+    <div class="out" id="out"></div>
+  </div>
+
+  <div class="panel">
+    <h2 style="margin-top:0">Sign</h2>
+    <p class="warning">Runs locally in your browser. Don't paste keys that hold real funds.</p>
+    <div class="field">
+      <label for="key" class="muted">Private key</label>
+      <input id="key" class="mono" spellcheck="false" autocomplete="off" placeholder="0x…">
+    </div>
+    <p class="error" id="sign-err" hidden></p>
+    <div class="out" id="sign-out"></div>
+  </div>
+
+  <div class="panel">
+    <h2 style="margin-top:0">Recover signer</h2>
+    <div class="field">
+      <label for="sig" class="muted">Signature</label>
+      <textarea id="sig" class="mono" rows="2" spellcheck="false" placeholder="0x…"></textarea>
+    </div>
+    <p class="error" id="rec-err" hidden></p>
+    <div class="out" id="rec-out"></div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.7 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="typed-data.js"></script>
+</body>
+</html>
