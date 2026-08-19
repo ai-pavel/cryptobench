@@ -738,6 +738,18 @@
               "keywords": "eip712 permit"
             }
           ]
+        },
+        {
+          "name": "Wallets",
+          "tools": [
+            {
+              "slug": "mnemonic-accounts",
+              "emoji": "🌱",
+              "name": "Mnemonic Accounts",
+              "description": "Derive accounts from a mnemonic (BIP-44)",
+              "keywords": "seed phrase bip39 hd wallet"
+            }
+          ]
         }
       ]
     }
