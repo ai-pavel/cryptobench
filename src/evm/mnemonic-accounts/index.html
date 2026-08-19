@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mnemonic Accounts</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%8C%B1</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/evm.css">
+  <style>
+    .acct td { vertical-align: top; }
+    .acct td.mono { word-break: break-all; font-size: 13px; }
+    .acct td:first-child { width: 1%; white-space: nowrap; color: var(--muted); }
+    .acct .path { display: block; color: var(--muted); font-size: 12px; }
+    .acct .key { display: block; margin-top: 4px; color: var(--muted); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 12px; }
+    @media (max-width: 560px) { .grid-3 { grid-template-columns: 1fr 1fr; } .grid-3 .field:first-child { grid-column: 1 / -1; } }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← EVM</a>
+  <h1>🌱 Mnemonic Accounts</h1>
+  <p class="lead">Derive Ethereum accounts from a BIP-39 mnemonic, the way MetaMask, Ledger and other wallets do. You can also generate a new mnemonic.</p>
+
+  <div class="panel">
+    <p class="warning">Runs locally in your browser. Don't paste a mnemonic that holds real funds.</p>
+    <div class="field">
+      <label for="mnemonic" class="muted">Mnemonic</label>
+      <textarea id="mnemonic" class="mono" rows="3" spellcheck="false" autocomplete="off">test test test test test test test test test test test junk</textarea>
+    </div>
+    <div class="row" style="margin-bottom:14px">
+      <button type="button" id="example">Example</button>
+      <button id="gen12">New 12 words</button>
+      <button id="gen24">New 24 words</button>
+    </div>
+    <p class="status" id="status" hidden></p>
+    <div class="field">
+      <label for="passphrase" class="muted">Passphrase (optional, “25th word”)</label>
+      <input id="passphrase" spellcheck="false" autocomplete="off">
+    </div>
+    <div class="grid-3">
+      <div class="field">
+        <label for="preset" class="muted">Derivation path</label>
+        <select id="preset">
+          <option value="m/44'/60'/0'/0/{i}">Standard (MetaMask, Trezor)</option>
+          <option value="m/44'/60'/{i}'/0/0">Ledger Live</option>
+          <option value="m/44'/60'/0'/{i}">Ledger legacy (MEW)</option>
+          <option value="custom">Custom…</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="start" class="muted">From index</label>
+        <input id="start" type="number" min="0" value="0">
+      </div>
+      <div class="field">
+        <label for="count" class="muted">Accounts</label>
+        <input id="count" type="number" min="1" max="100" value="5">
+      </div>
+    </div>
+    <div class="field">
+      <label for="path" class="muted">Path template ({i} is the account index)</label>
+      <input id="path" class="mono" spellcheck="false" value="m/44'/60'/0'/0/{i}">
+    </div>
+    <label class="field inline-check"><input type="checkbox" id="show-keys"> Show private keys</label>
+    <p class="error" id="err" hidden></p>
+    <table class="acct" id="table" hidden><tbody></tbody></table>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.7 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="mnemonic-accounts.js"></script>
+</body>
+</html>
