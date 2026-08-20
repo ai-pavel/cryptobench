@@ -1,0 +1,23 @@
+/* Shared styles for the Solana tools (on top of assets/style.css). */
+[hidden] { display: none !important; }
+.wide { width: 100%; }
+textarea.wide { resize: vertical; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; }
+.field { display: flex; flex-direction: column; gap: 4px; margin-top: 12px; font-size: 14px; color: var(--muted); }
+.field input, .field select, .field textarea { color: var(--text); font-size: 15px; }
+.field input.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; }
+.error { color: #c0392b; margin: 12px 0 0; }
+.ok { color: #1e8e3e; font-weight: 600; }
+.bad { color: #c0392b; font-weight: 600; }
+.note { margin-top: 16px; padding: 10px 12px; border-radius: 8px; background: color-mix(in srgb, #e5a50a 14%, transparent); font-size: 14px; }
+table.kv { table-layout: fixed; }
+table.kv th { width: 30%; vertical-align: top; color: var(--muted); font-weight: 500; font-size: 14px; }
+table.kv td.mono { overflow-wrap: anywhere; font-size: 14px; }
+table.kv td:last-child { width: 72px; text-align: right; vertical-align: top; }
+.badge { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; border: 1px solid var(--border); color: var(--muted); margin-right: 4px; }
+.badge.on { border-color: var(--accent); color: var(--accent); }
+.section-title { margin: 20px 0 6px; font-weight: 600; }
+@media (max-width: 480px) {
+  table.kv th { width: 34%; }
+  table.kv td:last-child { width: 62px; }
+  table.kv th, table.kv td { padding: 6px 4px; }
+}
