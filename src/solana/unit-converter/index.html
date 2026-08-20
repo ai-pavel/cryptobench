@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unit Converter</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%92%B0</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/sol.css">
+  <style>
+    .pair { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; }
+    .pair .unit { color: var(--muted); font-size: 14px; min-width: 70px; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Solana</a>
+  <h1>💰 Unit Converter</h1>
+  <p class="lead">Convert between lamports and SOL exactly, and estimate priority fees.</p>
+
+  <div class="panel">
+    <label class="field">SOL
+      <span class="pair"><input id="sol" class="mono" inputmode="decimal" value="1" autocomplete="off"><button class="icon-btn" data-copy-from="sol">Copy</button></span>
+    </label>
+    <label class="field">Lamports
+      <span class="pair"><input id="lamports" class="mono" inputmode="numeric" autocomplete="off"><button class="icon-btn" data-copy-from="lamports">Copy</button></span>
+    </label>
+    <p class="error" id="err" hidden></p>
+    <div class="row"><button type="button" id="example">Example: rent-exempt token account</button></div>
+    <p class="muted">1 SOL = 1,000,000,000 lamports. Values are exact: no floating-point rounding.</p>
+  </div>
+
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">Priority fee</p>
+    <div class="row">
+      <label class="field" style="flex:1;min-width:140px">Compute unit limit <input id="cu" class="mono" inputmode="numeric" value="200000"></label>
+      <label class="field" style="flex:1;min-width:140px">Price (micro-lamports per CU) <input id="price" class="mono" inputmode="numeric" value="10000"></label>
+      <label class="field" style="flex:1;min-width:140px">Signatures <input id="sigs" class="mono" inputmode="numeric" value="1"></label>
+    </div>
+    <div id="fee"></div>
+    <p class="muted">Base fee is 5,000 lamports per signature. Priority fee = limit × price ÷ 1,000,000, rounded up.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.7 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="unit-converter.js"></script>
+</body>
+</html>
