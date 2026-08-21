@@ -771,6 +771,18 @@
               "keywords": "sol lamport"
             }
           ]
+        },
+        {
+          "name": "Keys & Addresses",
+          "tools": [
+            {
+              "slug": "keypair-converter",
+              "emoji": "🔐",
+              "name": "Keypair Converter",
+              "description": "Convert a keypair between JSON bytes and base58",
+              "keywords": "id.json secret key private key"
+            }
+          ]
         }
       ]
     }
