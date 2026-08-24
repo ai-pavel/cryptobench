@@ -781,6 +781,13 @@
               "name": "Keypair Converter",
               "description": "Convert a keypair between JSON bytes and base58",
               "keywords": "id.json secret key private key"
+            },
+            {
+              "slug": "address-validator",
+              "emoji": "✅",
+              "name": "Address Validator",
+              "description": "Check an address and whether it is on the ed25519 curve",
+              "keywords": "pubkey public key"
             }
           ]
         }
