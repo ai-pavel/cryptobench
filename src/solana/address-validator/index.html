@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Address Validator</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9C%85</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/sol.css">
+  <style>
+    .result { margin-top: 12px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; }
+    .result .addr { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; word-break: break-all; }
+    .result ul { margin: 8px 0 0; padding-left: 18px; font-size: 14px; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Solana</a>
+  <h1>✅ Address Validator</h1>
+  <p class="lead">Check Solana addresses: valid base58, 32 bytes, on or off the ed25519 curve, and well-known programs.</p>
+
+  <div class="panel">
+    <label class="field">Addresses, one per line
+      <textarea id="input" class="wide" rows="4" spellcheck="false" autocomplete="off" placeholder="11111111111111111111111111111111"></textarea>
+    </label>
+    <div class="row" style="margin-top:12px"><button type="button" id="example">Example</button></div>
+    <div id="out"></div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.7 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="address-validator.js"></script>
+</body>
+</html>
