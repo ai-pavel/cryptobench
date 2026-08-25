@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mnemonic Accounts</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%8C%B1</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/sol.css">
+  <style>
+    table.accts td, table.accts th { font-size: 14px; }
+    table.accts td.mono { word-break: break-all; }
+    table.accts td:first-child, table.accts th:first-child { width: 36px; }
+    table.accts td:last-child { width: 62px; text-align: right; }
+    .path { color: var(--muted); font-size: 12px; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Solana</a>
+  <h1>🌱 Mnemonic Accounts</h1>
+  <p class="lead">Generate or validate a BIP-39 mnemonic and derive Solana accounts along common derivation paths.</p>
+
+  <div class="panel">
+    <label class="field">Mnemonic
+      <textarea id="mnemonic" class="wide" rows="3" spellcheck="false" autocomplete="off" placeholder="12 or 24 words"></textarea>
+    </label>
+    <div class="row" style="margin-top:12px">
+      <button type="button" id="example">Example</button>
+      <button id="gen12">Generate 12 words</button>
+      <button id="gen24">Generate 24 words</button>
+    </div>
+    <label class="field">Passphrase (optional, "25th word")
+      <input id="pass" autocomplete="off" spellcheck="false">
+    </label>
+    <label class="field">Derivation path
+      <select id="scheme">
+        <option value="m/44'/501'/{i}'/0'">m/44'/501'/i'/0' · Phantom, Solflare, Backpack</option>
+        <option value="m/44'/501'/{i}'">m/44'/501'/i' · Ledger Live, some wallets</option>
+        <option value="m/44'/501'">m/44'/501' · root (single account)</option>
+        <option value="cli">Solana CLI · first 32 bytes of the seed, no derivation</option>
+        <option value="custom">Custom…</option>
+      </select>
+    </label>
+    <label class="field" id="custom-wrap" hidden>Custom path (use {i} for the account index; hardened indexes only)
+      <input id="custom" class="mono" value="m/44'/501'/{i}'/0'" spellcheck="false">
+    </label>
+    <div class="row">
+      <label class="field" style="flex:1;min-width:120px">First index <input id="start" type="number" min="0" value="0"></label>
+      <label class="field" style="flex:1;min-width:120px">Count <input id="count" type="number" min="1" max="100" value="5"></label>
+    </div>
+    <label class="row" style="margin-top:12px;flex-direction:row;color:var(--text);font-size:15px"><input type="checkbox" id="reveal"> Show secret keys</label>
+    <p class="error" id="err" hidden></p>
+    <p class="muted" id="status"></p>
+    <div id="out"></div>
+    <p class="note">Runs locally in your browser. Don't paste keys that hold real funds.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.7 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="mnemonic-accounts.js"></script>
+</body>
+</html>
