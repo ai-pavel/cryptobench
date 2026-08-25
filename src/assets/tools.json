@@ -788,6 +788,13 @@
               "name": "Address Validator",
               "description": "Check an address and whether it is on the ed25519 curve",
               "keywords": "pubkey public key"
+            },
+            {
+              "slug": "mnemonic-accounts",
+              "emoji": "🌱",
+              "name": "Mnemonic Accounts",
+              "description": "Derive accounts from a mnemonic (m/44'/501')",
+              "keywords": "seed phrase bip39 phantom solflare"
             }
           ]
         }
