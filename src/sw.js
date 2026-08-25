@@ -1,6 +1,6 @@
 // Service worker template. scripts/generate.py fills in VERSION and PRECACHE
 // and writes the result to /sw.js. Edit this file, not sw.js.
-const VERSION = '96f240bf3de8';
+const VERSION = 'e68f73315a41';
 const SITE_CACHE = 'site-' + VERSION;
 // Heavy, version-pinned files that tools download on first use (the ffmpeg core,
 // the OCR engine and its language data). Cached once and kept across site updates.
@@ -249,6 +249,8 @@ const PRECACHE = [
   "/solana/keypair-converter/keypair-converter.js",
   "/solana/lib/sol.css",
   "/solana/lib/sol.js",
+  "/solana/mnemonic-accounts/",
+  "/solana/mnemonic-accounts/mnemonic-accounts.js",
   "/solana/unit-converter/",
   "/solana/unit-converter/unit-converter.js",
   "/utilities/",
