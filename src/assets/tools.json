@@ -795,6 +795,13 @@
               "name": "Mnemonic Accounts",
               "description": "Derive accounts from a mnemonic (m/44'/501')",
               "keywords": "seed phrase bip39 phantom solflare"
+            },
+            {
+              "slug": "vanity-address",
+              "emoji": "✨",
+              "name": "Vanity Address",
+              "description": "Generate an address with a chosen prefix",
+              "keywords": "grind"
             }
           ]
         }
