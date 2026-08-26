@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vanity Address</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9C%A8</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/sol.css">
+  <style>
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; margin-top: 16px; }
+    .stat { padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; }
+    .stat b { display: block; font-size: 18px; font-variant-numeric: tabular-nums; }
+    .stat span { color: var(--muted); font-size: 13px; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Solana</a>
+  <h1>✨ Vanity Address</h1>
+  <p class="lead">Generate a keypair whose address starts or ends with characters you choose. The search runs in background threads on your device.</p>
+
+  <div class="panel">
+    <div class="row">
+      <label class="field" style="flex:1;min-width:140px">Starts with <input id="prefix" class="mono" autocomplete="off" spellcheck="false" maxlength="10"></label>
+      <label class="field" style="flex:1;min-width:140px">Ends with <input id="suffix" class="mono" autocomplete="off" spellcheck="false" maxlength="10"></label>
+    </div>
+    <label class="row" style="margin-top:12px;color:var(--text)"><input type="checkbox" id="case"> Case-sensitive</label>
+    <label class="field">Threads
+      <input id="threads" type="number" min="1" max="32">
+    </label>
+    <p class="error" id="err" hidden></p>
+    <p class="muted" id="estimate"></p>
+    <div class="row" style="margin-top:12px">
+      <button type="button" id="example">Example</button>
+      <button class="primary" id="start">Start</button>
+      <button id="stop" disabled>Stop</button>
+    </div>
+    <div class="stats" id="stats" hidden>
+      <div class="stat"><b id="tried">0</b><span>Keys tried</span></div>
+      <div class="stat"><b id="rate">0</b><span>Keys per second</span></div>
+      <div class="stat"><b id="elapsed">0s</b><span>Elapsed</span></div>
+    </div>
+    <div id="out"></div>
+    <p class="note">Runs locally in your browser. Keys are generated with crypto.getRandomValues and never leave your device, but treat generated keys with care.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.8 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="vanity-address.js"></script>
+</body>
+</html>
