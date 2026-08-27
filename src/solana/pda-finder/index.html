@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PDA Finder</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%A7%AD</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/sol.css">
+  <style>
+    .seed { display: grid; grid-template-columns: 130px 1fr auto; gap: 8px; margin-top: 8px; }
+    .seed input { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; }
+    .seed .bytes { grid-column: 1 / -1; font-size: 12px; color: var(--muted); word-break: break-all; margin-top: -2px; }
+    .seed .bytes.bad { color: #c0392b; }
+    @media (max-width: 480px) { .seed { grid-template-columns: 1fr auto; } .seed select { grid-column: 1 / -1; } }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Solana</a>
+  <h1>🧭 PDA Finder</h1>
+  <p class="lead">Find a program derived address (PDA) from a program ID and seeds, or check a specific bump.</p>
+
+  <div class="panel">
+    <label class="field">Program ID
+      <input id="program" class="mono" autocomplete="off" spellcheck="false" placeholder="Program address (base58)">
+    </label>
+    <p class="section-title">Seeds</p>
+    <div id="seeds"></div>
+    <div class="row" style="margin-top:12px">
+      <button id="add">+ Add seed</button>
+      <button id="example">Example: associated token account</button>
+    </div>
+    <label class="field">Bump (optional: leave empty to search for the canonical bump)
+      <input id="bump" type="number" min="0" max="255" placeholder="e.g. 254">
+    </label>
+    <p class="error" id="err" hidden></p>
+    <div id="out"></div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.8 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="pda-finder.js"></script>
+</body>
+</html>
