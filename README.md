@@ -12,7 +12,7 @@ Local-first browser tools — everyday, dev & crypto. Nothing leaves your device
 | [🔐 Cryptography](https://ai-pavel.github.io/crypto/) | Hashes, HMAC, key derivation, encryption, keys, signatures, certificates and secrets | 16 | [`src/crypto/`](src/crypto/) |
 | [🪙 Bitcoin](https://ai-pavel.github.io/bitcoin/) | Bitcoin: blocks, transactions, PSBTs, keys, addresses and HD wallets | 18 | [`src/bitcoin/`](src/bitcoin/) |
 | [💠 EVM](https://ai-pavel.github.io/evm/) | Ethereum and EVM: units, addresses, ABI, transactions and signatures | 12 | [`src/evm/`](src/evm/) |
-| [🌞 Solana](https://ai-pavel.github.io/solana/) | Solana: keys, addresses, PDAs, token accounts, transactions and signatures | 5 | [`src/solana/`](src/solana/) |
+| [🌞 Solana](https://ai-pavel.github.io/solana/) | Solana: keys, addresses, PDAs, token accounts, transactions and signatures | 6 | [`src/solana/`](src/solana/) |
 <!-- toolboxes:end -->
 
 Everything runs client-side in the browser: files and keys never leave the device.
