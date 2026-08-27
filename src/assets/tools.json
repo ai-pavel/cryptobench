@@ -804,6 +804,18 @@
               "keywords": "grind"
             }
           ]
+        },
+        {
+          "name": "Programs",
+          "tools": [
+            {
+              "slug": "pda-finder",
+              "emoji": "🧭",
+              "name": "PDA Finder",
+              "description": "Find a program derived address from seeds",
+              "keywords": "program derived address bump seeds"
+            }
+          ]
         }
       ]
     }
