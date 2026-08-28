@@ -814,6 +814,13 @@
               "name": "PDA Finder",
               "description": "Find a program derived address from seeds",
               "keywords": "program derived address bump seeds"
+            },
+            {
+              "slug": "token-account",
+              "emoji": "🏦",
+              "name": "Token Account",
+              "description": "Derive an associated token account address",
+              "keywords": "ata spl token mint"
             }
           ]
         }
