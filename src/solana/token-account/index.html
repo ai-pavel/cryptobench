@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Token Account</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%8F%A6</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/sol.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Solana</a>
+  <h1>🏦 Token Account</h1>
+  <p class="lead">Derive the associated token account (ATA) address for a wallet and a token mint.</p>
+
+  <div class="panel">
+    <label class="field">Wallet (owner) address
+      <input id="wallet" class="mono" autocomplete="off" spellcheck="false">
+    </label>
+    <label class="field">Token mint address
+      <input id="mint" class="mono" autocomplete="off" spellcheck="false" list="mints">
+      <datalist id="mints">
+        <option value="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v">USDC</option>
+        <option value="Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB">USDT</option>
+        <option value="So11111111111111111111111111111111111111112">Wrapped SOL</option>
+      </datalist>
+    </label>
+    <label class="field">Token program
+      <select id="program">
+        <option value="TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA">Token Program (SPL Token)</option>
+        <option value="TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb">Token-2022 Program</option>
+      </select>
+    </label>
+    <div class="row" style="margin-top:12px"><button id="example">Example: USDC</button></div>
+    <p class="error" id="err" hidden></p>
+    <div id="out"></div>
+    <p class="muted">The mint must be owned by the selected token program; a USDC account under Token-2022 is a different (unused) address.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.8 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="token-account.js"></script>
+</body>
+</html>
