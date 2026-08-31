@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anchor Discriminator</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%8E%AF</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/sol.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Solana</a>
+  <h1>🎯 Anchor Discriminator</h1>
+  <p class="lead">Compute the 8-byte discriminators Anchor puts in front of instruction data, accounts and events.</p>
+
+  <div class="panel">
+    <label class="field">Name
+      <input id="name" class="mono" autocomplete="off" spellcheck="false" placeholder="e.g. initialize, transferTokens, UserAccount">
+    </label>
+    <label class="field">Kind
+      <select id="kind">
+        <option value="global">Instruction (global:&lt;snake_case&gt;)</option>
+        <option value="account">Account (account:&lt;PascalCase&gt;)</option>
+        <option value="event">Event (event:&lt;PascalCase&gt;)</option>
+      </select>
+    </label>
+    <label class="row" style="margin-top:12px;color:var(--text)"><input type="checkbox" id="convert" checked> Convert the name's case the way Anchor does</label>
+    <div class="row" style="margin-top:12px"><button type="button" id="example">Example: initialize</button></div>
+    <div id="out"></div>
+    <p class="muted">Discriminator = first 8 bytes of SHA-256("&lt;namespace&gt;:&lt;name&gt;").</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.8 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="anchor-discriminator.js"></script>
+</body>
+</html>
