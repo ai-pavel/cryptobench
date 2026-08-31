@@ -821,6 +821,13 @@
               "name": "Token Account",
               "description": "Derive an associated token account address",
               "keywords": "ata spl token mint"
+            },
+            {
+              "slug": "anchor-discriminator",
+              "emoji": "🎯",
+              "name": "Anchor Discriminator",
+              "description": "Compute Anchor instruction and account discriminators",
+              "keywords": "anchor idl"
             }
           ]
         }
