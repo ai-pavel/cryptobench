@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Borsh</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%A7%A9</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/sol.css">
+  <style>
+    .tabs { display: flex; gap: 4px; margin-top: 16px; }
+    .tabs button[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+    pre.json { margin: 12px 0 0; padding: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow-x: auto; font-size: 13px; white-space: pre-wrap; word-break: break-all; }
+    details { margin-top: 12px; font-size: 14px; }
+    details code { font-size: 13px; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Solana</a>
+  <h1>🧩 Borsh</h1>
+  <p class="lead">Encode JSON values to Borsh bytes and decode Borsh bytes back, using a schema you write as text.</p>
+
+  <div class="panel">
+    <label class="field">Schema
+      <textarea id="schema" class="wide" rows="7" spellcheck="false"></textarea>
+    </label>
+    <div class="row" style="margin-top:8px">
+      <button type="button" id="ex1">Example: struct</button>
+      <button type="button" id="ex2">Example: enum</button>
+    </div>
+    <details>
+      <summary>Supported types</summary>
+      <p><code>u8 u16 u32 u64 u128 i8 i16 i32 i64 i128 f32 f64 bool string pubkey bytes</code>,
+      <code>vec&lt;T&gt;</code>, <code>option&lt;T&gt;</code>, <code>[T; N]</code>,
+      <code>struct { name: T, … }</code>, <code>enum { A, B(T, U), C { x: T } }</code>.
+      In JSON, 64-bit and larger integers can be strings, <code>pubkey</code> is base58, <code>bytes</code> is hex, an option's None is <code>null</code>,
+      and an enum value is <code>"A"</code>, <code>{"B": [t, u]}</code> or <code>{"C": {"x": …}}</code>.</p>
+    </details>
+    <p class="error" id="schema-err" hidden></p>
+
+    <div class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-tab="encode">Encode</button>
+      <button role="tab" aria-selected="false" data-tab="decode">Decode</button>
+    </div>
+
+    <div id="tab-encode">
+      <label class="field">Value (JSON)
+        <textarea id="json" class="wide" rows="6" spellcheck="false"></textarea>
+      </label>
+      <p class="error" id="enc-err" hidden></p>
+      <div id="enc-out"></div>
+    </div>
+
+    <div id="tab-decode" hidden>
+      <label class="field">Bytes
+        <textarea id="bytes" class="wide" rows="4" spellcheck="false" placeholder="Hex, base64 or base58"></textarea>
+      </label>
+      <label class="field">Encoding
+        <select id="enc"><option value="auto">Auto-detect</option><option value="hex">Hex</option><option value="base64">Base64</option><option value="base58">Base58</option></select>
+      </label>
+      <p class="error" id="dec-err" hidden></p>
+      <div id="dec-out"></div>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.8 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="borsh.js"></script>
+</body>
+</html>
