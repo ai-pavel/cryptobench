@@ -828,6 +828,13 @@
               "name": "Anchor Discriminator",
               "description": "Compute Anchor instruction and account discriminators",
               "keywords": "anchor idl"
+            },
+            {
+              "slug": "borsh",
+              "emoji": "🧩",
+              "name": "Borsh",
+              "description": "Encode and decode Borsh data",
+              "keywords": "serialize"
             }
           ]
         }
