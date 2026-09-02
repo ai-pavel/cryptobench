@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transaction Decoder</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%93%A6</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/sol.css">
+  <style>
+    .ix { margin-top: 12px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; }
+    .ix h3 { margin: 0 0 4px; font-size: 16px; }
+    .ix .prog { color: var(--muted); font-size: 13px; word-break: break-all; }
+    table.accts { table-layout: fixed; }
+    table.accts td, table.accts th { font-size: 13px; padding: 5px 6px; vertical-align: top; }
+    table.accts td.mono { word-break: break-all; }
+    table.accts th:first-child, table.accts td:first-child { width: 32px; }
+    table.accts th:last-child, table.accts td:last-child { width: 34%; }
+    .params td:first-child { color: var(--muted); width: 34%; font-size: 13px; }
+    .params td { font-size: 13px; word-break: break-all; padding: 4px 6px; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Solana</a>
+  <h1>📦 Transaction Decoder</h1>
+  <p class="lead">Decode a serialized Solana transaction or message (legacy or v0): signatures, accounts, blockhash and instructions.</p>
+
+  <div class="panel">
+    <label class="field">Serialized transaction or message
+      <textarea id="input" class="wide" rows="6" spellcheck="false" autocomplete="off" placeholder="Base64 (as returned by RPC with encoding: &quot;base64&quot;), base58 or hex"></textarea>
+    </label>
+    <div class="row" style="margin-bottom:8px"><button type="button" id="example">Example</button></div>
+    <label class="field">Encoding
+      <select id="enc"><option value="auto">Auto-detect</option><option value="base64">Base64</option><option value="base58">Base58</option><option value="hex">Hex</option></select>
+    </label>
+    <p class="error" id="err" hidden></p>
+    <div id="out"></div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.8 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="tx-decoder.js"></script>
+</body>
+</html>
