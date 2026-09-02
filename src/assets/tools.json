@@ -837,6 +837,18 @@
               "keywords": "serialize"
             }
           ]
+        },
+        {
+          "name": "Transactions",
+          "tools": [
+            {
+              "slug": "tx-decoder",
+              "emoji": "📦",
+              "name": "Transaction Decoder",
+              "description": "Decode a serialized transaction and its instructions",
+              "keywords": "v0 legacy message instruction"
+            }
+          ]
         }
       ]
     }
