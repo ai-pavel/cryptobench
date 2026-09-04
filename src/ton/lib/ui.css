@@ -1,0 +1,26 @@
+/* Shared styles for the TON tools. */
+[hidden] { display: none !important; }
+.field { display: flex; flex-direction: column; gap: 4px; width: 100%; }
+.field > span { font-size: 14px; color: var(--muted); }
+.field textarea, .field input, .field select { width: 100%; }
+textarea { resize: vertical; }
+.notice { margin: 0 0 12px; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--muted); font-size: 14px; }
+.error { margin: 12px 0 0; padding: 8px 12px; border-radius: 8px; border: 1px solid #e5484d; color: #e5484d; font-size: 14px; overflow-wrap: anywhere; }
+.ok { color: #2f9e5b; font-weight: 600; }
+.bad { color: #e5484d; font-weight: 600; }
+.kv { display: grid; gap: 10px; margin-top: 16px; }
+.kv-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 8px; align-items: start; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; }
+.kv-label { grid-column: 1 / -1; font-size: 13px; color: var(--muted); }
+.kv-value { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; overflow-wrap: anywhere; word-break: break-all; min-width: 0; }
+.kv-row .icon-btn { padding: 2px 10px; font-size: 13px; }
+.kv-note { grid-column: 1 / -1; font-size: 13px; color: var(--muted); }
+.segmented { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.segmented button { border: 0; border-radius: 0; }
+.segmented button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+details.help { margin-top: 16px; font-size: 14px; color: var(--muted); }
+details.help summary { cursor: pointer; color: var(--text); }
+details.cell { border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; margin-top: 8px; min-width: 0; }
+details.cell summary { cursor: pointer; overflow-wrap: anywhere; }
+details.cell details.cell { margin-left: 6px; }
+.cell-body { display: grid; gap: 2px; padding-top: 4px; min-width: 0; }
+.cell-body > .kv-label { margin-top: 6px; }
