@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unit Converter</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%92%B0</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← TON</a>
+  <h1>💰 Unit Converter</h1>
+
+  <p class="lead">Convert between nanotons and TON exactly, and between jetton amounts and their on-chain units.</p>
+
+  <div class="panel">
+    <h2 style="margin-top:0">TON</h2>
+    <div class="row">
+      <label class="field" style="flex:1 1 200px"><span>TON</span><input id="ton" inputmode="decimal" value="1" autocomplete="off"></label>
+      <label class="field" style="flex:1 1 200px"><span>Nanotons</span><input id="nano" inputmode="numeric" autocomplete="off"></label>
+    </div>
+    <div class="row"><button type="button" id="ton-example">Example: typical transfer fee</button></div>
+    <p class="muted" id="ton-note">1 TON = 1,000,000,000 nanotons.</p>
+    <p class="error" id="ton-err" hidden></p>
+  </div>
+
+  <div class="panel">
+    <h2 style="margin-top:0">Jetton</h2>
+    <div class="row">
+      <label class="field" style="flex:0 1 140px"><span>Decimals</span><input id="dec" type="number" min="0" max="255" value="6"></label>
+      <div class="row" style="align-self:flex-end">
+        <button type="button" data-dec="6">USDT (6)</button>
+        <button type="button" data-dec="9">Default (9)</button>
+      </div>
+    </div>
+    <div class="row"><button type="button" id="jet-example">Example: 12.5 USDT</button></div>
+    <div class="row">
+      <label class="field" style="flex:1 1 200px"><span>Amount</span><input id="amt" inputmode="decimal" value="1" autocomplete="off"></label>
+      <label class="field" style="flex:1 1 200px"><span>Units</span><input id="units" inputmode="numeric" autocomplete="off"></label>
+    </div>
+    <p class="error" id="jet-err" hidden></p>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.9 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="unit-converter.js"></script>
+</body>
+</html>
