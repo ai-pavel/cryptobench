@@ -1,6 +1,6 @@
 // Service worker template. scripts/generate.py fills in VERSION and PRECACHE
 // and writes the result to /sw.js. Edit this file, not sw.js.
-const VERSION = '7b73147052bb';
+const VERSION = '36e6e3a9cdc4';
 const SITE_CACHE = 'site-' + VERSION;
 // Heavy, version-pinned files that tools download on first use (the ffmpeg core,
 // the OCR engine and its language data). Cached once and kept across site updates.
@@ -269,6 +269,8 @@ const PRECACHE = [
   "/solana/vanity-address/vanity-address.js",
   "/solana/vanity-address/worker.js",
   "/ton/",
+  "/ton/address-converter/address-converter.js",
+  "/ton/address-converter/",
   "/ton/lib/ton.js",
   "/ton/lib/ui.css",
   "/ton/lib/ui.js",
