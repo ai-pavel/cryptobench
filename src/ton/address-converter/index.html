@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Address Converter</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%94%84</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← TON</a>
+  <h1>🔄 Address Converter</h1>
+
+  <p class="lead">Convert a TON address between raw and user-friendly forms, and check its checksum.</p>
+
+  <div class="panel">
+    <label class="field"><span>Address</span>
+      <input id="addr" class="mono" placeholder="EQ… / UQ… / 0:83df…" autocomplete="off" spellcheck="false">
+    </label>
+    <div class="row" style="margin-top:8px">
+      <button type="button" id="example">Example</button>
+    </div>
+    <p class="error" id="err" hidden></p>
+    <div id="info" class="muted" style="margin-top:12px"></div>
+    <div class="kv" id="out"></div>
+    <details class="help">
+      <summary>What the forms mean</summary>
+      <p><strong>Raw</strong> is <code>workchain:hash</code>. <strong>User-friendly</strong> addresses are 36 bytes in base64: a flags byte, the workchain, the 32-byte hash and a CRC16 checksum.</p>
+      <p><strong>Bounceable</strong> (EQ…, testnet kQ…): if the receiving contract fails, the coins bounce back. Use it for smart contracts.
+        <strong>Non-bounceable</strong> (UQ…, testnet 0Q…): coins stay even if the account isn't deployed yet. Wallets show this form.</p>
+      <p>The testnet flag only marks the address as meant for testnet; the account hash is the same.</p>
+    </details>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.9 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="address-converter.js"></script>
+</body>
+</html>
