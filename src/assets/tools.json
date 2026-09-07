@@ -882,6 +882,18 @@
               "keywords": "nanoton toncoin"
             }
           ]
+        },
+        {
+          "name": "Addresses",
+          "tools": [
+            {
+              "slug": "address-converter",
+              "emoji": "🔄",
+              "name": "Address Converter",
+              "description": "Convert between raw, bounceable and non-bounceable addresses",
+              "keywords": "friendly raw testnet"
+            }
+          ]
         }
       ]
     }
