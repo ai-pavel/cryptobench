@@ -892,6 +892,13 @@
               "name": "Address Converter",
               "description": "Convert between raw, bounceable and non-bounceable addresses",
               "keywords": "friendly raw testnet"
+            },
+            {
+              "slug": "wallet-address",
+              "emoji": "🗝️",
+              "name": "Wallet Address",
+              "description": "Derive a wallet address from a public key (v3, v4, v5)",
+              "keywords": "wallet v4r2 v5r1 contract"
             }
           ]
         }
