@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wallet Address</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%97%9D%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← TON</a>
+  <h1>🗝️ Wallet Address</h1>
+
+  <p class="lead">Derive the addresses of the standard wallet contracts (v3r1, v3r2, v4r2, v5r1) for a public key or mnemonic.</p>
+
+  <div class="panel">
+    <p class="notice">Runs locally in your browser. Don't paste keys that hold real funds.</p>
+    <div class="segmented" role="group" aria-label="Input">
+      <button type="button" data-mode="pub" aria-pressed="true">Public key</button>
+      <button type="button" data-mode="mn" aria-pressed="false">Mnemonic</button>
+    </div>
+    <div id="pub-box" style="margin-top:12px">
+      <label class="field"><span>Public key (32 bytes, hex or base64)</span>
+        <input id="pub" class="mono" autocomplete="off" spellcheck="false" placeholder="e.g. 82a0b2543d06fec0aac952e9ec738be56ab1b6027fc0c1aa817ae14b4d1ed2fb">
+      </label>
+    </div>
+    <div id="mn-box" style="margin-top:12px" hidden>
+      <label class="field"><span>Mnemonic (24 words)</span><textarea id="mn" rows="3" class="mono" spellcheck="false" autocomplete="off"></textarea></label>
+      <label class="field" style="margin-top:8px"><span>Password (optional)</span><input id="pw" type="password" autocomplete="off"></label>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <label class="field" style="flex:1 1 140px"><span>Network</span>
+        <select id="net"><option value="main">Mainnet</option><option value="test">Testnet</option></select></label>
+      <label class="field" style="flex:1 1 140px"><span>Workchain</span>
+        <select id="wc"><option value="0">0 (basechain)</option><option value="-1">-1 (masterchain)</option></select></label>
+      <label class="field" style="flex:1 1 140px"><span>Wallet ID (v3/v4)</span><input id="wid" type="number" placeholder="698983191"></label>
+      <label class="field" style="flex:1 1 140px"><span>Subwallet (v5)</span><input id="sub" type="number" min="0" max="32767" value="0"></label>
+    </div>
+    <div class="row" style="margin-top:12px"><button type="button" id="example">Example</button><button class="primary" type="button" id="go">Derive addresses</button><span class="muted" id="status"></span></div>
+    <p class="error" id="err" hidden></p>
+    <div id="out"></div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.9 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="wallet-address.js"></script>
+</body>
+</html>
