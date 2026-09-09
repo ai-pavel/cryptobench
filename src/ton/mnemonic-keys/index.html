@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mnemonic Keys</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%8C%B1</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← TON</a>
+  <h1>🌱 Mnemonic Keys</h1>
+
+  <p class="lead">Generate and check TON mnemonics and derive their ed25519 keys. TON uses its own scheme, not BIP-39: the words come from the same list, but the checksum and key derivation differ.</p>
+
+  <div class="panel">
+    <p class="notice">Runs locally in your browser. Don't paste keys that hold real funds.</p>
+    <label class="field"><span>Mnemonic (24 words)</span><textarea id="mn" rows="4" class="mono" spellcheck="false" autocomplete="off"></textarea></label>
+    <label class="field" style="margin-top:8px"><span>Password (optional)</span><input id="pw" type="password" autocomplete="off"></label>
+    <div class="row" style="margin-top:12px">
+      <button type="button" id="example">Example</button>
+      <button class="primary" type="button" id="check">Check and derive</button>
+      <button type="button" id="gen">Generate new</button>
+      <span class="muted" id="status"></span>
+    </div>
+    <p class="error" id="err" hidden></p>
+    <div id="result" style="margin-top:12px"></div>
+    <div class="kv" id="out"></div>
+    <details class="help">
+      <summary>How it works</summary>
+      <p>Entropy = HMAC-SHA512(key: the words joined by spaces, data: the password). A phrase is valid when PBKDF2-SHA512(entropy, "TON seed version", 390 rounds) starts with a zero byte, so about 1 in 256 random phrases qualifies.</p>
+      <p>Seed = PBKDF2-SHA512(entropy, "TON default seed", 100,000 rounds). Its first 32 bytes are the ed25519 private key.</p>
+      <p>Phrases made with a password are generated so that they're detectably password-protected: they fail without it.</p>
+    </details>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.9 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="mnemonic-keys.js"></script>
+</body>
+</html>
