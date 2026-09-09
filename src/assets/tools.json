@@ -901,6 +901,18 @@
               "keywords": "wallet v4r2 v5r1 contract"
             }
           ]
+        },
+        {
+          "name": "Wallets",
+          "tools": [
+            {
+              "slug": "mnemonic-keys",
+              "emoji": "🌱",
+              "name": "Mnemonic Keys",
+              "description": "Validate a TON mnemonic and derive its keys",
+              "keywords": "seed phrase 24 words"
+            }
+          ]
         }
       ]
     }
