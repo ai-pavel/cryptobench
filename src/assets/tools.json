@@ -913,6 +913,18 @@
               "keywords": "seed phrase 24 words"
             }
           ]
+        },
+        {
+          "name": "Cells & Messages",
+          "tools": [
+            {
+              "slug": "boc-decoder",
+              "emoji": "🧱",
+              "name": "BOC Decoder",
+              "description": "Decode a bag of cells into a cell tree",
+              "keywords": "cell hash boc"
+            }
+          ]
         }
       ]
     }
