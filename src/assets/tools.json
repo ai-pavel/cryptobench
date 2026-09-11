@@ -923,6 +923,13 @@
               "name": "BOC Decoder",
               "description": "Decode a bag of cells into a cell tree",
               "keywords": "cell hash boc"
+            },
+            {
+              "slug": "comment-payload",
+              "emoji": "💬",
+              "name": "Comment Payload",
+              "description": "Encode and decode text comments in message bodies",
+              "keywords": "memo comment"
             }
           ]
         }
