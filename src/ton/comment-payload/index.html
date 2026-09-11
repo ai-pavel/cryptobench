@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comment Payload</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%92%AC</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← TON</a>
+  <h1>💬 Comment Payload</h1>
+
+  <p class="lead">Build the message body for a text comment, or read the comment from a body BOC.</p>
+
+  <div class="panel">
+    <div class="segmented" role="group" aria-label="Mode">
+      <button type="button" data-mode="enc" aria-pressed="true">Encode</button>
+      <button type="button" data-mode="dec" aria-pressed="false">Decode</button>
+    </div>
+    <div id="enc-box" style="margin-top:12px">
+      <div class="row" style="margin-bottom:8px"><button type="button" id="enc-example">Example</button></div>
+      <label class="field"><span>Comment text</span><textarea id="text" rows="4" placeholder="Thanks for lunch!"></textarea></label>
+      <p class="muted" id="enc-info"></p>
+      <div class="kv" id="enc-out"></div>
+    </div>
+    <div id="dec-box" style="margin-top:12px" hidden>
+      <div class="row" style="margin-bottom:8px"><button type="button" id="dec-example">Example</button></div>
+      <label class="field"><span>Body BOC (hex or base64)</span><textarea id="boc" rows="4" class="mono" spellcheck="false" autocomplete="off"></textarea></label>
+      <div id="dec-out" style="margin-top:12px"></div>
+    </div>
+    <p class="error" id="err" hidden></p>
+    <details class="help">
+      <summary>Format</summary>
+      <p>A text comment is a cell that starts with the 32-bit op code 0, followed by the UTF-8 text. Text that doesn't fit in one cell (123 bytes after the op code, 127 bytes per further cell) continues in a chain of references ("snake" format).</p>
+      <p>Encrypted comments use op 0x2167da4b. They can only be decrypted with the wallet's private key, which this tool doesn't do.</p>
+    </details>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.9 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="comment-payload.js"></script>
+</body>
+</html>
