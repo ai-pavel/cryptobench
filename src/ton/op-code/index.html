@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Op Code</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%94%A2</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <style>
+  .ops td, .ops th { vertical-align: top; }
+  .ops td:first-child { white-space: nowrap; }
+  .ops tr[data-scheme] { cursor: pointer; }
+  .ops tr[data-scheme]:hover td { background: var(--bg); }
+  .scheme { font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+</style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← TON</a>
+  <h1>🔢 Op Code</h1>
+
+  <p class="lead">Compute a message op code from its TL-B constructor, the way TON contracts derive them.</p>
+
+  <div class="panel">
+    <label class="field"><span>TL-B constructor</span>
+      <textarea id="tlb" rows="3" class="mono" spellcheck="false" placeholder="transfer query_id:uint64 amount:(VarUInteger 16) destination:MsgAddress response_destination:MsgAddress custom_payload:(Maybe ^Cell) forward_ton_amount:(VarUInteger 16) forward_payload:(Either Cell ^Cell) = InternalMsgBody"></textarea>
+    </label>
+    <div class="row" style="margin-top:8px"><button type="button" id="example">Example: jetton transfer</button></div>
+    <p class="error" id="err" hidden></p>
+    <div class="kv" id="out"></div>
+    <details class="help">
+      <summary>How it works</summary>
+      <p>The scheme is normalized: an explicit tag (<code>#…</code> or <code>$…</code>) and brackets are removed, a trailing <code>;</code> is dropped and whitespace is collapsed. The op code is the CRC32 of that text with the highest bit cleared.</p>
+      <p>Some standard ops use the same CRC32 with the highest bit <em>set</em> instead, often responses such as <code>excesses</code> (0xd53276db). Both forms are shown.</p>
+    </details>
+
+    <h2>Common op codes</h2>
+    <p class="muted">Click a row to load its scheme. The last column shows that the value is reproduced from the scheme.</p>
+    <div style="overflow-x:auto"><table class="ops"><thead><tr><th>Op</th><th>Message</th><th></th></tr></thead><tbody id="ops"></tbody></table></div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.9 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="op-code.js"></script>
+</body>
+</html>
