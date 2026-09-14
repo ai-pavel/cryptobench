@@ -930,6 +930,13 @@
               "name": "Comment Payload",
               "description": "Encode and decode text comments in message bodies",
               "keywords": "memo comment"
+            },
+            {
+              "slug": "op-code",
+              "emoji": "🔢",
+              "name": "Op Code",
+              "description": "Compute an op code from a TL-B scheme",
+              "keywords": "tlb crc32 opcode"
             }
           ]
         }
