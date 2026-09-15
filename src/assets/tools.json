@@ -939,6 +939,18 @@
               "keywords": "tlb crc32 opcode"
             }
           ]
+        },
+        {
+          "name": "Signatures",
+          "tools": [
+            {
+              "slug": "sign-verify",
+              "emoji": "✍️",
+              "name": "Sign & Verify",
+              "description": "Sign and verify ed25519 messages",
+              "keywords": "ed25519 signature"
+            }
+          ]
         }
       ]
     }
