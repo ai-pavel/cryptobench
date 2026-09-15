@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign &amp; Verify</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9C%8D%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <style>
+    .mode-tabs { display: inline-flex; gap: 0; margin: 18px 0 4px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .mode-tabs button { border: 0; border-radius: 0; padding: 8px 18px; background: var(--surface); }
+    .mode-tabs button + button { border-left: 1px solid var(--border); }
+    .mode-tabs button[aria-selected="true"] { background: var(--accent); color: var(--on-accent); }
+    [hidden] { display: none !important; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← TON</a>
+  <h1>✍️ Sign &amp; Verify</h1>
+  <p class="lead">Sign a message with an ed25519 key or a TON mnemonic, or verify a message signature.</p>
+  <div class="mode-tabs" role="tablist"><button type="button" role="tab" data-tab="sign">Sign</button><button type="button" role="tab" data-tab="verify">Verify</button></div>
+  <section id="tab-sign" class="mode-panel" data-tab-panel="sign">
+
+  <div class="panel">
+    <p class="notice">Runs locally in your browser. Don't paste keys that hold real funds.</p>
+    <div class="segmented" role="group" aria-label="Key">
+      <button type="button" data-key="secret" aria-pressed="true">Private key</button>
+      <button type="button" data-key="mn" aria-pressed="false">Mnemonic</button>
+    </div>
+    <div id="s-secret-box" style="margin-top:12px">
+      <label class="field"><span>Private key: 32-byte seed or 64-byte secret key (hex or base64)</span>
+        <input id="s-secret" class="mono" type="password" autocomplete="off" spellcheck="false"></label>
+      <div class="row" style="margin-top:8px"><button type="button" id="s-random">Random key</button><label class="row muted" style="flex-direction:row"><input type="checkbox" id="s-show"> Show</label></div>
+    </div>
+    <div id="s-mn-box" style="margin-top:12px" hidden>
+      <label class="field"><span>Mnemonic (24 words)</span><textarea id="s-mn" rows="3" class="mono" spellcheck="false" autocomplete="off"></textarea></label>
+      <label class="field" style="margin-top:8px"><span>Password (optional)</span><input id="s-pw" type="password" autocomplete="off"></label>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <span class="muted">Message is</span>
+      <div class="segmented" role="group" aria-label="Message format">
+        <button type="button" data-fmt="text" aria-pressed="true">Text</button>
+        <button type="button" data-fmt="hex" aria-pressed="false">Hex</button>
+      </div>
+    </div>
+    <label class="field" style="margin-top:8px"><span>Message</span><textarea id="s-msg" rows="3" spellcheck="false"></textarea></label>
+    <div class="row" style="margin-top:12px"><button type="button" id="s-example">Example</button><button class="primary" type="button" id="s-go">Sign</button><span class="muted" id="s-status"></span></div>
+    <p class="error" id="s-err" hidden></p>
+    <div class="kv" id="s-out"></div>
+    <p class="muted" style="margin-top:16px">This signs the message bytes directly with ed25519. Wallet apps may add a prefix or hash first (for example TON Connect's signData), so their signatures differ.</p>
+  </div>
+  </section>
+  <section id="tab-verify" class="mode-panel" data-tab-panel="verify">
+
+  <div class="panel">
+    <label class="field"><span>Public key (32 bytes, hex or base64)</span><input id="v-pub" class="mono" autocomplete="off" spellcheck="false"></label>
+    <div class="row" style="margin-top:12px">
+      <span class="muted">Message is</span>
+      <div class="segmented" role="group" aria-label="Message format">
+        <button type="button" data-fmt="text" aria-pressed="true">Text</button>
+        <button type="button" data-fmt="hex" aria-pressed="false">Hex</button>
+      </div>
+    </div>
+    <label class="field" style="margin-top:8px"><span>Message</span><textarea id="v-msg" rows="3" spellcheck="false"></textarea></label>
+    <label class="field" style="margin-top:8px"><span>Signature (64 bytes, hex or base64)</span><textarea id="v-sig" rows="2" class="mono" spellcheck="false"></textarea></label>
+    <div class="row" style="margin-top:12px"><button type="button" id="v-example">Example</button><button class="primary" type="button" id="v-go">Verify</button></div>
+    <p class="error" id="v-err" hidden></p>
+    <div id="v-out" style="margin-top:12px"></div>
+  </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.9 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="sign-verify.js"></script>
+</body>
+</html>
