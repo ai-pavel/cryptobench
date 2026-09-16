@@ -949,6 +949,13 @@
               "name": "Sign & Verify",
               "description": "Sign and verify ed25519 messages",
               "keywords": "ed25519 signature"
+            },
+            {
+              "slug": "ton-proof",
+              "emoji": "🔏",
+              "name": "TON Proof",
+              "description": "Verify a TON Connect ton_proof",
+              "keywords": "ton connect auth"
             }
           ]
         }
