@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TON Proof</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%94%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <style>
+  .checks { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 6px; }
+  .checks li { padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; overflow-wrap: anywhere; }
+</style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← TON</a>
+  <h1>🔏 TON Proof</h1>
+
+  <p class="lead">Verify a TON Connect <code>ton_proof</code>: the wallet's signature over your domain, timestamp and payload.</p>
+
+  <div class="panel">
+    <label class="field"><span>Wallet address (any format)</span><input id="addr" class="mono" autocomplete="off" spellcheck="false"></label>
+    <label class="field" style="margin-top:8px"><span>Proof JSON: the <code>proof</code> object, the whole <code>ton_proof</code> item, or the full connect response</span>
+      <textarea id="proof" rows="8" class="mono" spellcheck="false" placeholder='{"timestamp":1730000000,"domain":{"lengthBytes":11,"value":"example.com"},"signature":"…","payload":"…","state_init":"te6cc…"}'></textarea></label>
+    <label class="field" style="margin-top:8px"><span>Public key (optional if the proof has a state_init of a standard wallet)</span><input id="pub" class="mono" autocomplete="off" spellcheck="false"></label>
+    <div class="row" style="margin-top:12px">
+      <label class="field" style="flex:0 1 220px"><span>Expected domain (optional)</span><input id="domain" autocomplete="off" placeholder="example.com"></label>
+      <label class="field" style="flex:0 1 180px"><span>Max age, seconds (optional)</span><input id="maxage" type="number" min="1" placeholder="900"></label>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <button class="primary" type="button" id="go">Verify</button>
+      <button type="button" id="example">Example: valid proof</button>
+      <button type="button" id="tamper" hidden>Tamper with payload</button>
+    </div>
+    <p class="error" id="err" hidden></p>
+    <ul class="checks" id="checks"></ul>
+    <div class="kv" id="out"></div>
+    <details class="help">
+      <summary>How the proof is built</summary>
+      <p>message = "ton-proof-item-v2/" ‖ workchain (int32, big-endian) ‖ address hash ‖ domain length (uint32, little-endian) ‖ domain ‖ timestamp (uint64, little-endian) ‖ payload</p>
+      <p>signed = sha256(0xffff ‖ "ton-connect" ‖ sha256(message)). The wallet signs it with ed25519.</p>
+      <p>Your backend should also check that the payload is one it issued, that the domain is yours and that the proof is recent.</p>
+    </details>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 3.9 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="ton-proof.js"></script>
+</body>
+</html>
