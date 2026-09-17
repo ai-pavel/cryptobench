@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unit Converter</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%92%B0</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cardano</a>
+  <h1>💰 Unit Converter</h1>
+  <p class="lead">Convert between lovelace and ADA. 1 ADA = 1,000,000 lovelace.</p>
+  <div class="panel">
+    <div class="row">
+      <label class="field" style="flex:1 1 220px"><span>ADA</span><input id="ada" class="mono" inputmode="decimal" value="1.5" autocomplete="off"></label>
+      <label class="field" style="flex:1 1 220px"><span>Lovelace</span><input id="lovelace" class="mono" inputmode="numeric" autocomplete="off"></label>
+    </div>
+    <div class="row" style="margin-top:8px">
+      <button type="button" data-ada="1">Example: 1 ADA</button>
+      <button type="button" data-ada="0.17">Example: typical fee</button>
+      <button type="button" data-ada="2">Example: stake key deposit</button>
+      <button type="button" data-ada="500">Example: pool deposit</button>
+    </div>
+    <p class="error" id="err" hidden></p>
+    <div class="kv" id="out"></div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.0 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="unit-converter.js"></script>
+</body>
+</html>
