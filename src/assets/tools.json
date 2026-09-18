@@ -979,6 +979,18 @@
               "keywords": "ada lovelace"
             }
           ]
+        },
+        {
+          "name": "Addresses",
+          "tools": [
+            {
+              "slug": "address-inspector",
+              "emoji": "🔍",
+              "name": "Address Inspector",
+              "description": "Decode an address and get its stake address",
+              "keywords": "bech32 addr1 shelley byron stake address reward"
+            }
+          ]
         }
       ]
     }
