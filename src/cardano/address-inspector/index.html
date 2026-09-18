@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Address Inspector</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%94%8D</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cardano</a>
+  <h1>🔍 Address Inspector</h1>
+  <p class="lead">Decode a Cardano address: its type, network, the payment and stake credentials inside it, and its stake (reward) address.</p>
+  <div class="panel">
+    <label class="field"><span>Address (bech32, Byron base58 or hex)</span>
+      <textarea id="addr" class="mono" rows="3" placeholder="addr1… / stake1… / Ae2… / DdzFF…" autocomplete="off" spellcheck="false"></textarea></label>
+    <div class="row" style="margin-top:8px">
+      <button type="button" data-ex="base">Example: base</button>
+      <button type="button" data-ex="script">Example: script</button>
+      <button type="button" data-ex="enterprise">Example: enterprise</button>
+      <button type="button" data-ex="pointer">Example: pointer</button>
+      <button type="button" data-ex="stake">Example: stake</button>
+      <button type="button" data-ex="byron">Example: Byron</button>
+    </div>
+    <p class="error" id="err" hidden></p>
+    <p class="notice" id="warn" hidden style="margin-top:12px"></p>
+    <section id="stake-box" hidden style="margin-top:16px">
+      <h2 style="margin:0 0 6px;font-size:16px">Stake address</h2>
+      <p class="muted" id="stake-info" style="margin:0 0 6px"></p>
+      <div class="kv" id="stake-out"></div>
+    </section>
+    <h2 id="details-h" hidden style="margin:16px 0 6px;font-size:16px">Details</h2>
+    <div class="kv" id="out"></div>
+    <details class="help">
+      <summary>Address types</summary>
+      <p>All base addresses of one wallet account share one <strong>stake address</strong>: it's where staking rewards go and what gets delegated to a pool.</p>
+      <p>The first byte of a Shelley address holds the type (high 4 bits) and the network (low 4 bits: 1 = mainnet, 0 = testnets).
+        <strong>Base</strong> addresses carry a payment and a stake credential. <strong>Enterprise</strong> addresses have no stake part.
+        <strong>Pointer</strong> addresses point at the certificate that registered a stake key. <strong>Reward</strong> (stake) addresses hold only the stake credential.
+        A credential is the Blake2b-224 hash of either a public key or a script.</p>
+      <p><strong>Byron</strong> addresses (Ae2…, DdzFF…) come from Cardano's first era: base58 over CBOR with a CRC32 checksum.</p>
+    </details>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.0 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="address-inspector.js"></script>
+</body>
+</html>
