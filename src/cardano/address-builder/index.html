@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Address Builder</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%8F%97%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cardano</a>
+  <h1>🏗️ Address Builder</h1>
+  <p class="lead">Build an address from a payment and a stake credential: key hashes or script hashes.</p>
+  <div class="panel">
+    <div class="row">
+      <label class="field" style="flex:1 1 180px"><span>Address type</span>
+        <select id="kind">
+          <option value="base">Base (payment + stake)</option>
+          <option value="enterprise">Enterprise (payment only)</option>
+          <option value="pointer">Pointer (payment + pointer)</option>
+          <option value="reward">Reward / stake (stake only)</option>
+        </select></label>
+      <label class="field" style="flex:1 1 140px"><span>Network</span>
+        <select id="net"><option value="1">Mainnet</option><option value="0">Testnet</option></select></label>
+    </div>
+    <div class="row" id="payRow" style="margin-top:12px;align-items:flex-end">
+      <label class="field" style="flex:1 1 300px"><span>Payment credential (hex or addr_vkh… / script…)</span>
+        <input id="pay" class="mono" autocomplete="off" spellcheck="false"></label>
+      <label class="field" style="flex:0 1 140px"><span>Payment is a</span>
+        <select id="payType"><option value="key">Key hash</option><option value="script">Script hash</option></select></label>
+    </div>
+    <div class="row" id="stakeRow" style="margin-top:12px;align-items:flex-end">
+      <label class="field" style="flex:1 1 300px"><span>Stake credential (hex or stake_vkh… / script…)</span>
+        <input id="stake" class="mono" autocomplete="off" spellcheck="false"></label>
+      <label class="field" style="flex:0 1 140px"><span>Stake is a</span>
+        <select id="stakeType"><option value="key">Key hash</option><option value="script">Script hash</option></select></label>
+    </div>
+    <div class="row" id="ptrRow" style="margin-top:12px" hidden>
+      <label class="field" style="flex:1 1 120px"><span>Slot</span><input id="slot" class="mono" inputmode="numeric" value="0"></label>
+      <label class="field" style="flex:1 1 120px"><span>Transaction index</span><input id="txi" class="mono" inputmode="numeric" value="0"></label>
+      <label class="field" style="flex:1 1 120px"><span>Certificate index</span><input id="certi" class="mono" inputmode="numeric" value="0"></label>
+    </div>
+    <div class="row" style="margin-top:8px"><button type="button" id="example">Example</button></div>
+    <p class="error" id="err" hidden></p>
+    <div class="kv" id="out"></div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.0 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="address-builder.js"></script>
+</body>
+</html>
