@@ -989,6 +989,13 @@
               "name": "Address Inspector",
               "description": "Decode an address and get its stake address",
               "keywords": "bech32 addr1 shelley byron stake address reward"
+            },
+            {
+              "slug": "address-builder",
+              "emoji": "🏗️",
+              "name": "Address Builder",
+              "description": "Build an address from key or script hashes",
+              "keywords": "payment credential enterprise base"
             }
           ]
         }
