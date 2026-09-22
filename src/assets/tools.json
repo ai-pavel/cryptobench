@@ -998,6 +998,18 @@
               "keywords": "payment credential enterprise base"
             }
           ]
+        },
+        {
+          "name": "Wallets",
+          "tools": [
+            {
+              "slug": "mnemonic-accounts",
+              "emoji": "🌱",
+              "name": "Mnemonic Accounts",
+              "description": "Derive keys and addresses from a mnemonic (CIP-1852)",
+              "keywords": "seed phrase icarus bip32-ed25519 yoroi eternl lace"
+            }
+          ]
         }
       ]
     }
