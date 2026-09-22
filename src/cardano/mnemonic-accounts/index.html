@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mnemonic Accounts</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%8C%B1</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cardano</a>
+  <h1>🌱 Mnemonic Accounts</h1>
+  <p class="lead">Derive keys and addresses from a recovery phrase the way Shelley wallets do (CIP-1852: Yoroi, Eternl, Lace, Daedalus).</p>
+  <div class="panel">
+    <p class="notice">Runs locally in your browser. Don't paste keys that hold real funds.</p>
+    <label class="field"><span>Recovery phrase (12, 15 or 24 words)</span>
+      <textarea id="phrase" class="mono" rows="3" autocomplete="off" spellcheck="false"></textarea></label>
+    <div class="row" style="margin-top:8px">
+      <button type="button" id="gen15">New 15 words</button>
+      <button type="button" id="gen24">New 24 words</button>
+      <button type="button" id="example">Example: test phrase</button>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <label class="field" style="flex:1 1 200px"><span>Passphrase (optional, rarely used)</span><input id="pass" autocomplete="off" spellcheck="false"></label>
+      <label class="field" style="flex:0 1 130px"><span>Network</span><select id="net"><option value="1">Mainnet</option><option value="0">Testnet</option></select></label>
+      <label class="field" style="flex:0 1 110px"><span>Account</span><input id="acct" class="mono" inputmode="numeric" value="0"></label>
+      <label class="field" style="flex:0 1 150px"><span>Addresses</span><select id="role"><option value="0">Receiving (0)</option><option value="1">Change (1)</option></select></label>
+      <label class="field" style="flex:0 1 110px"><span>How many</span><input id="count" class="mono" inputmode="numeric" value="5"></label>
+    </div>
+    <label style="margin-top:12px;display:flex;flex-direction:row;align-items:center;gap:8px;color:var(--text)"><input type="checkbox" id="showKeys"> Show private keys</label>
+    <p class="error" id="err" hidden></p>
+    <div class="kv" id="out"></div>
+    <div class="list" id="addrs"></div>
+    <details class="help">
+      <summary>How it works</summary>
+      <p>The phrase's entropy goes through PBKDF2-HMAC-SHA512 (4096 rounds, the passphrase as password) to make the root key. Keys are then derived with BIP32-Ed25519 along <code>m/1852'/1815'/account'/role/index</code>: role 0 is receiving addresses, 1 is change, 2 is the stake key. Each base address combines a payment key hash with the account's stake key hash.</p>
+      <p>Legacy Byron (Daedalus) and Ledger/Trezor hardware-wallet roots use other schemes, so their addresses will differ.</p>
+    </details>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.0 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="mnemonic-accounts.js"></script>
+</body>
+</html>
