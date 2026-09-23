@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Asset Fingerprint</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%96%90%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cardano</a>
+  <h1>🖐️ Asset Fingerprint</h1>
+  <p class="lead">Compute a native asset's fingerprint (CIP-14), the short <code>asset1…</code> ID that explorers and wallets show.</p>
+  <div class="panel">
+    <label class="field"><span>Policy ID (or a full asset ID: policy ID followed by the asset name in hex)</span>
+      <input id="policy" class="mono" placeholder="56 hex characters" autocomplete="off" spellcheck="false"></label>
+    <div class="row" style="margin-top:12px;align-items:flex-end">
+      <label class="field" style="flex:1 1 260px"><span>Asset name</span><input id="name" class="mono" autocomplete="off" spellcheck="false"></label>
+      <div class="segmented" role="group" aria-label="Asset name format">
+        <button type="button" id="asText" aria-pressed="true">Text</button>
+        <button type="button" id="asHex" aria-pressed="false">Hex</button>
+      </div>
+    </div>
+    <div class="row" style="margin-top:8px"><button type="button" id="example">Example</button></div>
+    <p class="error" id="err" hidden></p>
+    <div class="kv" id="out"></div>
+    <details class="help">
+      <summary>How it works</summary>
+      <p>A native asset is identified by its policy ID (the hash of its minting policy) and its name (up to 32 bytes). CIP-14 hashes the two together with Blake2b-160 and encodes the result in bech32 with the <code>asset</code> prefix. Different assets can never share a fingerprint, but the fingerprint alone doesn't tell you the policy or name.</p>
+    </details>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.0 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="asset-fingerprint.js"></script>
+</body>
+</html>
