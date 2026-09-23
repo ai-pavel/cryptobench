@@ -1010,6 +1010,18 @@
               "keywords": "seed phrase icarus bip32-ed25519 yoroi eternl lace"
             }
           ]
+        },
+        {
+          "name": "Assets",
+          "tools": [
+            {
+              "slug": "asset-fingerprint",
+              "emoji": "🖐️",
+              "name": "Asset Fingerprint",
+              "description": "Compute a native asset fingerprint (CIP-14)",
+              "keywords": "asset1 token nft"
+            }
+          ]
         }
       ]
     }
