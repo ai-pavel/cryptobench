@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Policy ID</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%93%9C</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/ui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cardano</a>
+  <h1>📜 Policy ID</h1>
+  <p class="lead">Compute the policy ID (script hash) of a native script, the kind of minting policy most tokens and NFTs use.</p>
+  <div class="panel">
+    <label class="field"><span>Native script: cardano-cli JSON or CBOR hex</span>
+      <textarea id="script" class="mono" rows="9" autocomplete="off" spellcheck="false"></textarea></label>
+    <div class="row" style="margin-top:8px">
+      <button type="button" data-tpl="sig">Example: single signature</button>
+      <button type="button" data-tpl="lock">Example: signature + time lock</button>
+      <button type="button" data-tpl="multi">Example: 2 of 3</button>
+    </div>
+    <p class="error" id="err" hidden></p>
+    <div class="kv" id="out"></div>
+    <details class="help">
+      <summary>Script types</summary>
+      <p><code>sig</code> requires a signature from the key with that hash. <code>all</code>, <code>any</code> and <code>atLeast</code> combine scripts.
+        <code>before</code> allows minting only before the given slot, which is how NFT policies lock their supply; <code>after</code> only from that slot.</p>
+      <p>The policy ID is Blake2b-224 of a <code>00</code> tag byte followed by the script's CBOR. Changing anything, even the slot, gives a different policy.</p>
+    </details>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.0 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="policy-id.js"></script>
+</body>
+</html>
