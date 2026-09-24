@@ -1020,6 +1020,13 @@
               "name": "Asset Fingerprint",
               "description": "Compute a native asset fingerprint (CIP-14)",
               "keywords": "asset1 token nft"
+            },
+            {
+              "slug": "policy-id",
+              "emoji": "📜",
+              "name": "Policy ID",
+              "description": "Compute a native script hash and policy ID",
+              "keywords": "minting policy native script"
             }
           ]
         }
