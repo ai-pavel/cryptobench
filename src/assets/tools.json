@@ -1029,6 +1029,18 @@
               "keywords": "minting policy native script"
             }
           ]
+        },
+        {
+          "name": "Transactions",
+          "tools": [
+            {
+              "slug": "tx-decoder",
+              "emoji": "📦",
+              "name": "Transaction Decoder",
+              "description": "Decode a transaction from CBOR",
+              "keywords": "cbor tx body witness"
+            }
+          ]
         }
       ]
     }
