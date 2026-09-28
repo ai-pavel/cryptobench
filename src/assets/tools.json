@@ -1039,6 +1039,13 @@
               "name": "Transaction Decoder",
               "description": "Decode a transaction from CBOR",
               "keywords": "cbor tx body witness"
+            },
+            {
+              "slug": "datum-hash",
+              "emoji": "#️⃣",
+              "name": "Datum Hash",
+              "description": "Compute the hash of a Plutus datum",
+              "keywords": "plutus blake2b"
             }
           ]
         }
