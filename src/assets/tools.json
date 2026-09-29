@@ -1048,6 +1048,18 @@
               "keywords": "plutus blake2b"
             }
           ]
+        },
+        {
+          "name": "Signatures",
+          "tools": [
+            {
+              "slug": "verify-message",
+              "emoji": "✔️",
+              "name": "Verify Message",
+              "description": "Verify a CIP-8 / CIP-30 signData signature",
+              "keywords": "cip8 cip30 cose signdata"
+            }
+          ]
         }
       ]
     }
