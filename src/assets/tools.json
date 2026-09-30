@@ -1062,6 +1062,27 @@
           ]
         }
       ]
+    },
+    {
+      "id": "sui",
+      "emoji": "💧",
+      "name": "Sui",
+      "summary": "Sui: addresses, keys, BCS, transactions, object IDs and signatures.",
+      "lead": "Sui tools that run entirely in your browser. Keys you enter never leave your device.",
+      "categories": [
+        {
+          "name": "Units",
+          "tools": [
+            {
+              "slug": "unit-converter",
+              "emoji": "💰",
+              "name": "Unit Converter",
+              "description": "Convert between MIST and SUI",
+              "keywords": "mist"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
