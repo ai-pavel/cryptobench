@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unit Converter</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%92%B0</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/sui.css">
+  <style>
+    .pair { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Sui</a>
+  <h1>💰 Unit Converter</h1>
+  <p class="lead">Convert between MIST and SUI exactly, and work out a gas budget.</p>
+  <div class="panel">
+    <label class="field">SUI
+      <span class="pair"><input id="sui" class="mono" inputmode="decimal" value="1" autocomplete="off"><button class="icon-btn" data-copy-from="sui">Copy</button></span>
+    </label>
+    <label class="field">MIST
+      <span class="pair"><input id="mist" class="mono" inputmode="numeric" autocomplete="off"><button class="icon-btn" data-copy-from="mist">Copy</button></span>
+    </label>
+    <div class="row"><button type="button" id="example">Example: 2.5 SUI</button></div>
+    <p class="error" id="err" hidden></p>
+    <p class="muted">1 SUI = 1,000,000,000 MIST. Values are exact: no floating-point rounding.</p>
+  </div>
+
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">Gas budget</p>
+    <div class="row">
+      <label class="field" style="flex:1;min-width:150px">Gas price (MIST per unit) <input id="price" class="mono" inputmode="numeric" value="1000"></label>
+      <label class="field" style="flex:1;min-width:150px">Gas units <input id="units" class="mono" inputmode="numeric" value="10000000"></label>
+    </div>
+    <div id="gas"></div>
+    <p class="muted">Budget = gas price × gas units. The price must be at least the network’s reference gas price; the budget caps what the transaction may spend on computation and storage.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.1 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="unit-converter.js"></script>
+</body>
+</html>
