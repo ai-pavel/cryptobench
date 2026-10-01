@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Address from Key</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%97%9D%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/sui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Sui</a>
+  <h1>🗝️ Address from Key</h1>
+  <p class="lead">Derive a Sui address from an Ed25519, Secp256k1 or Secp256r1 public key.</p>
+  <div class="panel">
+    <label class="field">Public key (base64 or hex)
+      <textarea id="pk" class="wide" rows="3" spellcheck="false" placeholder="e.g. AKN4JgLD… (Sui public key with flag) or 0x02…"></textarea>
+    </label>
+    <label class="field">Scheme
+      <select id="scheme">
+        <option value="auto">Auto-detect</option>
+        <option value="0">Ed25519 (flag 0x00)</option>
+        <option value="1">Secp256k1 (flag 0x01)</option>
+        <option value="2">Secp256r1 (flag 0x02)</option>
+      </select>
+    </label>
+    <div class="row"><button type="button" id="example">Example: Ed25519 key</button></div>
+    <p class="error" id="err" hidden></p>
+    <div id="out"></div>
+  </div>
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">How it works</p>
+    <p class="muted">Address = BLAKE2b-256(flag ‖ public key), where the flag is one byte for the signature scheme: 0x00 Ed25519 (32-byte key), 0x01 Secp256k1 and 0x02 Secp256r1 (33-byte compressed keys). The “Sui public key” format used by wallets and the CLI is base64 of flag ‖ public key, so it already says which scheme it is.</p>
+    <p class="muted">A bare 33-byte compressed key could be either Secp256k1 or Secp256r1, so Auto-detect shows both addresses; pick the scheme to see one.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.1 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="address-from-key.js"></script>
+</body>
+</html>
