@@ -1081,6 +1081,18 @@
               "keywords": "mist"
             }
           ]
+        },
+        {
+          "name": "Addresses",
+          "tools": [
+            {
+              "slug": "address-from-key",
+              "emoji": "🗝️",
+              "name": "Address from Key",
+              "description": "Derive an address from an Ed25519, Secp256k1 or Secp256r1 public key",
+              "keywords": "public key flag blake2b"
+            }
+          ]
         }
       ]
     }
