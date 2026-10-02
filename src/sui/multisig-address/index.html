@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multisig Address</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%91%A5</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/sui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Sui</a>
+  <h1>👥 Multisig Address</h1>
+  <p class="lead">Derive a multisig address from public keys, weights and a threshold.</p>
+  <div class="panel">
+    <label class="field">Signers, one per line: <span class="mono">public key [weight]</span>
+      <textarea id="keys" class="wide" rows="5" spellcheck="false" placeholder="AKN4JgLDhzDw… 1&#10;AQKb7TKd…  2&#10;secp256r1:0x03ab… 1"></textarea>
+    </label>
+    <p class="muted" style="margin:6px 0 0">Use Sui public keys (base64 of flag ‖ key, as shown by wallets and <span class="mono">sui keytool</span>). For a raw key, prefix the scheme: <span class="mono">ed25519:</span>, <span class="mono">secp256k1:</span> or <span class="mono">secp256r1:</span>. Weight defaults to 1.</p>
+    <label class="field">Threshold
+      <input id="threshold" class="mono" inputmode="numeric" value="1" style="max-width:160px">
+    </label>
+    <div class="row"><button type="button" id="example">Example: 3 signers, threshold 3</button></div>
+    <p class="error" id="err" hidden></p>
+    <div id="out"></div>
+  </div>
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">How it works</p>
+    <p class="muted">Address = BLAKE2b-256(0x03 ‖ threshold as u16 little-endian ‖ for each signer: flag ‖ public key ‖ weight as u8), with signers in the order you list them. Changing the order, a weight or the threshold gives a different address. A multisig has 1–10 signers, weights 1–255, and a threshold from 1 to the total weight.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.1 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="multisig-address.js"></script>
+</body>
+</html>
