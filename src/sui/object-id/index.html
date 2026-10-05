@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Object ID</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%86%94</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/sui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Sui</a>
+  <h1>🆔 Object ID</h1>
+  <p class="lead">Derive object IDs: objects created by a transaction, dynamic fields and derived objects.</p>
+  <div class="panel">
+    <div class="seg" role="group" aria-label="Kind of object">
+      <button id="m-created" aria-pressed="true">Created object</button>
+      <button id="m-field" aria-pressed="false">Dynamic field</button>
+      <button id="m-derived" aria-pressed="false">Derived object</button>
+    </div>
+
+    <div id="created">
+      <label class="field">Transaction digest (base58)
+        <input id="digest" class="mono" autocomplete="off" spellcheck="false" placeholder="e.g. 6wugsseErMNUqFfF9tCEkkKFvJMmQtRQATK7fpo6d4Cp">
+      </label>
+      <div class="row">
+        <label class="field" style="flex:1;min-width:140px">Creation index <input id="index" class="mono" inputmode="numeric" value="0"></label>
+        <label class="field" style="flex:1;min-width:140px">How many <input id="count" class="mono" inputmode="numeric" value="5"></label>
+      </div>
+      <p class="muted">Every new object’s ID is BLAKE2b-256(0xf1 ‖ transaction digest ‖ index as u64 little-endian). The index counts IDs created by the transaction from 0, in creation order (including objects deleted again in the same transaction).</p>
+    </div>
+
+    <div id="field" hidden>
+      <label class="field">Parent object ID
+        <input id="parent" class="mono" autocomplete="off" spellcheck="false" placeholder="0x…">
+      </label>
+      <label class="field">Key type
+        <input id="keytype" class="mono" autocomplete="off" spellcheck="false" value="u64" placeholder="u64, address, 0x1::string::String, vector<u8>, …">
+      </label>
+      <label class="field">Key value (JSON) — or raw BCS bytes as hex
+        <input id="keyval" class="mono" autocomplete="off" spellcheck="false" value="0">
+      </label>
+      <label class="row" style="flex-direction:row;gap:6px;margin-top:8px;font-size:14px;color:var(--muted)"><input type="checkbox" id="raw"> The value above is raw BCS hex</label>
+      <p class="muted" id="field-help"></p>
+    </div>
+
+    <div class="row"><button type="button" id="example-created">Example: created object</button><button type="button" id="example-field">Example: dynamic field</button><button type="button" id="example-derived">Example: derived object</button></div>
+    <p class="error" id="err" hidden></p>
+    <div id="out"></div>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.1 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="object-id.js"></script>
+</body>
+</html>
