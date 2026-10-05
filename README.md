@@ -15,7 +15,7 @@ Local-first browser tools — everyday, dev & crypto. Nothing leaves your device
 | [🌞 Solana](https://ai-pavel.github.io/solana/) | Solana: keys, addresses, PDAs, token accounts, transactions and signatures | 11 | [`src/solana/`](src/solana/) |
 | [💎 TON](https://ai-pavel.github.io/ton/) | TON: addresses, wallets, cells, messages and signatures | 9 | [`src/ton/`](src/ton/) |
 | [🔵 Cardano](https://ai-pavel.github.io/cardano/) | Cardano: addresses, stake keys, native assets, CBOR transactions and signatures | 9 | [`src/cardano/`](src/cardano/) |
-| [💧 Sui](https://ai-pavel.github.io/sui/) | Sui: addresses, keys, BCS, transactions, object IDs and signatures | 3 | [`src/sui/`](src/sui/) |
+| [💧 Sui](https://ai-pavel.github.io/sui/) | Sui: addresses, keys, BCS, transactions, object IDs and signatures | 4 | [`src/sui/`](src/sui/) |
 <!-- toolboxes:end -->
 
 Everything runs client-side in the browser: files and keys never leave the device.
