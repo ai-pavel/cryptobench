@@ -1107,6 +1107,18 @@
               "keywords": "object id digest"
             }
           ]
+        },
+        {
+          "name": "Wallets",
+          "tools": [
+            {
+              "slug": "mnemonic-accounts",
+              "emoji": "🌱",
+              "name": "Mnemonic Accounts",
+              "description": "Derive accounts from a mnemonic (m/44'/784')",
+              "keywords": "seed phrase bip39 sui wallet slush"
+            }
+          ]
         }
       ]
     }
