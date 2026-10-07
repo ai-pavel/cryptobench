@@ -1117,6 +1117,13 @@
               "name": "Mnemonic Accounts",
               "description": "Derive accounts from a mnemonic (m/44'/784')",
               "keywords": "seed phrase bip39 sui wallet slush"
+            },
+            {
+              "slug": "keypair-converter",
+              "emoji": "🔐",
+              "name": "Keypair Converter",
+              "description": "Convert private keys between suiprivkey and hex",
+              "keywords": "bech32 private key export"
             }
           ]
         }
