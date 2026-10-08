@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BCS</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%A7%A9</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/sui.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Sui</a>
+  <h1>🧩 BCS</h1>
+  <p class="lead">Encode JSON to BCS bytes and decode BCS bytes back, using a type you describe.</p>
+  <div class="panel">
+    <label class="field">Type
+      <textarea id="schema" class="wide" rows="4" spellcheck="false">struct {
+  amount: u64,
+  recipient: address,
+  memo: option<string>,
+  tags: vector<u8>
+}</textarea>
+    </label>
+    <p class="muted" style="margin:6px 0 0">Types: u8, u16, u32, u64, u128, u256, bool, string, address, vector&lt;T&gt;, option&lt;T&gt;, [T; N], (A, B), struct { name: T, … }, enum { A, B(T), C { x: T } }. Move names such as 0x1::string::String, 0x2::object::ID and 0x1::option::Option&lt;T&gt; also work.</p>
+    <div class="row"><button type="button" id="example">Example: struct with every type</button></div>
+    <p class="error" id="schema-err" hidden></p>
+  </div>
+
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">Encode</p>
+    <label class="field">Value (JSON)
+      <textarea id="json" class="wide" rows="5" spellcheck="false">{
+  "amount": "1000000000",
+  "recipient": "0x2",
+  "memo": "hello",
+  "tags": "0x0102"
+}</textarea>
+    </label>
+    <p class="muted" style="margin:6px 0 0">Numbers above u32 can be strings; bytes (vector&lt;u8&gt;) can be a hex string; option is null or the value; an enum is "Variant" or { "Variant": value }.</p>
+    <p class="error" id="enc-err" hidden></p>
+    <div id="enc-out"></div>
+  </div>
+
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">Decode</p>
+    <label class="field">BCS bytes (hex or base64)
+      <textarea id="bytes" class="wide" rows="3" spellcheck="false" placeholder="0x…"></textarea>
+    </label>
+    <p class="error" id="dec-err" hidden></p>
+    <pre class="json" id="dec-out" hidden></pre>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.1 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="bcs.js"></script>
+</body>
+</html>
