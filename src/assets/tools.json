@@ -1126,6 +1126,18 @@
               "keywords": "bech32 private key export"
             }
           ]
+        },
+        {
+          "name": "Data",
+          "tools": [
+            {
+              "slug": "bcs",
+              "emoji": "🧩",
+              "name": "BCS",
+              "description": "Encode and decode BCS data",
+              "keywords": "binary canonical serialization move"
+            }
+          ]
         }
       ]
     }
