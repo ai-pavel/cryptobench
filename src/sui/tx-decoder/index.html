@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transaction Decoder</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%93%A6</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/sui.css">
+  <style>
+    .cmd { margin: 8px 0; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; overflow-wrap: anywhere; }
+    .cmd .name { font-weight: 600; }
+    .cmd .mono { font-size: 13px; }
+    table.inputs td { vertical-align: top; font-size: 13px; overflow-wrap: anywhere; }
+    table.inputs { table-layout: fixed; }
+    table.inputs th:first-child, table.inputs td:first-child { width: 36px; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Sui</a>
+  <h1>📦 Transaction Decoder</h1>
+  <p class="lead">Decode Sui transaction bytes: sender, gas, inputs and commands, plus the transaction digest.</p>
+  <div class="panel">
+    <label class="field">Transaction bytes (base64 or hex)
+      <textarea id="tx" class="wide" rows="5" spellcheck="false" placeholder="AAAC…"></textarea>
+    </label>
+    <div class="row" style="margin-top:8px"><button id="example">Example</button></div>
+    <p class="error" id="err" hidden></p>
+    <div id="out"></div>
+  </div>
+  <div class="panel">
+    <p class="muted" style="margin:0">Paste the base64 TransactionData that wallets sign (also accepted: transaction kind bytes built with <span class="mono">onlyTransactionKind</span>). The digest is the transaction’s ID: BLAKE2b-256 of “TransactionData::” followed by the bytes, in base58. Pure inputs are raw BCS without a type, so their meaning is a best guess from their length and how commands use them.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.1 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="tx-decoder.js"></script>
+</body>
+</html>
