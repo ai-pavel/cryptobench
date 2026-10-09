@@ -1138,6 +1138,18 @@
               "keywords": "binary canonical serialization move"
             }
           ]
+        },
+        {
+          "name": "Transactions",
+          "tools": [
+            {
+              "slug": "tx-decoder",
+              "emoji": "📦",
+              "name": "Transaction Decoder",
+              "description": "Decode Sui transaction bytes",
+              "keywords": "programmable transaction ptb"
+            }
+          ]
         }
       ]
     }
