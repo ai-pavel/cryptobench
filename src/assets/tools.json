@@ -1150,6 +1150,18 @@
               "keywords": "programmable transaction ptb"
             }
           ]
+        },
+        {
+          "name": "Signatures",
+          "tools": [
+            {
+              "slug": "sign-verify",
+              "emoji": "✍️",
+              "name": "Sign & Verify",
+              "description": "Sign and verify personal messages and transactions",
+              "keywords": "intent personal message signature"
+            }
+          ]
         }
       ]
     }
