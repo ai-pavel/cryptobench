@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign &amp; Verify</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9C%8D%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/sui.css">
+  <style>
+    .mode-tabs { display: inline-flex; gap: 0; margin: 18px 0 4px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .mode-tabs button { border: 0; border-radius: 0; padding: 8px 18px; background: var(--surface); }
+    .mode-tabs button + button { border-left: 1px solid var(--border); }
+    .mode-tabs button[aria-selected="true"] { background: var(--accent); color: var(--on-accent); }
+    [hidden] { display: none !important; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Sui</a>
+  <h1>✍️ Sign &amp; Verify</h1>
+  <p class="lead">Sign a personal message or transaction bytes with an Ed25519, Secp256k1 or Secp256r1 key, or verify a signature and recover the signer.</p>
+  <div class="mode-tabs" role="tablist"><button type="button" role="tab" data-tab="sign">Sign</button><button type="button" role="tab" data-tab="verify">Verify</button></div>
+  <section id="tab-sign" class="mode-panel" data-tab-panel="sign">
+  <div class="panel">
+    <p class="note" id="s-keynote"></p>
+    <label class="field">Private key
+      <textarea id="s-key" class="wide" rows="2" spellcheck="false" autocomplete="off" placeholder="suiprivkey1… or 32-byte hex"></textarea>
+    </label>
+    <div class="row">
+      <label class="field" style="flex:1;min-width:180px">Scheme for raw keys
+        <select id="s-scheme"><option value="0">Ed25519</option><option value="1">Secp256k1</option><option value="2">Secp256r1</option></select>
+      </label>
+      <label class="field" style="flex:1;min-width:180px">Sign as
+        <select id="s-mode"><option value="3">Personal message</option><option value="0">Transaction bytes</option></select>
+      </label>
+    </div>
+    <label class="field"><span id="s-msg-label">Message</span>
+      <textarea id="s-msg" class="wide" rows="3" spellcheck="false">hello sui</textarea>
+    </label>
+    <label class="field" id="s-enc-wrap">Message encoding
+      <select id="s-enc"><option value="utf8">Text (UTF-8)</option><option value="hex">Hex</option><option value="base64">Base64</option></select>
+    </label>
+    <div class="row"><button type="button" id="example-sign">Example: sign "hello sui"</button></div>
+    <p class="error" id="s-err" hidden></p>
+    <div id="s-out"></div>
+  </div>
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">How it works</p>
+    <p class="muted">The bytes are wrapped in an intent: 3,0,0 for a personal message (whose bytes are first BCS-encoded as vector&lt;u8&gt;, i.e. prefixed with their length) or 0,0,0 for transaction data. The signature covers BLAKE2b-256 of that intent message; Secp256k1 and Secp256r1 additionally hash it with SHA-256, as ECDSA does. The result wallets return is base64 of flag ‖ 64-byte signature ‖ public key.</p>
+  </div>
+  </section>
+  <section id="tab-verify" class="mode-panel" data-tab-panel="verify">
+  <div class="panel">
+    <label class="field">Signed as
+      <select id="v-mode"><option value="3">Personal message</option><option value="0">Transaction bytes</option></select>
+    </label>
+    <label class="field"><span id="v-msg-label">Message</span>
+      <textarea id="v-msg" class="wide" rows="3" spellcheck="false">hello sui</textarea>
+    </label>
+    <label class="field" id="v-enc-wrap">Message encoding
+      <select id="v-enc"><option value="utf8">Text (UTF-8)</option><option value="hex">Hex</option><option value="base64">Base64</option></select>
+    </label>
+    <label class="field">Signature (base64: flag ‖ signature ‖ public key)
+      <textarea id="v-sig" class="wide" rows="3" spellcheck="false" placeholder="AL…"></textarea>
+    </label>
+    <label class="field">Expected signer address (optional)
+      <input id="v-expect" class="mono" autocomplete="off" spellcheck="false" placeholder="0x…">
+    </label>
+    <div class="row"><button type="button" id="example-verify">Example: verify a signature</button></div>
+    <p class="error" id="v-err" hidden></p>
+    <div id="v-out"></div>
+  </div>
+  <div class="panel">
+    <p class="muted" style="margin:0">Single-key Ed25519, Secp256k1 and Secp256r1 signatures are checked here. MultiSig, zkLogin and passkey signatures are recognised, but verifying them needs more context (and for zkLogin, the network), so they are not checked.</p>
+  </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.2 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="sign-verify.js"></script>
+</body>
+</html>
