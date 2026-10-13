@@ -1164,6 +1164,27 @@
           ]
         }
       ]
+    },
+    {
+      "id": "cosmos",
+      "emoji": "⚛️",
+      "name": "Cosmos",
+      "summary": "Cosmos SDK chains: addresses across chains, IBC, keys, transactions and signatures.",
+      "lead": "Tools for Cosmos SDK chains that run entirely in your browser. Keys you enter never leave your device.",
+      "categories": [
+        {
+          "name": "Units",
+          "tools": [
+            {
+              "slug": "unit-converter",
+              "emoji": "💰",
+              "name": "Unit Converter",
+              "description": "Convert between base denoms and display units",
+              "keywords": "uatom atom denom exponent"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
