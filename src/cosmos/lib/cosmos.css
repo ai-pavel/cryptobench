@@ -1,0 +1,40 @@
+/* Shared styles for the Cosmos tools (on top of assets/style.css). */
+[hidden] { display: none !important; }
+.wide { width: 100%; }
+textarea.wide { resize: vertical; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; }
+.field { display: flex; flex-direction: column; gap: 4px; margin-top: 12px; font-size: 14px; color: var(--muted); overflow-wrap: anywhere; }
+.field input, .field select, .field textarea { color: var(--text); font-size: 15px; }
+.field input.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; }
+.error { color: #c0392b; margin: 12px 0 0; }
+.ok { color: #1e8e3e; font-weight: 600; }
+.bad { color: #c0392b; font-weight: 600; }
+.note { margin-top: 16px; padding: 10px 12px; border-radius: 8px; background: color-mix(in srgb, #e5a50a 14%, transparent); font-size: 14px; }
+table.kv { table-layout: fixed; }
+table.kv th { width: 30%; vertical-align: top; color: var(--muted); font-weight: 500; font-size: 14px; }
+table.kv td.mono { overflow-wrap: anywhere; font-size: 14px; }
+table.kv td:last-child { width: 72px; text-align: right; vertical-align: top; }
+.badge { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; border: 1px solid var(--border); color: var(--muted); margin-right: 4px; }
+.badge.on { border-color: var(--accent); color: var(--accent); }
+.section-title { margin: 20px 0 6px; font-weight: 600; }
+@media (max-width: 480px) {
+  table.kv th { width: 34%; }
+  table.kv td:last-child { width: 62px; }
+  table.kv th, table.kv td { padding: 6px 4px; }
+}
+.tree { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; overflow-wrap: anywhere; }
+.tree .node { margin: 6px 0; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; }
+.tree .node .muted { font-family: inherit; }
+.tree .k { color: var(--muted); }
+pre.json { margin: 12px 0 0; padding: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow-x: auto; font-size: 13px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.seg button { border: 0; border-radius: 0; }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+.mode-tabs { display: inline-flex; gap: 0; margin: 18px 0 4px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.mode-tabs button { border: 0; border-radius: 0; padding: 8px 18px; background: var(--surface); }
+.mode-tabs button + button { border-left: 1px solid var(--border); }
+.mode-tabs button[aria-selected="true"] { background: var(--accent); color: var(--on-accent); }
+.msg { margin: 10px 0; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; }
+.msg .type { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; overflow-wrap: anywhere; }
+.inline-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-end; }
+.inline-row .field { flex: 1 1 160px; min-width: 0; }
+.field select, .inline-row .field input { width: 100%; max-width: 100%; min-width: 0; }
