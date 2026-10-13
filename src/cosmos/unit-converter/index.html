@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unit Converter</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%92%B0</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/cosmos.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cosmos</a>
+  <h1>💰 Unit Converter</h1>
+  <p class="lead">Convert between a base denom (like uatom) and its display unit (ATOM), exactly.</p>
+  <div class="panel">
+    <label class="field">Token
+      <select id="preset"></select>
+    </label>
+    <div class="inline-row">
+      <label class="field">Base denom <input id="base" class="mono" spellcheck="false"></label>
+      <label class="field">Display unit <input id="disp" spellcheck="false"></label>
+      <label class="field" style="flex:0 1 110px">Exponent <input id="exp" type="number" min="0" max="36" step="1"></label>
+    </div>
+    <div class="inline-row">
+      <label class="field">Amount in <span id="dispLabel">ATOM</span> <input id="display" class="mono" inputmode="decimal" spellcheck="false" placeholder="1.5"></label>
+      <label class="field">Amount in <span id="baseLabel">uatom</span> <input id="raw" class="mono" inputmode="numeric" spellcheck="false" placeholder="1500000"></label>
+    </div>
+    <div class="row"><button type="button" id="example">Example: 2.5 ATOM</button></div>
+    <p class="error" id="err" hidden></p>
+    <div id="out"></div>
+  </div>
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">How it works</p>
+    <p class="muted">Cosmos SDK chains store amounts as integers in a base denom. The display unit is the base amount divided by 10<sup>exponent</sup>. Most chains use 6 decimals (1 ATOM = 1,000,000 uatom); EVM-compatible chains such as Injective, Evmos and dYdX use 18. The math here uses exact big integers, so nothing is rounded.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.2 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="unit-converter.js"></script>
+</body>
+</html>
