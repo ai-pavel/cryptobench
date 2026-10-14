@@ -1183,6 +1183,18 @@
               "keywords": "uatom atom denom exponent"
             }
           ]
+        },
+        {
+          "name": "Addresses",
+          "tools": [
+            {
+              "slug": "address-converter",
+              "emoji": "🔄",
+              "name": "Address Converter",
+              "description": "Convert an address between chain prefixes and validator forms",
+              "keywords": "bech32 prefix cosmos1 osmo1 valoper valcons"
+            }
+          ]
         }
       ]
     }
