@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Address from Key</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%97%9D%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/cosmos.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cosmos</a>
+  <h1>🗝️ Address from Key</h1>
+  <p class="lead">Derive an address from a secp256k1 public key — the standard Cosmos way or the Ethereum-style (ethsecp256k1) way.</p>
+  <div class="panel">
+    <label class="field">Public key (hex, base64, or PubKey JSON with a "key" field)
+      <textarea id="pk" class="wide" rows="3" spellcheck="false" placeholder="e.g. A08EGB7ro1ORuFhjOnZcSgwYlpe0DSFjVNUIkNNQxwKQ or 02…"></textarea>
+    </label>
+    <div class="inline-row">
+      <label class="field">Chain
+        <select id="chain"></select>
+      </label>
+      <label class="field">Key type
+        <select id="type">
+          <option value="auto">From the chain</option>
+          <option value="cosmos">secp256k1 (Cosmos)</option>
+          <option value="eth">ethsecp256k1 (Ethereum-style)</option>
+        </select>
+      </label>
+    </div>
+    <div class="row"><button type="button" id="example">Example: secp256k1 public key</button></div>
+    <p class="error" id="err" hidden></p>
+    <div id="out"></div>
+  </div>
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">How it works</p>
+    <p class="muted"><strong>secp256k1</strong> (most Cosmos chains): address = RIPEMD-160(SHA-256(33-byte compressed public key)).</p>
+    <p class="muted"><strong>ethsecp256k1</strong> (Injective, Evmos, Cronos and other Ethermint chains): address = last 20 bytes of Keccak-256(64-byte uncompressed public key without its 0x04 prefix) — the same bytes as the account's Ethereum 0x address.</p>
+    <p class="muted">Both kinds are shown as bech32 with the chain's prefix. Uncompressed keys are compressed automatically for the Cosmos form.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.2 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="address-from-key.js"></script>
+</body>
+</html>
