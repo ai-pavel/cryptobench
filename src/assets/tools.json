@@ -1193,6 +1193,13 @@
               "name": "Address Converter",
               "description": "Convert an address between chain prefixes and validator forms",
               "keywords": "bech32 prefix cosmos1 osmo1 valoper valcons"
+            },
+            {
+              "slug": "address-from-key",
+              "emoji": "🗝️",
+              "name": "Address from Key",
+              "description": "Derive an address from a public key (secp256k1 or ethsecp256k1)",
+              "keywords": "pubkey evmos injective"
             }
           ]
         }
