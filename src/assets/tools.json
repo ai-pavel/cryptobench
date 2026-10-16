@@ -1200,6 +1200,13 @@
               "name": "Address from Key",
               "description": "Derive an address from a public key (secp256k1 or ethsecp256k1)",
               "keywords": "pubkey evmos injective"
+            },
+            {
+              "slug": "derived-addresses",
+              "emoji": "🏦",
+              "name": "Derived Addresses",
+              "description": "Derive module accounts and IBC escrow addresses",
+              "keywords": "module account ics20 escrow channel"
             }
           ]
         }
