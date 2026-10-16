@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Derived Addresses</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%8F%A6</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/cosmos.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cosmos</a>
+  <h1>🏦 Derived Addresses</h1>
+  <p class="lead">Derive module account addresses and IBC transfer escrow addresses — no keys involved.</p>
+  <div class="panel">
+    <label class="field">Chain prefix
+      <select id="chain"></select>
+    </label>
+    <div class="row"><button type="button" id="example">Example: Cosmos Hub distribution module and channel-141 escrow</button></div>
+    <p class="section-title">Module account</p>
+    <div class="inline-row">
+      <label class="field">Module name
+        <input id="module" class="mono" list="modules" spellcheck="false" autocomplete="off" value="distribution">
+        <datalist id="modules"></datalist>
+      </label>
+    </div>
+    <p class="error" id="errModule" hidden></p>
+    <div id="outModule"></div>
+    <p class="section-title">IBC transfer escrow (ICS-20)</p>
+    <div class="inline-row">
+      <label class="field">Port <input id="port" class="mono" spellcheck="false" value="transfer"></label>
+      <label class="field">Channel <input id="channel" class="mono" spellcheck="false" value="channel-0"></label>
+      <label class="field">Version <input id="version" class="mono" spellcheck="false" value="ics20-1"></label>
+    </div>
+    <p class="error" id="errEscrow" hidden></p>
+    <div id="outEscrow"></div>
+  </div>
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">How it works</p>
+    <p class="muted"><strong>Module accounts</strong> hold funds for SDK modules (fee collector, staking pools, community pool…). Their address is the first 20 bytes of SHA-256(module name) — <code>authtypes.NewModuleAddress</code> in the SDK.</p>
+    <p class="muted"><strong>Escrow accounts</strong> hold tokens sent out over an IBC channel until they come back. The address is the first 20 bytes of SHA-256(version ‖ 0x00 ‖ "port/channel") — <code>GetEscrowAddress</code> in ibc-go, with version "ics20-1".</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.2 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="derived-addresses.js"></script>
+</body>
+</html>
