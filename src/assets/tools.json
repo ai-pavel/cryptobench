@@ -1209,6 +1209,18 @@
               "keywords": "module account ics20 escrow channel"
             }
           ]
+        },
+        {
+          "name": "Wallets",
+          "tools": [
+            {
+              "slug": "mnemonic-accounts",
+              "emoji": "🌱",
+              "name": "Mnemonic Accounts",
+              "description": "Derive accounts from a mnemonic (m/44'/118')",
+              "keywords": "seed phrase keplr leap bip39"
+            }
+          ]
         }
       ]
     }
