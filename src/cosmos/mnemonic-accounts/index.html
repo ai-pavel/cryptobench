@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mnemonic Accounts</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%8C%B1</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/cosmos.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cosmos</a>
+  <h1>🌱 Mnemonic Accounts</h1>
+  <p class="lead">Generate or check a BIP39 mnemonic and derive Cosmos accounts from it (m/44'/118'/0'/0/i by default).</p>
+  <p class="note" id="keynote"></p>
+  <div class="panel">
+    <label class="field">Mnemonic
+      <textarea id="mn" class="wide" rows="3" spellcheck="false" autocomplete="off" placeholder="12 or 24 words"></textarea>
+    </label>
+    <div class="row" style="margin-top:8px">
+      <button type="button" id="example">Example: test mnemonic</button>
+      <button type="button" id="gen12">New 12 words</button>
+      <button type="button" id="gen24">New 24 words</button>
+    </div>
+    <label class="field">Passphrase (optional, "25th word")
+      <input id="pass" type="password" autocomplete="off" spellcheck="false">
+    </label>
+    <div class="inline-row">
+      <label class="field">Chain <select id="chain"></select></label>
+      <label class="field">Coin type
+        <select id="coin">
+          <option value="118">118 — Cosmos (most chains)</option>
+          <option value="60">60 — Ethereum-style (Injective, Evmos, Cronos EVM)</option>
+          <option value="459">459 — Kava</option>
+          <option value="330">330 — Terra</option>
+          <option value="529">529 — Secret</option>
+          <option value="394">394 — Cronos POS</option>
+        </select>
+      </label>
+    </div>
+    <div class="inline-row">
+      <label class="field">Account <input id="account" type="number" min="0" step="1" value="0"></label>
+      <label class="field">Start index <input id="start" type="number" min="0" step="1" value="0"></label>
+      <label class="field">Count <input id="count" type="number" min="1" max="50" step="1" value="5"></label>
+    </div>
+    <label class="row" style="margin-top:12px;gap:6px;color:var(--muted);font-size:14px;flex-direction:row;align-items:center"><input type="checkbox" id="reveal"> Show private keys</label>
+    <p class="error" id="err" hidden></p>
+    <div id="status" class="muted"></div>
+    <div id="out"></div>
+  </div>
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">How it works</p>
+    <p class="muted">The mnemonic and passphrase give a 64-byte seed (BIP39). Keys are derived along m/44'/coin'/account'/0/index (BIP32/BIP44). With coin type 118 the address is RIPEMD-160(SHA-256(compressed public key)); with coin type 60 it is the Ethereum-style Keccak-256 address, as used by Injective and Evmos. Keplr, Leap and the SDK CLI use account 0 and change 0 and vary the last index.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.2 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="mnemonic-accounts.js"></script>
+</body>
+</html>
