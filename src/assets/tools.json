@@ -1221,6 +1221,18 @@
               "keywords": "seed phrase keplr leap bip39"
             }
           ]
+        },
+        {
+          "name": "IBC",
+          "tools": [
+            {
+              "slug": "ibc-denom",
+              "emoji": "#️⃣",
+              "name": "IBC Denom",
+              "description": "Convert between an IBC denom hash and its trace",
+              "keywords": "ibc/ denom trace hash"
+            }
+          ]
         }
       ]
     }
