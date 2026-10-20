@@ -16,7 +16,7 @@ Local-first browser tools — everyday, dev & crypto. Nothing leaves your device
 | [💎 TON](https://ai-pavel.github.io/ton/) | TON: addresses, wallets, cells, messages and signatures | 9 | [`src/ton/`](src/ton/) |
 | [🔵 Cardano](https://ai-pavel.github.io/cardano/) | Cardano: addresses, stake keys, native assets, CBOR transactions and signatures | 9 | [`src/cardano/`](src/cardano/) |
 | [💧 Sui](https://ai-pavel.github.io/sui/) | Sui: addresses, keys, BCS, transactions, object IDs and signatures | 9 | [`src/sui/`](src/sui/) |
-| [⚛️ Cosmos](https://ai-pavel.github.io/cosmos/) | Cosmos SDK chains: addresses across chains, IBC, keys, transactions and signatures | 5 | [`src/cosmos/`](src/cosmos/) |
+| [⚛️ Cosmos](https://ai-pavel.github.io/cosmos/) | Cosmos SDK chains: addresses across chains, IBC, keys, transactions and signatures | 6 | [`src/cosmos/`](src/cosmos/) |
 <!-- toolboxes:end -->
 
 Everything runs client-side in the browser: files and keys never leave the device.
