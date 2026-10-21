@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transaction Decoder</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%93%A6</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/cosmos.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cosmos</a>
+  <h1>📦 Transaction Decoder</h1>
+  <p class="lead">Decode a signed Cosmos SDK transaction (TxRaw protobuf): messages, fee, signers and the transaction hash.</p>
+  <div class="panel">
+    <label class="field">Transaction bytes (base64 or hex), or JSON with "tx_bytes"
+      <textarea id="tx" class="wide" rows="6" spellcheck="false" placeholder="CpABCo0BChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5k…"></textarea>
+    </label>
+    <div class="row" style="margin-top:8px"><button type="button" id="example">Example</button></div>
+    <p class="error" id="err" hidden></p>
+    <div id="out"></div>
+  </div>
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">How it works</p>
+    <p class="muted">A broadcast transaction is a protobuf <code>TxRaw</code>: the encoded body (messages, memo, timeout), the encoded auth info (signers, fee) and the signatures. Each message is an <code>Any</code> — a type URL plus bytes. Common bank, staking, distribution, governance, IBC transfer, authz, CosmWasm and fee-grant messages are decoded by name; others are shown as a schema-less field tree. The transaction hash is the uppercase hex SHA-256 of the exact bytes.</p>
+    <p class="muted">Signer addresses are derived from the public keys, using the address prefix found in the messages.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.2 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="tx-decoder.js"></script>
+</body>
+</html>
