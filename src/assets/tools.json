@@ -1233,6 +1233,18 @@
               "keywords": "ibc/ denom trace hash"
             }
           ]
+        },
+        {
+          "name": "Transactions",
+          "tools": [
+            {
+              "slug": "tx-decoder",
+              "emoji": "📦",
+              "name": "Transaction Decoder",
+              "description": "Decode a transaction (TxRaw protobuf)",
+              "keywords": "txraw protobuf amino"
+            }
+          ]
         }
       ]
     }
