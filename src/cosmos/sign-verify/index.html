@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign &amp; Verify</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9C%8D%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/cosmos.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Cosmos</a>
+  <h1>✍️ Sign &amp; Verify</h1>
+  <p class="lead">Sign arbitrary data and verify signatures the way Keplr's signArbitrary does it (ADR-36).</p>
+  <div class="mode-tabs" role="tablist"><button type="button" role="tab" data-tab="sign">Sign</button><button type="button" role="tab" data-tab="verify">Verify</button></div>
+  <section id="tab-sign" data-tab-panel="sign">
+    <p class="note" id="keynote"></p>
+    <div class="panel">
+      <label class="field">Private key (hex or base64) or mnemonic
+        <textarea id="s-key" class="wide" rows="2" spellcheck="false" autocomplete="off" placeholder="64 hex characters, or 12/24 words"></textarea>
+      </label>
+      <div class="row" style="margin-top:8px"><button type="button" id="s-random">Random key</button></div>
+      <div class="inline-row">
+        <label class="field">Chain <select id="s-chain"></select></label>
+        <label class="field" id="s-indexWrap" hidden>Account index (m/44'/118'/0'/0/i) <input id="s-index" type="number" min="0" step="1" value="0"></label>
+      </div>
+      <label class="field">Data to sign
+        <textarea id="s-data" class="wide" rows="3" spellcheck="false">Sign in to example.com</textarea>
+      </label>
+      <label class="field">Data encoding
+        <select id="s-enc"><option value="text">Text (UTF-8)</option><option value="base64">Base64 bytes</option><option value="hex">Hex bytes</option></select>
+      </label>
+      <div class="row"><button type="button" id="example-sign">Example: sign in to example.com</button></div>
+    <p class="error" id="s-err" hidden></p>
+      <div id="s-out"></div>
+    </div>
+  </section>
+  <section id="tab-verify" data-tab-panel="verify" hidden>
+    <div class="panel">
+      <label class="field">Signer address
+        <input id="v-addr" class="mono wide" spellcheck="false" autocomplete="off" placeholder="cosmos1…">
+      </label>
+      <label class="field">Signed data
+        <textarea id="v-data" class="wide" rows="3" spellcheck="false"></textarea>
+      </label>
+      <label class="field">Data encoding
+        <select id="v-enc"><option value="text">Text (UTF-8)</option><option value="base64">Base64 bytes</option><option value="hex">Hex bytes</option></select>
+      </label>
+      <label class="field">Signature (base64), or the whole StdSignature JSON from the wallet
+        <textarea id="v-sig" class="wide" rows="3" spellcheck="false" placeholder='{"pub_key":{"type":"tendermint/PubKeySecp256k1","value":"…"},"signature":"…"}'></textarea>
+      </label>
+      <label class="field">Public key (base64 or hex) — not needed if the JSON above includes it
+        <input id="v-pub" class="mono wide" spellcheck="false" autocomplete="off">
+      </label>
+      <div class="row"><button type="button" id="example-verify">Example: verify a Keplr signature</button></div>
+    <p class="error" id="v-err" hidden></p>
+      <div id="v-out"></div>
+    </div>
+  </section>
+  <div class="panel">
+    <p class="section-title" style="margin-top:0">How it works</p>
+    <p class="muted">ADR-36 wraps the data in an amino sign document that can never be a valid transaction: empty chain ID, zero account number and sequence, no fee, and a single <code>sign/MsgSignData</code> message with the signer address and the base64 data. The document is serialized as JSON with sorted keys, hashed with SHA-256 and signed with secp256k1 (low-S, 64 bytes r‖s). Verification rebuilds the same document, checks the signature, and checks that the public key really belongs to the signer address.</p>
+    <p class="muted">This covers standard secp256k1 accounts. Chains with Ethereum-style keys (Injective, Evmos) sign arbitrary data differently.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.3 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+<script type="module" src="sign-verify.js"></script>
+</body>
+</html>
