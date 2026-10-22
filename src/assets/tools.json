@@ -1245,6 +1245,18 @@
               "keywords": "txraw protobuf amino"
             }
           ]
+        },
+        {
+          "name": "Signatures",
+          "tools": [
+            {
+              "slug": "sign-verify",
+              "emoji": "✍️",
+              "name": "Sign & Verify",
+              "description": "Sign and verify arbitrary data (ADR-36)",
+              "keywords": "adr36 signarbitrary keplr"
+            }
+          ]
         }
       ]
     }
