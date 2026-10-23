@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unit Converter</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%92%B0</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/dot.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Polkadot</a>
+  <h1>💰 Unit Converter</h1>
+  <p class="lead">Convert between the smallest unit (Planck, or rao on Bittensor) and DOT, KSM, TAO and other tokens. Exact, with no rounding.</p>
+<!-- tool -->
+  <div class="panel">
+    <div class="grid2">
+      <label class="field">Token
+        <select id="token"></select>
+      </label>
+      <label class="field" id="decWrap" hidden>Decimals
+        <input id="decimals" type="number" min="0" max="40" value="12">
+      </label>
+    </div>
+    <label class="field"><span id="tokLabel">DOT</span>
+      <input id="tok" class="mono" inputmode="decimal" value="1" autocomplete="off">
+    </label>
+    <label class="field"><span id="baseLabel">Planck</span>
+      <input id="base" class="mono" inputmode="numeric" autocomplete="off">
+    </label>
+    <div class="row"><button type="button" id="example">Example: 12.5 DOT</button></div>
+    <p class="error" id="err" hidden></p>
+    <div id="out"></div>
+    <p class="muted">1 <span id="t1">DOT</span> = 10<sup id="pow">10</sup> <span id="t2">Planck</span>. Balances on-chain are always stored in the smallest unit as an unsigned integer (u128).</p>
+  </div>
+<script type="module" src="unit-converter.js"></script>
+<!-- /tool -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.3 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+</body>
+</html>
