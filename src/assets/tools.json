@@ -1259,6 +1259,27 @@
           ]
         }
       ]
+    },
+    {
+      "id": "polkadot",
+      "emoji": "🟣",
+      "name": "Polkadot",
+      "summary": "Polkadot and Substrate chains: SS58 addresses, SCALE, storage keys, keys and signatures.",
+      "lead": "Tools for Polkadot and Substrate chains (Kusama, Bittensor and more) that run entirely in your browser. Keys you enter never leave your device.",
+      "categories": [
+        {
+          "name": "Units",
+          "tools": [
+            {
+              "slug": "unit-converter",
+              "emoji": "💰",
+              "name": "Unit Converter",
+              "description": "Convert between Planck and DOT, KSM or TAO",
+              "keywords": "planck dot ksm tao rao decimals"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
