@@ -1,0 +1,32 @@
+/* Shared styles for the Polkadot tools (on top of assets/style.css). */
+[hidden] { display: none !important; }
+.wide { width: 100%; }
+textarea.wide { resize: vertical; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; }
+.field { display: flex; flex-direction: column; gap: 4px; margin-top: 12px; font-size: 14px; color: var(--muted); }
+.field input, .field select, .field textarea { color: var(--text); font-size: 15px; }
+.field input.mono, .field textarea.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0 12px; }
+.error { color: #c0392b; margin: 12px 0 0; overflow-wrap: anywhere; }
+.ok { color: #1e8e3e; font-weight: 600; }
+.bad { color: #c0392b; font-weight: 600; }
+.note { margin-top: 16px; padding: 10px 12px; border-radius: 8px; background: color-mix(in srgb, #e5a50a 14%, transparent); font-size: 14px; }
+.check { display: flex; flex-direction: row; align-items: center; gap: 8px; margin-top: 12px; font-size: 14px; color: var(--text); }
+.check input { width: auto; }
+table.kv { table-layout: fixed; }
+table.kv th { width: 30%; vertical-align: top; color: var(--muted); font-weight: 500; font-size: 14px; overflow-wrap: anywhere; }
+table.kv td.mono { overflow-wrap: anywhere; font-size: 14px; }
+table.kv td:last-child { width: 72px; text-align: right; vertical-align: top; }
+@media (max-width: 480px) {
+  table.kv th { width: 34%; }
+  table.kv td:last-child { width: 62px; }
+  table.kv th, table.kv td { padding: 6px 4px; }
+}
+.section-title { margin: 20px 0 6px; font-weight: 600; }
+pre.json { margin: 12px 0 0; padding: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow-x: auto; font-size: 13px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.mode-tabs { display: inline-flex; gap: 0; margin: 18px 0 4px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.mode-tabs button { border: 0; border-radius: 0; padding: 8px 18px; background: var(--surface); }
+.mode-tabs button + button { border-left: 1px solid var(--border); }
+.mode-tabs button[aria-selected="true"] { background: var(--accent); color: var(--on-accent); }
+.presets { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.presets button { padding: 4px 10px; font-size: 13px; }
+.status { margin-top: 16px; font-size: 17px; }
