@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SS58 Converter</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%94%84</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/dot.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Polkadot</a>
+  <h1>🔄 SS58 Converter</h1>
+  <p class="lead">Convert an address between network prefixes. The same account has a different address on Polkadot, Kusama, Bittensor and other Substrate chains.</p>
+<!-- tool -->
+  <div class="panel">
+    <label class="field">Address or 0x public key / account id
+      <input id="in" class="mono" spellcheck="false" autocomplete="off" value="15oF4uVJwmo4TdGW7VfQxNLavjCXviqxT9S1MgbjMNHr6Sp5">
+    </label>
+    <label class="field">Custom prefix (optional)
+      <input id="custom" class="mono" inputmode="numeric" placeholder="e.g. 1284" autocomplete="off">
+    </label>
+    <div class="row"><button type="button" id="example">Example: //Alice</button></div>
+    <p class="error" id="err" hidden></p>
+    <div id="decoded"></div>
+    <div id="out"></div>
+    <p class="muted">An SS58 address is Base58 of: network prefix (1 byte below 64, otherwise 2 bytes) + the 32-byte account id + a checksum, the first 2 bytes of Blake2b-512("SS58PRE" ‖ prefix ‖ account id). Moonbeam and other Ethereum-style chains use 20-byte H160 accounts instead, so their addresses can't be converted this way.</p>
+  </div>
+<script type="module" src="ss58-converter.js"></script>
+<!-- /tool -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.3 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+</body>
+</html>
