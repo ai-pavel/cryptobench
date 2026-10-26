@@ -1278,6 +1278,18 @@
               "keywords": "planck dot ksm tao rao decimals"
             }
           ]
+        },
+        {
+          "name": "Addresses",
+          "tools": [
+            {
+              "slug": "ss58-converter",
+              "emoji": "🔄",
+              "name": "SS58 Converter",
+              "description": "Convert an address between network prefixes",
+              "keywords": "ss58 prefix kusama bittensor substrate"
+            }
+          ]
         }
       ]
     }
