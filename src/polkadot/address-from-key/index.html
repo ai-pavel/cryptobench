@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Address from Key</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%97%9D%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/dot.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Polkadot</a>
+  <h1>🗝️ Address from Key</h1>
+  <p class="lead">Derive an account and its address from a public key. Sr25519 and Ed25519 keys are the account id; ECDSA accounts are the Blake2b-256 of the compressed key.</p>
+<!-- tool -->
+  <div class="panel">
+    <label class="field">Public key (hex)
+      <input id="pk" class="mono" spellcheck="false" autocomplete="off" value="0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d">
+    </label>
+    <div class="grid2">
+      <label class="field">Key type
+        <select id="type"><option value="auto">Detect from length</option><option value="sr25519">Sr25519</option><option value="ed25519">Ed25519</option><option value="ecdsa">ECDSA (secp256k1)</option></select>
+      </label>
+      <label class="field">Address format
+        <select id="net"></select>
+      </label>
+      <label class="field" id="customWrap" hidden>Custom SS58 prefix
+        <input id="custom" class="mono" inputmode="numeric" value="42">
+      </label>
+    </div>
+    <div class="row"><button type="button" id="example">Example: //Alice public key</button></div>
+    <p class="error" id="err" hidden></p>
+    <div id="out"></div>
+    <p class="muted">A 32-byte key can be either Sr25519 or Ed25519; both give the same account, because the account id is the key itself. A 33- or 65-byte key is ECDSA.</p>
+  </div>
+<script type="module" src="address-from-key.js"></script>
+<!-- /tool -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.3 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+</body>
+</html>
