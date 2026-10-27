@@ -1288,6 +1288,13 @@
               "name": "SS58 Converter",
               "description": "Convert an address between network prefixes",
               "keywords": "ss58 prefix kusama bittensor substrate"
+            },
+            {
+              "slug": "address-from-key",
+              "emoji": "🗝️",
+              "name": "Address from Key",
+              "description": "Derive an address from an sr25519, ed25519 or ECDSA public key",
+              "keywords": "public key accountid"
             }
           ]
         }
