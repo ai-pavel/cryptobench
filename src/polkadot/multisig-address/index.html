@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multisig Address</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%91%A5</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/dot.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Polkadot</a>
+  <h1>👥 Multisig Address</h1>
+  <p class="lead">Derive the address of a multisig account from its signatories and threshold, as pallet_multisig does.</p>
+<!-- tool -->
+  <div class="panel">
+    <label class="field">Signatories (one address or 0x account id per line)
+      <textarea id="who" class="wide" rows="4" spellcheck="false">15oF4uVJwmo4TdGW7VfQxNLavjCXviqxT9S1MgbjMNHr6Sp5
+14E5nqKAp3oAJcmzgZhUD2RcptBeUBScxKHgJKU4HPNcKVf3
+14Gjs1TD93gnwEBfDMHoCgsuf1s2TVKUP6Z1qKmAZnZ8cW5q</textarea>
+    </label>
+    <div class="grid2">
+      <label class="field">Threshold
+        <input id="thr" class="mono" inputmode="numeric" value="2">
+      </label>
+      <label class="field">Address format
+        <select id="net"></select>
+      </label>
+      <label class="field" id="customWrap" hidden>Custom SS58 prefix
+        <input id="custom" class="mono" inputmode="numeric" value="42">
+      </label>
+    </div>
+    <div class="row"><button type="button" id="example">Example: 2 of 3 dev accounts</button></div>
+    <p class="error" id="err" hidden></p>
+    <div id="out"></div>
+    <p class="muted">Account id = Blake2b-256("modlpy/utilisuba" ‖ Compact(number of signatories) ‖ account ids sorted by bytes ‖ threshold as u16). The order you list them in doesn't matter.</p>
+  </div>
+<script type="module" src="multisig-address.js"></script>
+<!-- /tool -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.3 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+</body>
+</html>
