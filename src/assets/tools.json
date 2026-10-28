@@ -1295,6 +1295,13 @@
               "name": "Address from Key",
               "description": "Derive an address from an sr25519, ed25519 or ECDSA public key",
               "keywords": "public key accountid"
+            },
+            {
+              "slug": "multisig-address",
+              "emoji": "👥",
+              "name": "Multisig Address",
+              "description": "Derive a multisig address from signatories and a threshold",
+              "keywords": "multisig threshold"
             }
           ]
         }
