@@ -1302,6 +1302,13 @@
               "name": "Multisig Address",
               "description": "Derive a multisig address from signatories and a threshold",
               "keywords": "multisig threshold"
+            },
+            {
+              "slug": "pure-proxy",
+              "emoji": "🎭",
+              "name": "Pure Proxy",
+              "description": "Derive a pure proxy address",
+              "keywords": "anonymous proxy createPure"
             }
           ]
         }
