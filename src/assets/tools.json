@@ -1309,6 +1309,13 @@
               "name": "Pure Proxy",
               "description": "Derive a pure proxy address",
               "keywords": "anonymous proxy createPure"
+            },
+            {
+              "slug": "sovereign-account",
+              "emoji": "🏛️",
+              "name": "Sovereign Account",
+              "description": "Derive a parachain's sovereign account",
+              "keywords": "parachain para sibling xcm"
             }
           ]
         }
