@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mnemonic Accounts</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%8C%B1</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/dot.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Polkadot</a>
+  <h1>🌱 Mnemonic Accounts</h1>
+  <p class="lead">Derive accounts from a mnemonic and a derivation path, the way Polkadot.js, Talisman and SubWallet do (substrate-bip39 with //hard and /soft junctions).</p>
+<!-- tool -->
+  <div class="panel">
+    <label class="field">Mnemonic or 0x seed
+      <textarea id="phrase" class="wide" rows="3" spellcheck="false" autocomplete="off">bottom drive obey lake curtain smoke basket hold race lonely fit walk</textarea>
+    </label>
+    <div class="row">
+      <button type="button" id="gen12">New 12 words</button>
+      <button type="button" id="gen24">New 24 words</button>
+      <button type="button" id="dev">Example: dev phrase //Alice</button>
+    </div>
+    <div class="grid2">
+      <label class="field">Derivation path
+        <input id="path" class="mono" spellcheck="false" value="//Alice" placeholder="//hard/soft">
+      </label>
+      <label class="field">Password (///password)
+        <input id="pass" type="password" autocomplete="off">
+      </label>
+      <label class="field">Key type
+        <select id="type"><option value="sr25519">Sr25519 (default)</option><option value="ed25519">Ed25519</option><option value="ecdsa">ECDSA (secp256k1)</option></select>
+      </label>
+      <label class="field">Address format
+        <select id="net"></select>
+      </label>
+      <label class="field" id="customWrap" hidden>Custom SS58 prefix
+        <input id="custom" class="mono" inputmode="numeric" value="42">
+      </label>
+    </div>
+    <div class="presets" id="presets"></div>
+    <label class="check"><input type="checkbox" id="list"> Also list <input id="count" type="number" min="1" max="50" value="5" style="width:64px"> numbered accounts (path + //0, //1, …)</label>
+    <label class="check"><input type="checkbox" id="reveal"> Show secret keys</label>
+    <p class="error" id="err" hidden></p>
+    <div id="out"></div>
+    <div class="note">Runs locally in your browser. Don't paste keys that hold real funds. The dev phrase is public: anyone can use //Alice, //Bob and the others.</div>
+    <p class="muted">The 32-byte seed (mini-secret) is PBKDF2-HMAC-SHA512 with the mnemonic's entropy as the password, "mnemonic" + password as the salt and 2048 rounds — not the BIP-39 seed. Hard junctions (//) can't be linked to the parent key; soft junctions (/) can, and exist only for Sr25519. Numeric junctions are encoded as u64, others as SCALE strings.</p>
+  </div>
+<script type="module" src="mnemonic-accounts.js"></script>
+<!-- /tool -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.3 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+</body>
+</html>
