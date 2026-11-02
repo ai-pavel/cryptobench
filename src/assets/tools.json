@@ -1318,6 +1318,18 @@
               "keywords": "parachain para sibling xcm"
             }
           ]
+        },
+        {
+          "name": "Wallets",
+          "tools": [
+            {
+              "slug": "mnemonic-accounts",
+              "emoji": "🌱",
+              "name": "Mnemonic Accounts",
+              "description": "Derive accounts from a mnemonic and derivation path",
+              "keywords": "seed phrase //hard /soft sr25519 polkadot.js talisman subwallet"
+            }
+          ]
         }
       ]
     }
