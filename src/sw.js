@@ -1,6 +1,6 @@
 // Service worker template. scripts/generate.py fills in VERSION and PRECACHE
 // and writes the result to /sw.js. Edit this file, not sw.js.
-const VERSION = 'f3c7ceb2802d';
+const VERSION = 'bb42c16a0323';
 const SITE_CACHE = 'site-' + VERSION;
 // Heavy, version-pinned files that tools download on first use (the ffmpeg core,
 // the OCR engine and its language data). Cached once and kept across site updates.
@@ -292,6 +292,8 @@ const PRECACHE = [
   "/polkadot/lib/dot.js",
   "/polkadot/lib/scale.js",
   "/polkadot/lib/ui.js",
+  "/polkadot/mnemonic-accounts/",
+  "/polkadot/mnemonic-accounts/mnemonic-accounts.js",
   "/polkadot/multisig-address/",
   "/polkadot/multisig-address/multisig-address.js",
   "/polkadot/pure-proxy/",
