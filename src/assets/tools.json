@@ -1330,6 +1330,18 @@
               "keywords": "seed phrase //hard /soft sr25519 polkadot.js talisman subwallet"
             }
           ]
+        },
+        {
+          "name": "Data",
+          "tools": [
+            {
+              "slug": "scale-codec",
+              "emoji": "🧩",
+              "name": "SCALE Codec",
+              "description": "Encode and decode SCALE data",
+              "keywords": "scale codec compact"
+            }
+          ]
         }
       ]
     }
