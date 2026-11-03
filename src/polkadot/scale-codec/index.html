@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SCALE Codec</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%A7%A9</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/dot.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Polkadot</a>
+  <h1>🧩 SCALE Codec</h1>
+  <p class="lead">Encode JSON into SCALE bytes or decode SCALE bytes back, using a type you describe.</p>
+<!-- tool -->
+  <div class="panel">
+    <label class="field">Type
+      <textarea id="type" class="wide" rows="3" spellcheck="false">struct { dest: AccountId32, value: Compact&lt;u128&gt;, memo: Option&lt;String&gt; }</textarea>
+    </label>
+    <div class="presets" id="presets"></div>
+    <div class="mode-tabs" role="tablist"><button type="button" data-tab="encode">Encode</button><button type="button" data-tab="decode">Decode</button></div>
+    <section id="tab-encode">
+      <label class="field">Value (JSON)
+        <textarea id="json" class="wide" rows="5" spellcheck="false">{ "dest": "15oF4uVJwmo4TdGW7VfQxNLavjCXviqxT9S1MgbjMNHr6Sp5", "value": "12345000000", "memo": "thanks" }</textarea>
+      </label>
+    </section>
+    <section id="tab-decode" hidden>
+      <div class="row"><button type="button" id="example-decode">Example: decode a transfer</button></div>
+      <label class="field">SCALE bytes (hex)
+        <textarea id="hex" class="wide" rows="4" spellcheck="false"></textarea>
+      </label>
+    </section>
+    <p class="error" id="err" hidden></p>
+    <div id="out"></div>
+    <details class="muted" style="margin-top:16px"><summary>Type syntax and value formats</summary>
+      <p>Integers <code>u8</code>–<code>u256</code>, <code>i8</code>–<code>i256</code> (large values as strings, e.g. <code>"1000000000000"</code>), <code>bool</code>, <code>String</code>, <code>Bytes</code> / <code>Vec&lt;u8&gt;</code> (0x hex), <code>AccountId32</code> (SS58 or 0x hex), <code>H160</code> / <code>H256</code> / <code>H512</code>, <code>Compact&lt;T&gt;</code>, <code>Vec&lt;T&gt;</code>, <code>Option&lt;T&gt;</code> (null or a value), <code>Result&lt;T, E&gt;</code> (<code>{"Ok": …}</code> / <code>{"Err": …}</code>), <code>[T; N]</code>, tuples <code>(A, B)</code> (JSON arrays), <code>struct { a: T }</code> (objects) and <code>enum { A, B(T), C { x: T } }</code> (<code>"A"</code> or <code>{"B": …}</code>).</p>
+      <p>Compact integers use the two lowest bits of the first byte as a mode: <code>00</code> one byte (values up to 63), <code>01</code> two bytes (up to 16383), <code>10</code> four bytes (up to 2³⁰−1), <code>11</code> “big integer” — the rest of the first byte is the number of following bytes minus 4. Vectors and strings start with a compact length. <code>Option&lt;bool&gt;</code> is a single byte: 0 None, 1 true, 2 false.</p>
+    </details>
+  </div>
+<script type="module" src="scale-codec.js"></script>
+<!-- /tool -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.3 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+</body>
+</html>
