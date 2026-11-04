@@ -1340,6 +1340,13 @@
               "name": "SCALE Codec",
               "description": "Encode and decode SCALE data",
               "keywords": "scale codec compact"
+            },
+            {
+              "slug": "storage-key",
+              "emoji": "🗄️",
+              "name": "Storage Key",
+              "description": "Build a storage key from pallet, item and keys",
+              "keywords": "twox128 blake2 storage map"
             }
           ]
         }
