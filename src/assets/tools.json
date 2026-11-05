@@ -1347,6 +1347,13 @@
               "name": "Storage Key",
               "description": "Build a storage key from pallet, item and keys",
               "keywords": "twox128 blake2 storage map"
+            },
+            {
+              "slug": "hasher",
+              "emoji": "🌀",
+              "name": "Hasher",
+              "description": "Hash with Blake2 and xxHash (Twox)",
+              "keywords": "blake2b xxhash twox64 twox128 twox256"
             }
           ]
         }
