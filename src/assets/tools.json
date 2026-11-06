@@ -1356,6 +1356,18 @@
               "keywords": "blake2b xxhash twox64 twox128 twox256"
             }
           ]
+        },
+        {
+          "name": "Signatures",
+          "tools": [
+            {
+              "slug": "sign-verify",
+              "emoji": "✍️",
+              "name": "Sign & Verify",
+              "description": "Sign and verify messages (sr25519, ed25519, ECDSA)",
+              "keywords": "signRaw signature"
+            }
+          ]
         }
       ]
     }
