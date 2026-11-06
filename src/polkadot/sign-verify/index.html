@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign &amp; Verify</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9C%8D%EF%B8%8F</text></svg>">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../lib/dot.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <script src="/assets/pwa.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Polkadot</a>
+  <h1>✍️ Sign &amp; Verify</h1>
+  <p class="lead">Sign a message with an Sr25519, Ed25519 or ECDSA key, or check a signature the way Polkadot.js signatureVerify does.</p>
+<!-- tool -->
+  <div class="mode-tabs" role="tablist"><button type="button" role="tab" data-tab="sign">Sign</button><button type="button" role="tab" data-tab="verify">Verify</button></div>
+  <section id="tab-sign" class="panel">
+    <label class="field">Mnemonic or 0x seed
+      <textarea id="s-phrase" class="wide" rows="3" spellcheck="false" autocomplete="off">bottom drive obey lake curtain smoke basket hold race lonely fit walk</textarea>
+    </label>
+    <div class="grid2">
+      <label class="field">Derivation path
+        <input id="s-path" class="mono" spellcheck="false" value="//Alice">
+      </label>
+      <label class="field">Key type
+        <select id="s-type"><option value="sr25519">Sr25519 (default)</option><option value="ed25519">Ed25519</option><option value="ecdsa">ECDSA (secp256k1)</option></select>
+      </label>
+      <label class="field">Message format
+        <select id="s-enc"><option value="text">Text (UTF-8)</option><option value="hex">Hex</option></select>
+      </label>
+    </div>
+    <label class="field">Message
+      <textarea id="s-msg" class="wide" rows="3" spellcheck="false">Hello Polkadot</textarea>
+    </label>
+    <label class="check"><input type="checkbox" id="s-wrap" checked> Wrap in &lt;Bytes&gt;…&lt;/Bytes&gt; like wallet signRaw</label>
+    <div class="row"><button type="button" id="example-sign">Example: sign as //Alice</button></div>
+    <p class="error" id="s-err" hidden></p>
+    <div id="s-out"></div>
+    <div class="note">Runs locally in your browser. Don't paste keys that hold real funds. The dev phrase above is public.</div>
+    <p class="muted">Wallets (Polkadot.js, Talisman, SubWallet) wrap messages in &lt;Bytes&gt;…&lt;/Bytes&gt; before signing, so a signed message can never be a valid transaction. Sr25519 signatures include randomness, so signing the same message twice gives different signatures; both are valid. ECDSA signs the Blake2b-256 hash of the message and appends a recovery byte (65 bytes).</p>
+  </section>
+  <section id="tab-verify" class="panel" hidden>
+    <label class="field">Signer address or 0x public key
+      <input id="v-addr" class="mono" spellcheck="false" autocomplete="off">
+    </label>
+    <label class="field">Message format
+      <select id="v-enc"><option value="text">Text (UTF-8)</option><option value="hex">Hex</option></select>
+    </label>
+    <label class="field">Message
+      <textarea id="v-msg" class="wide" rows="3" spellcheck="false"></textarea>
+    </label>
+    <label class="field">Signature (hex)
+      <textarea id="v-sig" class="wide" rows="2" spellcheck="false"></textarea>
+    </label>
+    <div class="row"><button type="button" id="example-verify">Example: verify a //Alice signature</button></div>
+    <p class="error" id="v-err" hidden></p>
+    <div id="v-out"></div>
+    <p class="muted">Tries Sr25519, Ed25519 and ECDSA, with and without the &lt;Bytes&gt; wrapper, and accepts signatures that start with a MultiSignature type byte (00 Ed25519, 01 Sr25519, 02 ECDSA).</p>
+  </section>
+<script type="module" src="sign-verify.js"></script>
+<!-- /tool -->
+</main>
+<footer class="site-footer">
+  <span>Runs entirely in your browser and works offline · <span title="Not counting the video converter and OCR engines, which download on first use.">Whole site: 4.4 MB</span></span>
+  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+</footer>
+</body>
+</html>
