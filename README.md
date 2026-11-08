@@ -1,4 +1,4 @@
-# [ai-pavel.github.io](https://ai-pavel.github.io/)
+# [🛠️ CryptoBench](https://ai-pavel.github.io/cryptobench/)
 
 Local-first browser tools — everyday, dev & crypto. Nothing leaves your device.
 
@@ -7,17 +7,17 @@ Local-first browser tools — everyday, dev & crypto. Nothing leaves your device
 <!-- toolboxes:start -->
 | Toolbox | What's inside | Tools | Folder |
 |---|---|---|---|
-| [🪄 Utilities](https://ai-pavel.github.io/utilities/) | Everyday utilities: time, text, files and media | 17 | [`src/utilities/`](src/utilities/) |
-| [🧑‍💻 Developer](https://ai-pavel.github.io/dev/) | Developer utilities: JSON, encoding, tokens, regex, diffs, bits and bytes | 21 | [`src/dev/`](src/dev/) |
-| [🔐 Cryptography](https://ai-pavel.github.io/crypto/) | Hashes, HMAC, key derivation, encryption, keys, signatures, certificates and secrets | 16 | [`src/crypto/`](src/crypto/) |
-| [🪙 Bitcoin](https://ai-pavel.github.io/bitcoin/) | Bitcoin: blocks, transactions, PSBTs, keys, addresses and HD wallets | 18 | [`src/bitcoin/`](src/bitcoin/) |
-| [💠 EVM](https://ai-pavel.github.io/evm/) | Ethereum and EVM: units, addresses, ABI, transactions and signatures | 12 | [`src/evm/`](src/evm/) |
-| [🌞 Solana](https://ai-pavel.github.io/solana/) | Solana: keys, addresses, PDAs, token accounts, transactions and signatures | 11 | [`src/solana/`](src/solana/) |
-| [💎 TON](https://ai-pavel.github.io/ton/) | TON: addresses, wallets, cells, messages and signatures | 9 | [`src/ton/`](src/ton/) |
-| [🔵 Cardano](https://ai-pavel.github.io/cardano/) | Cardano: addresses, stake keys, native assets, CBOR transactions and signatures | 9 | [`src/cardano/`](src/cardano/) |
-| [💧 Sui](https://ai-pavel.github.io/sui/) | Sui: addresses, keys, BCS, transactions, object IDs and signatures | 9 | [`src/sui/`](src/sui/) |
-| [⚛️ Cosmos](https://ai-pavel.github.io/cosmos/) | Cosmos SDK chains: addresses across chains, IBC, keys, transactions and signatures | 8 | [`src/cosmos/`](src/cosmos/) |
-| [🟣 Polkadot](https://ai-pavel.github.io/polkadot/) | Polkadot and Substrate chains: SS58 addresses, SCALE, storage keys, keys and signatures | 11 | [`src/polkadot/`](src/polkadot/) |
+| [🪄 Utilities](https://ai-pavel.github.io/cryptobench/utilities/) | Everyday utilities: time, text, files and media | 17 | [`src/utilities/`](src/utilities/) |
+| [🧑‍💻 Developer](https://ai-pavel.github.io/cryptobench/dev/) | Developer utilities: JSON, encoding, tokens, regex, diffs, bits and bytes | 21 | [`src/dev/`](src/dev/) |
+| [🔐 Cryptography](https://ai-pavel.github.io/cryptobench/crypto/) | Hashes, HMAC, key derivation, encryption, keys, signatures, certificates and secrets | 16 | [`src/crypto/`](src/crypto/) |
+| [🪙 Bitcoin](https://ai-pavel.github.io/cryptobench/bitcoin/) | Bitcoin: blocks, transactions, PSBTs, keys, addresses and HD wallets | 18 | [`src/bitcoin/`](src/bitcoin/) |
+| [💠 EVM](https://ai-pavel.github.io/cryptobench/evm/) | Ethereum and EVM: units, addresses, ABI, transactions and signatures | 12 | [`src/evm/`](src/evm/) |
+| [🌞 Solana](https://ai-pavel.github.io/cryptobench/solana/) | Solana: keys, addresses, PDAs, token accounts, transactions and signatures | 11 | [`src/solana/`](src/solana/) |
+| [💎 TON](https://ai-pavel.github.io/cryptobench/ton/) | TON: addresses, wallets, cells, messages and signatures | 9 | [`src/ton/`](src/ton/) |
+| [🔵 Cardano](https://ai-pavel.github.io/cryptobench/cardano/) | Cardano: addresses, stake keys, native assets, CBOR transactions and signatures | 9 | [`src/cardano/`](src/cardano/) |
+| [💧 Sui](https://ai-pavel.github.io/cryptobench/sui/) | Sui: addresses, keys, BCS, transactions, object IDs and signatures | 9 | [`src/sui/`](src/sui/) |
+| [⚛️ Cosmos](https://ai-pavel.github.io/cryptobench/cosmos/) | Cosmos SDK chains: addresses across chains, IBC, keys, transactions and signatures | 8 | [`src/cosmos/`](src/cosmos/) |
+| [🟣 Polkadot](https://ai-pavel.github.io/cryptobench/polkadot/) | Polkadot and Substrate chains: SS58 addresses, SCALE, storage keys, keys and signatures | 11 | [`src/polkadot/`](src/polkadot/) |
 <!-- toolboxes:end -->
 
 Everything runs client-side in the browser: files and keys never leave the device.

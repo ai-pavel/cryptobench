@@ -39,13 +39,19 @@ def favicon(emoji):
     return "data:image/svg+xml," + urllib.parse.quote(svg, safe=" =:/'<>")
 
 
-# Tags every page needs for the installable, offline-capable app (PWA).
-PWA_HEAD = """  <link rel="manifest" href="/manifest.webmanifest">
-  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+# Tags every page needs for the installable, offline-capable app (PWA). Links are
+# relative ("root" is the way up to the site root, e.g. "../../") so the site works
+# under any base path, such as ai-pavel.github.io/cryptobench/.
+def pwa_head(root):
+    return f"""  <link rel="manifest" href="{root}manifest.webmanifest">
+  <link rel="apple-touch-icon" href="{root}assets/icons/apple-touch-icon.png">
   <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
-  <script src="/assets/pwa.js" defer></script>
+  <script src="{root}assets/pwa.js" defer></script>
 """
+
+
+PWA_HEAD_RE = re.compile(r'  <link rel="manifest".*?pwa\.js" defer></script>\n', re.S)
 
 
 def head(title, emoji, css):
@@ -57,7 +63,7 @@ def head(title, emoji, css):
   <title>{esc(title)}</title>
   <link rel="icon" href="{favicon(emoji)}">
   <link rel="stylesheet" href="{css}">
-{PWA_HEAD}</head>
+{pwa_head(css[: -len("assets/style.css")])}</head>
 <body>
 <main>
 """
@@ -72,7 +78,7 @@ def set_footer(size_label):
     global FOOTER, FOOT
     FOOTER = f"""<footer class="site-footer">
   <span>Runs entirely in your browser and works offline · <span title="{ON_DEMAND_NOTE}">Whole site: {size_label}</span></span>
-  <a href="https://github.com/ai-pavel/ai-pavel.github.io">Source on GitHub</a>
+  <a href="https://github.com/ai-pavel/cryptobench">Source on GitHub</a>
 </footer>
 """
     FOOT = "</main>\n" + FOOTER + "</body>\n</html>\n"
@@ -93,8 +99,11 @@ def ensure_page_chrome(rel):
     new = re.sub(r'<footer class="site-footer">.*?</footer>\n', FOOTER, page, count=1, flags=re.S)
     if 'class="site-footer"' not in new and "</main>\n" in new:
         new = new.replace("</main>\n", "</main>\n" + FOOTER, 1)
-    if 'rel="manifest"' not in new:
-        new = new.replace("</head>", PWA_HEAD + "</head>", 1)
+    pwa = pwa_head("../" * (rel.count(os.sep)))
+    if 'rel="manifest"' in new:
+        new = PWA_HEAD_RE.sub(lambda m: pwa, new, count=1)
+    else:
+        new = new.replace("</head>", pwa + "</head>", 1)
     if new != page:
         write(rel, new)
 
@@ -140,7 +149,7 @@ def count_label(tools):
 
 
 def home_page(toolboxes, total):
-    out = head("AI Pavel", "🤖", "assets/style.css") + f"""  <h1>🤖 AI Pavel</h1>
+    out = head("CryptoBench", "🛠️", "assets/style.css") + f"""  <h1>🛠️ CryptoBench</h1>
   <p class="lead">{esc(TAGLINE)}</p>
 
   <div class="search" id="search">
@@ -195,7 +204,7 @@ def readme_table(toolboxes):
     for tb in toolboxes:
         tools = [t for c in tb["categories"] for t in c["tools"]]
         summary = tb["summary"].rstrip(".")
-        rows.append(f'| [{tb["emoji"]} {tb["name"]}](https://ai-pavel.github.io/{tb["id"]}/) | {summary} '
+        rows.append(f'| [{tb["emoji"]} {tb["name"]}](https://ai-pavel.github.io/cryptobench/{tb["id"]}/) | {summary} '
                     f'| {count_label(tools).replace(" tools", "")} | [`src/{tb["id"]}/`](src/{tb["id"]}/) |')
     with open(os.path.join(REPO, "README.md"), encoding="utf-8") as f:
         readme = f.read()
@@ -266,7 +275,8 @@ def service_worker(wip=()):
         with open(path(rel), "rb") as f:
             digest.update(rel.encode() + b"\0" + f.read())
         # Pages are linked as directories ("evm/"), so cache them under that URL.
-        url = "/" + (rel[: -len("index.html")] if rel.endswith("index.html") else rel)
+        # URLs are relative to sw.js, which sits at the site root.
+        url = (rel[: -len("index.html")] if rel.endswith("index.html") else rel) or "./"
         urls.append(url)
     with open(os.path.join(REPO, "scripts", "sw.template.js"), encoding="utf-8") as f:
         template = f.read()

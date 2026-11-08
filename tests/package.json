@@ -1,8 +1,8 @@
 {
-  "name": "ai-pavel-site-tests",
+  "name": "cryptobench-tests",
   "private": true,
   "type": "module",
-  "description": "Unit tests for ai-pavel.github.io",
+  "description": "Unit tests for CryptoBench",
   "scripts": {
     "test": "node --test"
   }

@@ -1,5 +1,5 @@
 // Service worker template. scripts/generate.py fills in VERSION and PRECACHE
-// and writes the result to /sw.js. Edit this file, not sw.js.
+// and writes the result to src/sw.js. Edit this file, not sw.js.
 const VERSION = '__VERSION__';
 const SITE_CACHE = 'site-' + VERSION;
 // Heavy, version-pinned files that tools download on first use (the ffmpeg core,
@@ -11,6 +11,7 @@ const RUNTIME_PREFIXES = [
   'https://cdn.jsdelivr.net/npm/@tesseract.js-data/',
   'https://tessdata.projectnaptha.com/',
 ];
+// Relative to this file, which sits at the site root, so the site works under any base path.
 const PRECACHE = __PRECACHE__;
 
 self.addEventListener('install', event => {
@@ -38,7 +39,7 @@ async function fromSite(request) {
     return await fetch(request);
   } catch (err) {
     // Offline and not cached: send page loads to the home page, which is always cached.
-    if (request.mode === 'navigate') return Response.redirect('/', 302);
+    if (request.mode === 'navigate') return Response.redirect(self.registration.scope, 302);
     throw err;
   }
 }

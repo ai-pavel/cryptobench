@@ -10,7 +10,7 @@ runInThisContext(readFileSync(new URL('../../src/assets/vendor/qrcode-generator@
 const empty = { text: '', ssid: '', wpass: '', wsec: 'WPA', whidden: false, eto: '', esub: '', ebody: '', tel: '', smsto: '', smsbody: '' };
 
 test('text template passes the text through', () => {
-  assert.equal(qrPayload('text', { ...empty, text: 'https://ai-pavel.github.io/' }), 'https://ai-pavel.github.io/');
+  assert.equal(qrPayload('text', { ...empty, text: 'https://ai-pavel.github.io/cryptobench/' }), 'https://ai-pavel.github.io/cryptobench/');
   assert.equal(qrPayload('text', empty), '');
 });
 

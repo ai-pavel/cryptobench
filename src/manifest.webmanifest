@@ -1,27 +1,27 @@
 {
-  "name": "AI Pavel Tools",
-  "short_name": "AI Pavel",
+  "name": "CryptoBench",
+  "short_name": "CryptoBench",
   "description": "Local-first browser tools for everyday, developer and crypto work. Nothing leaves your device.",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#f7f7f5",
   "theme_color": "#f7f7f5",
   "icons": [
     {
-      "src": "/assets/icons/icon-192.png",
+      "src": "assets/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/assets/icons/icon-512.png",
+      "src": "assets/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/assets/icons/maskable-512.png",
+      "src": "assets/icons/maskable-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
@@ -30,47 +30,47 @@
   "shortcuts": [
     {
       "name": "Utilities",
-      "url": "/utilities/"
+      "url": "utilities/"
     },
     {
       "name": "Developer",
-      "url": "/dev/"
+      "url": "dev/"
     },
     {
       "name": "Cryptography",
-      "url": "/crypto/"
+      "url": "crypto/"
     },
     {
       "name": "Bitcoin",
-      "url": "/bitcoin/"
+      "url": "bitcoin/"
     },
     {
       "name": "EVM",
-      "url": "/evm/"
+      "url": "evm/"
     },
     {
       "name": "Solana",
-      "url": "/solana/"
+      "url": "solana/"
     },
     {
       "name": "TON",
-      "url": "/ton/"
+      "url": "ton/"
     },
     {
       "name": "Cardano",
-      "url": "/cardano/"
+      "url": "cardano/"
     },
     {
       "name": "Sui",
-      "url": "/sui/"
+      "url": "sui/"
     },
     {
       "name": "Cosmos",
-      "url": "/cosmos/"
+      "url": "cosmos/"
     },
     {
       "name": "Polkadot",
-      "url": "/polkadot/"
+      "url": "polkadot/"
     }
   ]
 }
