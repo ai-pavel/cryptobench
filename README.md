@@ -1,4 +1,4 @@
-# [🛠️ CryptoBench](https://ai-pavel.github.io/cryptobench/)
+# 🛠️ CryptoBench
 
 Local-first browser tools — everyday, dev & crypto. Nothing leaves your device.
 
